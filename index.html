@@ -28,6 +28,72 @@
         .card {
             @apply bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300;
         }
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            /* Réduction de la taille du carrousel */
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .carousel-slide {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-slide img {
+            width: 100%;
+            flex-shrink: 0;
+            object-fit: cover;
+            aspect-ratio: 16 / 9;
+            display: block;
+        }
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 0.75rem; /* Boutons plus petits */
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .carousel-button-prev {
+            left: 0.5rem;
+        }
+        .carousel-button-next {
+            right: 0.5rem;
+        }
+        .carousel-dots {
+            position: absolute;
+            bottom: 0.75rem; /* Points plus près du bas */
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+        }
+        .carousel-dot {
+            width: 8px; /* Points plus petits */
+            height: 8px; /* Points plus petits */
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .carousel-dot.active {
+            background-color: white;
+        }
+        @media (max-width: 640px) {
+            .carousel-slide img {
+                aspect-ratio: 4 / 3;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -220,6 +286,23 @@
             </div>
         </section>
 
+        <!-- Section Carrousel des photos -->
+        <section id="photos" class="mb-12">
+            <h2 class="text-2xl sm:text-3xl lg:text-3xl font-extrabold mb-6 text-center text-indigo-800 pb-2">En images</h2>
+            <div class="carousel-container">
+                <div class="carousel-slide" id="carousel-slide">
+                    <!-- Les images seront ajoutées ici par JavaScript -->
+                </div>
+                <button class="carousel-button carousel-button-prev" aria-label="Image précédente">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+                <button class="carousel-button carousel-button-next" aria-label="Image suivante">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+                <div class="carousel-dots" id="carousel-dots"></div>
+            </div>
+        </section>
+
         <!-- Section de contact -->
         <section id="contact" class="mb-12 text-center py-12 bg-gray-100 rounded-3xl shadow-inner">
             <h2 class="section-title">Contact</h2>
@@ -257,6 +340,71 @@
             menuButton.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
             });
+
+            // Logique du carrousel
+            // Les chemins d'accès aux images sont maintenant des chemins relatifs pour un usage local.
+            const images = [
+                '1.jpg',
+                '2.jpg',
+                '3.jpg',
+                '4.jpg',
+                '5.jpg',
+                '6.jpg' // Nouvelle image ajoutée
+            ];
+            const carouselSlide = document.getElementById('carousel-slide');
+            const prevButton = document.querySelector('.carousel-button-prev');
+            const nextButton = document.querySelector('.carousel-button-next');
+            const dotsContainer = document.getElementById('carousel-dots');
+            let currentIndex = 0;
+
+            function createCarousel() {
+                images.forEach((src, index) => {
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.alt = `Image de la réalisation ${index + 1}`;
+                    img.loading = 'lazy'; // Ajoute le lazy loading pour la performance
+                    carouselSlide.appendChild(img);
+
+                    const dot = document.createElement('div');
+                    dot.classList.add('carousel-dot');
+                    dot.addEventListener('click', () => {
+                        moveToSlide(index);
+                    });
+                    dotsContainer.appendChild(dot);
+                });
+                updateCarousel();
+            }
+
+            function updateCarousel() {
+                const slideWidth = carouselSlide.clientWidth;
+                carouselSlide.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
+                
+                // Mettre à jour les points de navigation
+                const dots = document.querySelectorAll('.carousel-dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+
+            function moveToSlide(index) {
+                currentIndex = index;
+                updateCarousel();
+            }
+
+            prevButton.addEventListener('click', () => {
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+                updateCarousel();
+            });
+
+            nextButton.addEventListener('click', () => {
+                currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+                updateCarousel();
+            });
+
+            // Gérer le redimensionnement de la fenêtre pour un affichage correct
+            window.addEventListener('resize', updateCarousel);
+
+            createCarousel();
         });
     </script>
 </body>
