@@ -117,6 +117,52 @@
             opacity: 1;
             visibility: visible;
         }
+        .language-selector {
+            position: relative;
+        }
+        .language-button {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 9999px;
+            transition: background-color 0.2s;
+            border: 2px solid transparent;
+        }
+        .language-button:hover {
+            background-color: #e2e8f0;
+        }
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 20;
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+            min-width: 10rem;
+        }
+        .language-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .language-item:hover {
+            background-color: #f3f4f6;
+        }
+        .flag-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -130,20 +176,42 @@
     <nav class="bg-white shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <a href="#" class="text-xl font-bold text-indigo-800">Yasmine AHAJOUI</a>
-            <div class="space-x-4 hidden md:flex items-center">
-                <a href="#competences" class="text-gray-600 hover:text-indigo-600 transition-colors duration-200">Compétences</a>
-                <a href="#experience" class="text-gray-600 hover:text-indigo-600 transition-colors duration-200">Expérience</a>
-                <a href="#contact" class="px-4 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition-colors duration-200">Contact</a>
+            <div class="flex items-center space-x-4">
+                <div class="space-x-4 hidden md:flex items-center">
+                    <a href="#competences" class="text-gray-600 hover:text-indigo-600 transition-colors duration-200" data-lang-key="nav_skills">Compétences</a>
+                    <a href="#experience" class="text-gray-600 hover:text-indigo-600 transition-colors duration-200" data-lang-key="nav_experience">Expérience</a>
+                    <a href="#contact" class="px-4 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition-colors duration-200" data-lang-key="nav_contact">Contact</a>
+                </div>
+                <!-- Language Selector -->
+                <div class="language-selector">
+                    <button class="language-button" id="language-button">
+                        <img src="https://flagcdn.com/w160/fr.png" alt="French Flag" class="flag-icon" id="current-flag">
+                    </button>
+                    <div class="language-dropdown hidden" id="language-dropdown">
+                        <div class="language-item" data-lang="fr">
+                            <img src="https://flagcdn.com/w160/fr.png" alt="French Flag" class="flag-icon">
+                            <span>Français</span>
+                        </div>
+                        <div class="language-item" data-lang="en">
+                            <img src="https://flagcdn.com/w160/gb.png" alt="British Flag" class="flag-icon">
+                            <span>English</span>
+                        </div>
+                        <div class="language-item" data-lang="ar">
+                            <img src="https://flagcdn.com/w160/ma.png" alt="Moroccan Flag" class="flag-icon">
+                            <span>العربية</span>
+                        </div>
+                    </div>
+                </div>
+                <button id="menu-button" class="md:hidden text-gray-600 hover:text-indigo-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
             </div>
-            <button id="menu-button" class="md:hidden text-gray-600 hover:text-indigo-600 focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
         </div>
         <div id="mobile-menu" class="md:hidden hidden">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#competences" class="block px-3 py-2 rounded-md text-base font-medium text-gray-800 hover:text-indigo-600 hover:bg-gray-100">Compétences</a>
-                <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-gray-800 hover:text-indigo-600 hover:bg-gray-100">Expérience</a>
-                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium bg-indigo-600 text-white hover:bg-indigo-700">Contact</a>
+                <a href="#competences" class="block px-3 py-2 rounded-md text-base font-medium text-gray-800 hover:text-indigo-600 hover:bg-gray-100" data-lang-key="nav_skills">Compétences</a>
+                <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-gray-800 hover:text-indigo-600 hover:bg-gray-100" data-lang-key="nav_experience">Expérience</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium bg-indigo-600 text-white hover:bg-indigo-700" data-lang-key="nav_contact">Contact</a>
             </div>
         </div>
     </nav>
@@ -152,14 +220,14 @@
         <!-- Section "Héro" -->
         <section class="text-center py-20 bg-gradient-to-br from-indigo-100 to-white rounded-3xl shadow-lg mb-12">
             <div class="max-w-3xl mx-auto px-4">
-                <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight mb-4">
+                <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight mb-4" data-lang-key="hero_title">
                     Psychologue
                 </h1>
-                <p class="text-lg sm:text-xl text-gray-600 mb-8 text-center">
+                <p class="text-lg sm:text-xl text-gray-600 mb-8 text-center" data-lang-key="hero_subtitle">
                     J’accompagne chaque personne à travers des solutions d’intervention personnalisées et multidisciplinaires, conçues pour répondre à vos besoins spécifiques.<br>
                     Ensemble, avançons vers plus d’équilibre et d’épanouissement.
                 </p>
-                <a href="#contact" class="px-8 py-4 bg-indigo-600 text-white rounded-full font-medium hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105 inline-block">
+                <a href="#contact" class="px-8 py-4 bg-indigo-600 text-white rounded-full font-medium hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105 inline-block" data-lang-key="hero_contact_button">
                     Contacter
                 </a>
             </div>
@@ -167,56 +235,56 @@
 
         <!-- Section des compétences -->
         <section id="competences" class="mb-12">
-            <h2 class="text-2xl sm:text-3xl lg:text-3xl font-extrabold mb-6 text-center text-indigo-800 pb-2">Pratique</h2>
+            <h2 class="text-2xl sm:text-3xl lg:text-3xl font-extrabold mb-6 text-center text-indigo-800 pb-2" data-lang-key="skills_title">Pratique</h2>
               <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="card">
                     <div class="flex items-center space-x-4 mb-4">
                         <svg class="w-10 h-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L12 19.25M12 19.25L14.25 17M12 19.25V5.5M5.25 12H18.75"></path></svg>
-                        <h3 class="text-xl font-semibold">Conception de programmes</h3>
+                        <h3 class="text-xl font-semibold" data-lang-key="skill_program_design_title">Conception de programmes</h3>
                     </div>
-                    <p class="text-gray-600 text-justify">Conception et animation de programmes et ateliers visant le développement des compétences psychosociales.</p>
+                    <p class="text-gray-600 text-justify" data-lang-key="skill_program_design_text">Conception et animation de programmes et ateliers visant le développement des compétences psychosociales.</p>
                 </div>
                 <div class="card">
                     <div class="flex items-center space-x-4 mb-4">
                         <svg class="w-10 h-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.333 0 2.667 0 4 0l-4 8M12 8l-4 8m4-8V5.5M15.75 12H8.25M12 19.25V16"></path></svg>
-                        <h3 class="text-xl font-semibold">Méthodologie clinique</h3>
+                        <h3 class="text-xl font-semibold" data-lang-key="skill_clinical_method_title">Méthodologie clinique</h3>
                     </div>
-                    <p class="text-gray-600 text-justify">Maîtrise d'outils d'évaluation et de prise en charge psychologique, incluant l'entretien motivationnel, TCC, etc...</p>
+                    <p class="text-gray-600 text-justify" data-lang-key="skill_clinical_method_text">Maîtrise d'outils d'évaluation et de prise en charge psychologique, incluant l'entretien motivationnel, TCC, etc...</p>
                 </div>
                 <div class="card">
                     <div class="flex items-center space-x-4 mb-4">
                         <svg class="w-10 h-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h.01M9 10h.01M5 10h.01M19 10h.01M12 10h.01"></path></svg>
-                        <h3 class="text-xl font-semibold">Gestion de projets</h3>
+                        <h3 class="text-xl font-semibold" data-lang-key="skill_project_management_title">Gestion de projets</h3>
                     </div>
-                    <p class="text-gray-600 text-justify">Élaboration de projets individualisés et coordination avec des équipes pluridisciplinaires.</p>
+                    <p class="text-gray-600 text-justify" data-lang-key="skill_project_management_text">Élaboration de projets individualisés et coordination avec des équipes pluridisciplinaires.</p>
                 </div>
                 <div class="card">
                     <div class="flex items-center space-x-4 mb-4">
                         <svg class="w-10 h-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m-6 4h6M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H4a2 2 0 00-2 2v16a2 2 0 002 2z"></path></svg>
-                        <h3 class="text-xl font-semibold">Recherche et analyse</h3>
+                        <h3 class="text-xl font-semibold" data-lang-key="skill_research_title">Recherche et analyse</h3>
                     </div>
-                    <p class="text-gray-600 text-justify">Bonne maîtrise de la méthodologie de recherche et aisance avec les outils bureautiques.</p>
+                    <p class="text-gray-600 text-justify" data-lang-key="skill_research_text">Bonne maîtrise de la méthodologie de recherche et aisance avec les outils bureautiques.</p>
                 </div>
                 <div class="card">
                     <div class="flex items-center space-x-4 mb-4">
                         <svg class="w-10 h-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657l-1.414 1.414m0 0l-1.414 1.414m1.414-1.414l-1.414-1.414m1.414 1.414V6.5M10.5 12.5a2 2 0 100-4 2 2 0 000 4z"></path></svg>
-                        <h3 class="text-xl font-semibold">Approche proactive</h3>
+                        <h3 class="text-xl font-semibold" data-lang-key="skill_proactive_title">Approche proactive</h3>
                     </div>
-                    <p class="text-gray-600 text-justify">Empathie, sens de l'initiative et approche proactive pour un accompagnement optimal.</p>
+                    <p class="text-gray-600 text-justify" data-lang-key="skill_proactive_text">Empathie, sens de l'initiative et approche proactive pour un accompagnement optimal.</p>
                 </div>
                 <div class="card">
                     <div class="flex items-center space-x-4 mb-4">
                         <svg class="w-10 h-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-4m0 0l4-4m-4 4l-4-4m4 4l4 4M4 14l4 4m0 0l4-4m-4 4l-4-4m4 4l4 4"></path></svg>
-                        <h3 class="text-xl font-semibold">Travail collaboratif</h3>
+                        <h3 class="text-xl font-semibold" data-lang-key="skill_collaboration_title">Travail collaboratif</h3>
                     </div>
-                    <p class="text-gray-600 text-justify">Expérience en travail collaboratif et coordination avec des équipes pluridisciplinaires.</p>
+                    <p class="text-gray-600 text-justify" data-lang-key="skill_collaboration_text">Expérience en travail collaboratif et coordination avec des équipes pluridisciplinaires.</p>
                 </div>
             </div>
         </section>
 
         <!-- Section "Expérience" -->
         <section id="experience" class="mb-12">
-            <h2 class="text-2xl sm:text-3xl lg:text-3xl font-extrabold mb-6 text-center text-indigo-800 pb-2">Réalisations clés</h2>
+            <h2 class="text-2xl sm:text-3xl lg:text-3xl font-extrabold mb-6 text-center text-indigo-800 pb-2" data-lang-key="experience_title">Réalisations clés</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Coordinatrice de projets -->
                 <div class="bg-indigo-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform transition-transform duration-300 hover:scale-105">
@@ -225,11 +293,11 @@
                              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.58.355 1.28.514 1.948.563v.192c-.347.935-.873 1.905-1.517 2.975-.98.98-1.52.98-1.52 0-.25-.436-.37-.954-.37-1.544 0-1.025.2-1.996.65-2.756.28-.48.65-.91.95-1.29.35-.44.75-.82.85-.82.1 0 .25.2.45.54.45.69.83 1.45 1.15 2.21.32.76.65 1.5.95 2.14.3.64.6.96.9 1.14.3.18.55.27.75.27.2 0 .45-.09.7-.27.25-.18.55-.5.9-.94.35-.44.65-.92.85-1.45.2-.53.4-.95.4-.95-.15.25-.3.45-.4.65-.1.2-.15.25-.15.25z"/></svg>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold text-indigo-800">Coordinatrice de projets</h3>
-                            <p class="text-sm text-indigo-600">Association Y-PEER Morocco</p>
+                            <h3 class="text-xl font-bold text-indigo-800" data-lang-key="exp_coordinator_title">Coordinatrice de projets</h3>
+                            <p class="text-sm text-indigo-600" data-lang-key="exp_coordinator_org">Association Y-PEER Morocco</p>
                         </div>
                     </div>
-                    <ul class="list-disc list-inside space-y-1 text-indigo-700 text-justify">
+                    <ul class="list-disc list-inside space-y-1 text-indigo-700 text-justify" data-lang-key="exp_coordinator_list">
                         <li>Contribution à la conception et mise en œuvre des activités de l'association.</li>
                         <li>Préparation des comptes rendus et élaboration des rapports requis.</li>
                         <li>Préparer les comptes rendus des visites de terrain.</li>
@@ -242,11 +310,11 @@
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold text-indigo-800">Experte en Handicap</h3>
-                            <p class="text-sm text-indigo-600">Ministère de la Solidarité, de l'Insertion Sociale et de la famille</p>
+                            <h3 class="text-xl font-bold text-indigo-800" data-lang-key="exp_disability_expert_title">Experte en Handicap</h3>
+                            <p class="text-sm text-indigo-600" data-lang-key="exp_disability_expert_org">Ministère de la Solidarité, de l'Insertion Sociale et de la famille</p>
                         </div>
                     </div>
-                    <p class="text-indigo-700 text-justify">Participation à la conception d'une campagne nationale de sensibilisation au handicap au Maroc, centrée sur l'éveil des consciences et la réduction de la stigmatisation.</p>
+                    <p class="text-indigo-700 text-justify" data-lang-key="exp_disability_expert_text">Participation à la conception d'une campagne nationale de sensibilisation au handicap au Maroc, centrée sur l'éveil des consciences et la réduction de la stigmatisation.</p>
                 </div>
                 <!-- Rédactrice de contenu éducatif -->
                 <div class="bg-indigo-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform transition-transform duration-300 hover:scale-105">
@@ -255,11 +323,11 @@
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13a.854.854 0 00-1.708 0v13m1.708-13a.854.854 0 011.708 0v13m-1.708-13c-.352 0-.642.067-.93.197L9 6.253A1.064 1.064 0 007.87 7.07l-2.73 2.73A1.064 1.064 0 004 10.963V18a2 2 0 002 2h12a2 2 0 002-2v-7.037a1.064 1.064 0 00-.91-1.09l-2.73-2.73a1.064 1.064 0 00-.91-1.09L12 6.253z"/></svg>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold text-indigo-800">Rédactrice de contenu éducatif</h3>
-                            <p class="text-sm text-indigo-600">Collaboration avec le bureau d'études ZA'THINK TANK, IPTC MENA et l'ALCS</p>
+                            <h3 class="text-xl font-bold text-indigo-800" data-lang-key="exp_content_writer_title">Rédactrice de contenu éducatif</h3>
+                            <p class="text-sm text-indigo-600" data-lang-key="exp_content_writer_org">Collaboration avec le bureau d'études ZA'THINK TANK, IPTC MENA et l'ALCS</p>
                         </div>
                     </div>
-                    <p class="text-indigo-700 text-justify">Conception et production de capsules vidéo en 2D sur la santé sexuelle et reproductive et la prévention contre le VIH/SIDA.</p>
+                    <p class="text-indigo-700 text-justify" data-lang-key="exp_content_writer_text">Conception et production de capsules vidéo en 2D sur la santé sexuelle et reproductive et la prévention contre le VIH/SIDA.</p>
                 </div>
                 <!-- Animation d'atelier interactif -->
                 <div class="bg-indigo-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform transition-transform duration-300 hover:scale-105">
@@ -268,11 +336,11 @@
                              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292 4 4 0 010-5.292zM12 11a4 4 0 110 5.292 4 4 0 010-5.292zM12 17a4 4 0 110 5.292 4 4 0 010-5.292zM12 6c-2.761 0-5 2.239-5 5s2.239 5 5 5 5-2.239 5-5-2.239-5-5-5z"></path></svg>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold text-indigo-800">Facilitation d’ateliers psychoéducatifs</h3>
-                            <p class="text-sm text-indigo-600">UNICEF - Projet U-Report Morocco</p>
+                            <h3 class="text-xl font-bold text-indigo-800" data-lang-key="exp_workshop_title">Facilitation d’ateliers psychoéducatifs</h3>
+                            <p class="text-sm text-indigo-600" data-lang-key="exp_workshop_org">UNICEF - Projet U-Report Morocco</p>
                         </div>
                     </div>
-                    <ul class="list-disc list-inside space-y-1 text-indigo-700 text-justify">
+                    <ul class="list-disc list-inside space-y-1 text-indigo-700 text-justify" data-lang-key="exp_workshop_list">
                         <li>Animation d'un atelier interactif au profit des jeunes de la région El Kebab.</li>
                         <li>Sujet: Le harcèlement scolaire.</li>
                     </ul>
@@ -284,11 +352,11 @@
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 6a2 2 0 11-4 0 2 2 0 014 0zM12 2a10 10 0 100 20 10 10 0 000-20z"></path></svg>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold text-indigo-800">Stage en psychiatrie de l'adulte</h3>
-                            <p class="text-sm text-indigo-600">Hôpital militaire d’Instruction Mohamed V - Rabat</p>
+                            <h3 class="text-xl font-bold text-indigo-800" data-lang-key="exp_adult_psychiatry_title">Stage en psychiatrie de l'adulte</h3>
+                            <p class="text-sm text-indigo-600" data-lang-key="exp_adult_psychiatry_org">Hôpital militaire d’Instruction Mohamed V - Rabat</p>
                         </div>
                     </div>
-                    <ul class="list-disc list-inside space-y-1 text-indigo-700 text-justify">
+                    <ul class="list-disc list-inside space-y-1 text-indigo-700 text-justify" data-lang-key="exp_adult_psychiatry_list">
                         <li>Observation et participation aux consultations et séances de thérapie.</li>
                         <li>Contribution aux réunions de service.</li>
                     </ul>
@@ -300,11 +368,11 @@
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM21 21l-6-6"></path></svg>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold text-indigo-800">Stage en pédopsychiatrie</h3>
-                            <p class="text-sm text-indigo-600">Hôpital ARRAZI - Salé</p>
+                            <h3 class="text-xl font-bold text-indigo-800" data-lang-key="exp_pediatric_psychiatry_title">Stage en pédopsychiatrie</h3>
+                            <p class="text-sm text-indigo-600" data-lang-key="exp_pediatric_psychiatry_org">Hôpital ARRAZI - Salé</p>
                         </div>
                     </div>
-                    <ul class="list-disc list-inside space-y-1 text-indigo-700 text-justify">
+                    <ul class="list-disc list-inside space-y-1 text-indigo-700 text-justify" data-lang-key="exp_pediatric_psychiatry_list">
                         <li>Observation des entretiens cliniques et participation aux séances de thérapie.</li>
                         <li>Analyse et observation des interactions parent-enfant.</li>
                     </ul>
@@ -314,7 +382,7 @@
 
         <!-- Section Carrousel des photos -->
         <section id="photos" class="mb-12">
-            <h2 class="text-2xl sm:text-3xl lg:text-3xl font-extrabold mb-6 text-center text-indigo-800 pb-2">En images</h2>
+            <h2 class="text-2xl sm:text-3xl lg:text-3xl font-extrabold mb-6 text-center text-indigo-800 pb-2" data-lang-key="photos_title">Images</h2>
             <div class="carousel-container">
                 <div class="carousel-slide" id="carousel-slide">
                     <!-- Les images seront ajoutées ici par JavaScript -->
@@ -331,10 +399,10 @@
 
         <!-- Section de contact -->
         <section id="contact" class="text-center py-12 bg-gray-100 rounded-3xl shadow-inner">
-            <p class="text-center text-gray-600 italic mb-6">
+            <p class="text-center text-gray-600 italic mb-6" data-lang-key="contact_disclaimer">
                 La confidentialité et le respect de la vie privée constituent des principes fondamentaux de notre pratique. Toutes les informations partagées dans le cadre des échanges et consultations sont traitées avec la plus grande discrétion et protégées conformément aux standards éthiques et professionnels.
             </p>
-            <p class="text-lg text-gray-600 font-bold mb-6 text-center">N'hésitez pas à me contacter pour toute opportunité de collaboration ou de consultation en ligne.</p>
+            <p class="text-lg text-gray-600 font-bold mb-6 text-center" data-lang-key="contact_invitation">N'hésitez pas à me contacter pour toute opportunité de collaboration ou de consultation en ligne.</p>
             <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8">
                 <!-- Lien WhatsApp avec icône -->
                 <a href="https://wa.me/14384554137" class="flex items-center space-x-2 px-6 py-3 bg-green-500 text-white rounded-full font-medium hover:bg-green-600 transition-colors duration-300">
@@ -357,7 +425,7 @@
     
     <!-- Pied de page -->
     <footer class="bg-white py-4 mt-12 text-center text-gray-500 text-sm">
-        <p>© 2024 Yasmine AHAJOUI. Tous droits réservés.</p>
+        <p data-lang-key="footer_copyright">© 2024 Yasmine AHAJOUI. Tous droits réservés.</p>
     </footer>
 
     <script>
@@ -410,6 +478,7 @@
             });
 
             // Logique du carrousel
+            // Les chemins des images sont mis à jour pour être locaux
             const images = [
                 '1.jpg',
                 '2.jpg',
@@ -471,6 +540,203 @@
 
             createCarousel();
         });
+
+        // Logique du sélecteur de langue
+        const translations = {
+            fr: {
+                // Navigation
+                nav_skills: "Compétences",
+                nav_experience: "Expérience",
+                nav_contact: "Contact",
+                // Hero Section
+                hero_title: "Psychologue",
+                hero_subtitle: "J’accompagne chaque personne à travers des solutions d’intervention personnalisées et multidisciplinaires, conçues pour répondre à vos besoins spécifiques.<br>Ensemble, avançons vers plus d’équilibre et d’épanouissement.",
+                hero_contact_button: "Contacter",
+                // Skills Section
+                skills_title: "Pratique",
+                skill_program_design_title: "Conception de programmes",
+                skill_program_design_text: "Conception et animation de programmes et ateliers visant le développement des compétences psychosociales.",
+                skill_clinical_method_title: "Méthodologie clinique",
+                skill_clinical_method_text: "Maîtrise d'outils d'évaluation et de prise en charge psychologique, incluant l'entretien motivationnel, TCC, etc...",
+                skill_project_management_title: "Gestion de projets",
+                skill_project_management_text: "Élaboration de projets individualisés et coordination avec des équipes pluridisciplinaires.",
+                skill_research_title: "Recherche et analyse",
+                skill_research_text: "Bonne maîtrise de la méthodologie de recherche et aisance avec les outils bureautiques.",
+                skill_proactive_title: "Approche proactive",
+                skill_proactive_text: "Empathie, sens de l'initiative et approche proactive pour un accompagnement optimal.",
+                skill_collaboration_title: "Travail collaboratif",
+                skill_collaboration_text: "Expérience en travail collaboratif et coordination avec des équipes pluridisciplinaires.",
+                // Experience Section
+                experience_title: "Réalisations clés",
+                exp_coordinator_title: "Coordinatrice de projets",
+                exp_coordinator_org: "Association Y-PEER Morocco",
+                exp_coordinator_list: "<li>Contribution à la conception et mise en œuvre des activités de l'association.</li><li>Préparation des comptes rendus et élaboration des rapports requis.</li><li>Préparer les comptes rendus des visites de terrain.</li>",
+                exp_disability_expert_title: "Experte en Handicap",
+                exp_disability_expert_org: "Ministère de la Solidarité, de l'Insertion Sociale et de la famille",
+                exp_disability_expert_text: "Participation à la conception d'une campagne nationale de sensibilisation au handicap au Maroc, centrée sur l'éveil des consciences et la réduction de la stigmatisation.",
+                exp_content_writer_title: "Rédactrice de contenu éducatif",
+                exp_content_writer_org: "Collaboration avec le bureau d'études ZA'THINK TANK, IPTC MENA et l'ALCS",
+                exp_content_writer_text: "Conception et production de capsules vidéo en 2D sur la santé sexuelle et reproductive et la prévention contre le VIH/SIDA.",
+                exp_workshop_title: "Facilitation d’ateliers psychoéducatifs",
+                exp_workshop_org: "UNICEF - Projet U-Report Morocco",
+                exp_workshop_list: "<li>Animation d'un atelier interactif au profit des jeunes de la région El Kebab.</li><li>Sujet: Le harcèlement scolaire.</li>",
+                exp_adult_psychiatry_title: "Stage en psychiatrie de l'adulte",
+                exp_adult_psychiatry_org: "Hôpital militaire d’Instruction Mohamed V - Rabat",
+                exp_adult_psychiatry_list: "<li>Observation et participation aux consultations et séances de thérapie.</li><li>Contribution aux réunions de service.</li>",
+                exp_pediatric_psychiatry_title: "Stage en pédopsychiatrie",
+                exp_pediatric_psychiatry_org: "Hôpital ARRAZI - Salé",
+                exp_pediatric_psychiatry_list: "<li>Observation des entretiens cliniques et participation aux séances de thérapie.</li><li>Analyse et observation des interactions parent-enfant.</li>",
+                // Photos Section
+                photos_title: "Images",
+                // Contact Section
+                contact_disclaimer: "La confidentialité et le respect de la vie privée constituent des principes fondamentaux de notre pratique. Toutes les informations partagées dans le cadre des échanges et consultations sont traitées avec la plus grande discrétion et protégées conformément aux standards éthiques et professionnels.",
+                contact_invitation: "N'hésitez pas à me contacter pour toute opportunité de collaboration ou de consultation en ligne.",
+                // Footer
+                footer_copyright: "© 2024 Yasmine AHAJOUI. Tous droits réservés."
+            },
+            en: {
+                // Navigation
+                nav_skills: "Skills",
+                nav_experience: "Experience",
+                nav_contact: "Contact",
+                // Hero Section
+                hero_title: "Psychologist",
+                hero_subtitle: "I accompany each person through personalized and multidisciplinary intervention solutions, designed to meet your specific needs.<br>Together, let's move towards more balance and fulfillment.",
+                hero_contact_button: "Contact",
+                // Skills Section
+                skills_title: "Practice",
+                skill_program_design_title: "Program Design",
+                skill_program_design_text: "Design and facilitation of programs and workshops aimed at developing psychosocial skills.",
+                skill_clinical_method_title: "Clinical Methodology",
+                skill_clinical_method_text: "Mastery of psychological assessment and treatment tools, including motivational interviewing, CBT, etc...",
+                skill_project_management_title: "Project Management",
+                skill_project_management_text: "Development of individualized projects and coordination with multidisciplinary teams.",
+                skill_research_title: "Research and Analysis",
+                skill_research_text: "Good command of research methodology and comfortable with office tools.",
+                skill_proactive_title: "Proactive Approach",
+                skill_proactive_text: "Empathy, sense of initiative and proactive approach for optimal support.",
+                skill_collaboration_title: "Collaborative Work",
+                skill_collaboration_text: "Experience in collaborative work and coordination with multidisciplinary teams.",
+                // Experience Section
+                experience_title: "Key Achievements",
+                exp_coordinator_title: "Project Coordinator",
+                exp_coordinator_org: "Y-PEER Morocco Association",
+                exp_coordinator_list: "<li>Contribution to the design and implementation of the association's activities.</li><li>Preparation of minutes and drafting of required reports.</li><li>Preparation of field visit reports.</li>",
+                exp_disability_expert_title: "Disability Expert",
+                exp_disability_expert_org: "Ministry of Solidarity, Social Integration and Family",
+                exp_disability_expert_text: "Participation in the design of a national disability awareness campaign in Morocco, focused on raising awareness and reducing stigma.",
+                exp_content_writer_title: "Educational Content Writer",
+                exp_content_writer_org: "Collaboration with the ZA'THINK TANK study office, IPTC MENA and ALCS",
+                exp_content_writer_text: "Design and production of 2D video capsules on sexual and reproductive health and HIV/AIDS prevention.",
+                exp_workshop_title: "Psychosocial Workshop Facilitation",
+                exp_workshop_org: "UNICEF - U-Report Morocco Project",
+                exp_workshop_list: "<li>Facilitation of an interactive workshop for young people in the El Kebab region.</li><li>Topic: School bullying.</li>",
+                exp_adult_psychiatry_title: "Adult Psychiatry Internship",
+                exp_adult_psychiatry_org: "Mohamed V Military Instruction Hospital - Rabat",
+                exp_adult_psychiatry_list: "<li>Observation and participation in consultations and therapy sessions.</li><li>Contribution to service meetings.</li>",
+                exp_pediatric_psychiatry_title: "Pediatric Psychiatry Internship",
+                exp_pediatric_psychiatry_org: "ARRAZI Hospital - Salé",
+                exp_pediatric_psychiatry_list: "<li>Observation of clinical interviews and participation in therapy sessions.</li><li>Analysis and observation of parent-child interactions.</li>",
+                // Photos Section
+                photos_title: "Images",
+                // Contact Section
+                contact_disclaimer: "Confidentiality and respect for privacy are fundamental principles of our practice. All information shared during exchanges and consultations is treated with the utmost discretion and protected in accordance with ethical and professional standards.",
+                contact_invitation: "Feel free to contact me for any collaboration or online consultation opportunity.",
+                // Footer
+                footer_copyright: "© 2024 Yasmine AHAJOUI. All rights reserved."
+            },
+            ar: {
+                // Navigation
+                nav_skills: "الكفاءات",
+                nav_experience: "الخبرة",
+                nav_contact: "اتصل بنا",
+                // Hero Section
+                hero_title: "أخصائية نفسانية",
+                hero_subtitle: "أرافق كل شخص من خلال حلول تدخل شخصية ومتعددة التخصصات، مصممة لتلبية احتياجاتك الخاصة. <br>معًا، لنتقدم نحو مزيد من التوازن والوفاء.",
+                hero_contact_button: "اتصل بي",
+                // Skills Section
+                skills_title: "الممارسة",
+                skill_program_design_title: "تصميم البرامج",
+                skill_program_design_text: "تصميم وتيسير البرامج وورش العمل الهادفة إلى تطوير المهارات النفسية والاجتماعية.",
+                skill_clinical_method_title: "المنهجية السريرية",
+                skill_clinical_method_text: "إتقان أدوات التقييم والعلاج النفسي، بما في ذلك المقابلة التحفيزية، والعلاج السلوكي المعرفي، وما إلى ذلك...",
+                skill_project_management_title: "إدارة المشاريع",
+                skill_project_management_text: "تطوير المشاريع الفردية والتنسيق مع فرق متعددة التخصصات.",
+                skill_research_title: "البحث والتحليل",
+                skill_research_text: "إتقان جيد لمنهجية البحث وسهولة استخدام أدوات المكتب.",
+                skill_proactive_title: "نهج استباقي",
+                skill_proactive_text: "التعاطف، وحس المبادرة، والنهج الاستباقي لتحقيق أفضل مرافقة.",
+                skill_collaboration_title: "العمل التعاوني",
+                skill_collaboration_text: "خبرة في العمل التعاوني والتنسيق مع فرق متعددة التخصصات.",
+                // Experience Section
+                experience_title: "إنجازات رئيسية",
+                exp_coordinator_title: "منسقة مشاريع",
+                exp_coordinator_org: "جمعية Y-PEER Morocco",
+                exp_coordinator_list: "<li>المساهمة في تصميم وتنفيذ أنشطة الجمعية.</li><li>إعداد محاضر الاجتماعات وصياغة التقارير المطلوبة.</li><li>إعداد تقارير الزيارات الميدانية.</li>",
+                exp_disability_expert_title: "خبيرة في مجال الإعاقة",
+                exp_disability_expert_org: "وزارة التضامن والإدماج الاجتماعي والأسرة",
+                exp_disability_expert_text: "المشاركة في تصميم حملة وطنية للتوعية بالإعاقة في المغرب، تركز على إيقاظ الوعي وتقليل الوصمة.",
+                exp_content_writer_title: "كاتبة محتوى تعليمي",
+                exp_content_writer_org: "بالتعاون مع مكتب الدراسات ZA'THINK TANK و IPTC MENA و ALCS",
+                exp_content_writer_text: "تصميم وإنتاج كبسولات فيديو ثنائية الأبعاد حول الصحة الجنسية والإنجابية والوقاية من فيروس نقص المناعة البشرية/الإيدز.",
+                exp_workshop_title: "تيسير ورش عمل نفسية تربوية",
+                exp_workshop_org: "اليونيسيف - مشروع U-Report Morocco",
+                exp_workshop_list: "<li>تيسير ورشة عمل تفاعلية لفائدة الشباب في منطقة الكباب.</li><li>الموضوع: التنمر المدرسي.</li>",
+                exp_adult_psychiatry_title: "تدريب في الطب النفسي للبالغين",
+                exp_adult_psychiatry_org: "المستشفى العسكري التعليمي محمد الخامس - الرباط",
+                exp_adult_psychiatry_list: "<li>ملاحظة والمشاركة في الاستشارات وجلسات العلاج.</li><li>المساهمة في اجتماعات القسم.</li>",
+                exp_pediatric_psychiatry_title: "تدريب في الطب النفسي للأطفال",
+                exp_pediatric_psychiatry_org: "مستشفى الرازي - سلا",
+                exp_pediatric_psychiatry_list: "<li>ملاحظة المقابلات السريرية والمشاركة في جلسات العلاج.</li><li>تحليل وملاحظة التفاعلات بين الوالدين والطفل.</li>",
+                // Photos Section
+                photos_title: "Images",
+                // Contact Section
+                contact_disclaimer: "السرية واحترام الخصوصية هي مبادئ أساسية لممارستنا. يتم التعامل مع جميع المعلومات المشتركة في إطار التبادلات والاستشارات بأقصى درجات السرية ويتم حمايتها وفقًا للمعايير الأخلاقية والمهنية.",
+                contact_invitation: "لا تترددوا في الاتصال بي لأي فرصة للتعاون أو الاستشارة عبر الإنترنت.",
+                // Footer
+                footer_copyright: "© 2024 ياسمين أحاجوي. جميع الحقوق محفوظة."
+            }
+        };
+
+        function switchLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+            // Update flag
+            const currentFlag = document.getElementById('current-flag');
+            const flagMap = {
+                fr: 'https://flagcdn.com/w160/fr.png',
+                en: 'https://flagcdn.com/w160/gb.png',
+                ar: 'https://flagcdn.com/w160/ma.png'
+            };
+            currentFlag.src = flagMap[lang];
+        }
+
+        document.getElementById('language-button').addEventListener('click', () => {
+            const dropdown = document.getElementById('language-dropdown');
+            dropdown.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.language-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                const lang = e.currentTarget.getAttribute('data-lang');
+                switchLanguage(lang);
+                document.getElementById('language-dropdown').classList.add('hidden');
+            });
+        });
+
+        // Initialize with default language if not already set
+        const userLang = navigator.language.substring(0, 2) || 'fr';
+        if (translations[userLang]) {
+            switchLanguage(userLang);
+        } else {
+            switchLanguage('fr');
+        }
+
     </script>
 </body>
 </html>
