@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://brainzoom.github.io/bien-etre/sitemap.xml
