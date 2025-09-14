@@ -21,6 +21,11 @@
         body {
             font-family: 'Inter', sans-serif;
             @apply bg-gray-50 text-gray-800;
+            /* Empêche la sélection de texte pour bloquer la copie */
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
         .section-title {
             @apply text-3xl font-bold mb-6 text-center text-indigo-700;
@@ -335,6 +340,10 @@
     </footer>
 
     <script>
+        // Empêche la copie de tout le contenu
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.addEventListener('copy', event => event.preventDefault());
+
         document.addEventListener('DOMContentLoaded', () => {
             const menuButton = document.getElementById('menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
