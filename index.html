@@ -21,11 +21,6 @@
         body {
             font-family: 'Inter', sans-serif;
             @apply bg-gray-50 text-gray-800;
-            /* Empêche la sélection de texte pour bloquer la copie */
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
         }
         .section-title {
             @apply text-3xl font-bold mb-6 text-center text-indigo-700;
@@ -38,7 +33,6 @@
             overflow: hidden;
             border-radius: 1rem;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            /* Réduction de la taille du carrousel */
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
@@ -61,7 +55,7 @@
             background-color: rgba(0, 0, 0, 0.5);
             color: white;
             border: none;
-            padding: 0.75rem; /* Boutons plus petits */
+            padding: 0.75rem;
             cursor: pointer;
             z-index: 10;
             border-radius: 50%;
@@ -77,15 +71,15 @@
         }
         .carousel-dots {
             position: absolute;
-            bottom: 0.75rem; /* Points plus près du bas */
+            bottom: 0.75rem;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             gap: 0.5rem;
         }
         .carousel-dot {
-            width: 8px; /* Points plus petits */
-            height: 8px; /* Points plus petits */
+            width: 8px;
+            height: 8px;
             background-color: rgba(255, 255, 255, 0.5);
             border-radius: 50%;
             cursor: pointer;
@@ -99,25 +93,52 @@
                 aspect-ratio: 4 / 3;
             }
         }
+        /* Style pour l'overlay de blocage de capture d'écran */
+        #screenshot-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(240, 244, 250, 0.9);
+            color: #4a5568;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        #screenshot-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
+
+    <!-- Overlay de blocage de capture d'écran -->
+    <div id="screenshot-overlay">
+        Le contenu est protégé.
+    </div>
+
     <!-- Barre de navigation -->
     <nav class="bg-white shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <a href="#" class="text-xl font-bold text-indigo-800">Yasmine AHAJOUI</a>
-            <!-- Menu de navigation pour les grands écrans -->
             <div class="space-x-4 hidden md:flex items-center">
                 <a href="#competences" class="text-gray-600 hover:text-indigo-600 transition-colors duration-200">Compétences</a>
                 <a href="#experience" class="text-gray-600 hover:text-indigo-600 transition-colors duration-200">Expérience</a>
                 <a href="#contact" class="px-4 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition-colors duration-200">Contact</a>
             </div>
-            <!-- Bouton de menu pour les petits écrans -->
             <button id="menu-button" class="md:hidden text-gray-600 hover:text-indigo-600 focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </div>
-        <!-- Menu mobile déroulant -->
         <div id="mobile-menu" class="md:hidden hidden">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#competences" class="block px-3 py-2 rounded-md text-base font-medium text-gray-800 hover:text-indigo-600 hover:bg-gray-100">Compétences</a>
@@ -340,11 +361,47 @@
     </footer>
 
     <script>
-        // Empêche la copie de tout le contenu
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        document.addEventListener('copy', event => event.preventDefault());
-
         document.addEventListener('DOMContentLoaded', () => {
+            // Empêche la sélection de texte et les raccourcis de copie
+            document.body.style.userSelect = 'none';
+            document.body.style.webkitUserSelect = 'none';
+            document.body.style.mozUserSelect = 'none';
+            document.body.style.msUserSelect = 'none';
+
+            document.addEventListener('contextmenu', event => event.preventDefault());
+            document.addEventListener('copy', event => event.preventDefault());
+            document.addEventListener('keydown', event => {
+                if (event.ctrlKey || event.metaKey) {
+                    if (event.key === 'c' || event.key === 'C' || event.key === 'x' || event.key === 'X' || event.key === 'a' || event.key === 'A') {
+                        event.preventDefault();
+                    }
+                }
+            });
+            
+            // Logique de blocage de capture d'écran
+            const screenshotOverlay = document.getElementById('screenshot-overlay');
+            
+            // Active l'overlay quand la fenêtre n'est pas active (potentielles captures)
+            window.addEventListener('blur', () => {
+                screenshotOverlay.classList.add('visible');
+            });
+
+            // Désactive l'overlay quand la fenêtre redevient active
+            window.addEventListener('focus', () => {
+                screenshotOverlay.classList.remove('visible');
+            });
+            
+            // Tente de détecter les touches de capture d'écran
+            document.addEventListener('keyup', (e) => {
+                // Key code pour "Print Screen"
+                if (e.key === 'PrintScreen' || e.keyCode === 44) {
+                    screenshotOverlay.classList.add('visible');
+                    setTimeout(() => {
+                        screenshotOverlay.classList.remove('visible');
+                    }, 1000);
+                }
+            });
+
             const menuButton = document.getElementById('menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
 
@@ -353,14 +410,13 @@
             });
 
             // Logique du carrousel
-            // Les chemins d'accès aux images sont maintenant des chemins relatifs pour un usage local.
             const images = [
                 '1.jpg',
                 '2.jpg',
                 '3.jpg',
                 '4.jpg',
                 '5.jpg',
-                '6.jpg' // Nouvelle image ajoutée
+                '6.jpg'
             ];
             const carouselSlide = document.getElementById('carousel-slide');
             const prevButton = document.querySelector('.carousel-button-prev');
@@ -373,7 +429,7 @@
                     const img = document.createElement('img');
                     img.src = src;
                     img.alt = `Image de la réalisation ${index + 1}`;
-                    img.loading = 'lazy'; // Ajoute le lazy loading pour la performance
+                    img.loading = 'lazy';
                     carouselSlide.appendChild(img);
 
                     const dot = document.createElement('div');
@@ -390,7 +446,6 @@
                 const slideWidth = carouselSlide.clientWidth;
                 carouselSlide.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
                 
-                // Mettre à jour les points de navigation
                 const dots = document.querySelectorAll('.carousel-dot');
                 dots.forEach((dot, index) => {
                     dot.classList.toggle('active', index === currentIndex);
@@ -412,7 +467,6 @@
                 updateCarousel();
             });
 
-            // Gérer le redimensionnement de la fenêtre pour un affichage correct
             window.addEventListener('resize', updateCarousel);
 
             createCarousel();
