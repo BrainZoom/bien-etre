@@ -82,16 +82,8 @@
     </script>
 
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            @apply bg-gray-50 text-gray-800;
-        }
-        .section-title {
-            @apply text-3xl font-bold mb-6 text-center text-indigo-700;
-        }
-        .card {
-            @apply bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300;
-        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; }
         .carousel-container {
             position: relative;
             overflow: hidden;
@@ -127,12 +119,8 @@
             align-items: center;
             justify-content: center;
         }
-        .carousel-button-prev {
-            left: 0.5rem;
-        }
-        .carousel-button-next {
-            right: 0.5rem;
-        }
+        .carousel-button-prev { left: 0.5rem; }
+        .carousel-button-next { right: 0.5rem; }
         .carousel-dots {
             position: absolute;
             bottom: 0.75rem;
@@ -149,15 +137,10 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-        .carousel-dot.active {
-            background-color: white;
-        }
+        .carousel-dot.active { background-color: white; }
         @media (max-width: 640px) {
-            .carousel-slide img {
-                aspect-ratio: 4 / 3;
-            }
+            .carousel-slide img { aspect-ratio: 4 / 3; }
         }
-        /* Style pour l'overlay de blocage de capture d'écran */
         #screenshot-overlay {
             position: fixed;
             top: 0;
@@ -166,24 +149,16 @@
             height: 100%;
             background-color: rgba(240, 244, 250, 0.9);
             color: #4a5568;
-            display: flex;
+            display: none; /* Changed from visibility/opacity for performance */
             justify-content: center;
             align-items: center;
             text-align: center;
             font-size: 1.5rem;
             font-weight: bold;
             z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
-        #screenshot-overlay.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-        .language-selector {
-            position: relative;
-        }
+        #screenshot-overlay.visible { display: flex; }
+        .language-selector { position: relative; }
         .language-button {
             display: flex;
             align-items: center;
@@ -193,9 +168,7 @@
             transition: background-color 0.2s;
             border: 2px solid transparent;
         }
-        .language-button:hover {
-            background-color: #e2e8f0;
-        }
+        .language-button:hover { background-color: #e2e8f0; }
         .language-dropdown {
             position: absolute;
             top: 100%;
@@ -217,9 +190,7 @@
             cursor: pointer;
             transition: background-color 0.2s;
         }
-        .language-item:hover {
-            background-color: #f3f4f6;
-        }
+        .language-item:hover { background-color: #f3f4f6; }
         .flag-icon {
             width: 1.5rem;
             height: 1.5rem;
@@ -229,7 +200,7 @@
         }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 text-gray-800">
 
     <!-- Overlay de blocage de capture d'écran -->
     <div id="screenshot-overlay">
@@ -241,7 +212,7 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <a href="https://brainzoom.github.io/bien-etre/" class="text-xl font-bold text-indigo-800" data-lang-key="nav_brand">Yasmine AHAJOUI</a>
             <div class="flex items-center space-x-4">
-                <div class="space-x-4 hidden md:flex items-center">
+                <div class="space-x-4 hidden md:flex items-center" id="desktop-menu">
                     <a href="#competences" class="text-gray-600 hover:text-indigo-600 transition-colors duration-200" data-lang-key="nav_skills">Compétences</a>
                     <a href="#experience" class="text-gray-600 hover:text-indigo-600 transition-colors duration-200" data-lang-key="nav_experience">Expérience</a>
                     <a href="#contact" class="px-4 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition-colors duration-200" data-lang-key="nav_contact">Contact</a>
@@ -301,42 +272,42 @@
         <section id="competences" class="mb-12">
             <h2 class="text-2xl sm:text-3xl lg:text-3xl font-extrabold mb-6 text-center text-indigo-800 pb-2" data-lang-key="skills_title">Pratique</h2>
               <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card">
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <div class="flex items-center space-x-4 mb-4">
                         <svg class="w-10 h-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-program-design"><title id="title-program-design">Icône de conception de programmes</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L12 19.25M12 19.25L14.25 17M12 19.25V5.5M5.25 12H18.75"></path></svg>
                         <h3 class="text-xl font-semibold" data-lang-key="skill_program_design_title">Conception de programmes</h3>
                     </div>
                     <p class="text-gray-600 text-justify" data-lang-key="skill_program_design_text">Conception et animation de programmes et ateliers visant le développement des compétences psychosociales.</p>
                 </div>
-                <div class="card">
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <div class="flex items-center space-x-4 mb-4">
                         <svg class="w-10 h-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-clinical-method"><title id="title-clinical-method">Icône de méthodologie clinique</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.333 0 2.667 0 4 0l-4 8M12 8l-4 8m4-8V5.5M15.75 12H8.25M12 19.25V16"></path></svg>
                         <h3 class="text-xl font-semibold" data-lang-key="skill_clinical_method_title">Méthodologie clinique</h3>
                     </div>
                     <p class="text-gray-600 text-justify" data-lang-key="skill_clinical_method_text">Maîtrise d'outils d'évaluation et de prise en charge psychologique, incluant l'entretien motivationnel, TCC, etc...</p>
                 </div>
-                <div class="card">
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <div class="flex items-center space-x-4 mb-4">
                         <svg class="w-10 h-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-project-management"><title id="title-project-management">Icône de gestion de projets</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h.01M9 10h.01M5 10h.01M19 10h.01M12 10h.01"></path></svg>
                         <h3 class="text-xl font-semibold" data-lang-key="skill_project_management_title">Gestion de projets</h3>
                     </div>
                     <p class="text-gray-600 text-justify" data-lang-key="skill_project_management_text">Élaboration de projets individualisés et coordination avec des équipes pluridisciplinaires.</p>
                 </div>
-                <div class="card">
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <div class="flex items-center space-x-4 mb-4">
                         <svg class="w-10 h-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-research"><title id="title-research">Icône de recherche et analyse</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m-6 4h6M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H4a2 2 0 00-2 2v16a2 2 0 002 2z"></path></svg>
                         <h3 class="text-xl font-semibold" data-lang-key="skill_research_title">Recherche et analyse</h3>
                     </div>
                     <p class="text-gray-600 text-justify" data-lang-key="skill_research_text">Bonne maîtrise de la méthodologie de recherche et aisance avec les outils bureautiques.</p>
                 </div>
-                <div class="card">
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <div class="flex items-center space-x-4 mb-4">
                         <svg class="w-10 h-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-proactive"><title id="title-proactive">Icône d'approche proactive</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657l-1.414 1.414m0 0l-1.414 1.414m1.414-1.414l-1.414-1.414m1.414 1.414V6.5M10.5 12.5a2 2 0 100-4 2 2 0 000 4z"></path></svg>
                         <h3 class="text-xl font-semibold" data-lang-key="skill_proactive_title">Approche proactive</h3>
                     </div>
                     <p class="text-gray-600 text-justify" data-lang-key="skill_proactive_text">Empathie, sens de l'initiative et approche proactive pour un accompagnement optimal.</p>
                 </div>
-                <div class="card">
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <div class="flex items-center space-x-4 mb-4">
                         <svg class="w-10 h-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-collaboration"><title id="title-collaboration">Icône de travail collaboratif</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-4m0 0l4-4m-4 4l-4-4m4 4l4 4M4 14l4 4m0 0l4-4m-4 4l-4-4m4 4l4 4"></path></svg>
                         <h3 class="text-xl font-semibold" data-lang-key="skill_collaboration_title">Travail collaboratif</h3>
@@ -494,94 +465,93 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Empêche la sélection de texte et les raccourcis de copie
-            document.body.style.userSelect = 'none';
-            document.body.style.webkitUserSelect = 'none';
-            document.body.style.mozUserSelect = 'none';
-            document.body.style.msUserSelect = 'none';
-
-            document.addEventListener('contextmenu', event => event.preventDefault());
-            document.addEventListener('copy', event => event.preventDefault());
-            document.addEventListener('keydown', event => {
-                if (event.ctrlKey || event.metaKey) {
-                    if (event.key === 'c' || event.key === 'C' || event.key === 'x' || event.key === 'X' || event.key === 'a' || event.key === 'A') {
-                        event.preventDefault();
-                    }
-                }
-            });
-            
-            // Logique de blocage de capture d'écran
+            // --- Elements Cache ---
             const screenshotOverlay = document.getElementById('screenshot-overlay');
-            
-            // Active l'overlay quand la fenêtre n'est pas active (potentielles captures)
-            window.addEventListener('blur', () => {
-                screenshotOverlay.classList.add('visible');
-            });
-
-            // Désactive l'overlay quand la fenêtre redevient active
-            window.addEventListener('focus', () => {
-                screenshotOverlay.classList.remove('visible');
-            });
-            
-            // Tente de détecter les touches de capture d'écran
-            document.addEventListener('keyup', (e) => {
-                // Key code pour "Print Screen"
-                if (e.key === 'PrintScreen' || e.keyCode === 44) {
-                    screenshotOverlay.classList.add('visible');
-                    setTimeout(() => {
-                        screenshotOverlay.classList.remove('visible');
-                    }, 1000);
-                }
-            });
-
             const menuButton = document.getElementById('menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
-
-            menuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-
-            // Logique du carrousel
-            // Les chemins des images sont mis à jour pour être locaux
-            const images = [
-                '1.jpg',
-                '2.jpg',
-                '3.jpg',
-                '4.jpg',
-                '5.jpg',
-                '6.jpg'
-            ];
+            const languageButton = document.getElementById('language-button');
+            const languageDropdown = document.getElementById('language-dropdown');
             const carouselSlide = document.getElementById('carousel-slide');
             const prevButton = document.querySelector('.carousel-button-prev');
             const nextButton = document.querySelector('.carousel-button-next');
             const dotsContainer = document.getElementById('carousel-dots');
+
+            // --- Security / Anti-Copy ---
+            document.body.style.userSelect = 'none';
+            document.addEventListener('contextmenu', event => event.preventDefault());
+            document.addEventListener('keydown', event => {
+                if ((event.ctrlKey || event.metaKey) && ['c', 'x', 'a'].includes(event.key.toLowerCase())) {
+                    event.preventDefault();
+                }
+            });
+            window.addEventListener('blur', () => screenshotOverlay.classList.add('visible'));
+            window.addEventListener('focus', () => screenshotOverlay.classList.remove('visible'));
+            document.addEventListener('keyup', (e) => {
+                if (e.key === 'PrintScreen') {
+                    screenshotOverlay.classList.add('visible');
+                    setTimeout(() => screenshotOverlay.classList.remove('visible'), 1000);
+                }
+            });
+
+            // --- Menu Logic ---
+            const toggleMobileMenu = () => mobileMenu.classList.toggle('hidden');
+            menuButton.addEventListener('click', toggleMobileMenu);
+            mobileMenu.addEventListener('click', (e) => {
+                if (e.target.tagName === 'A') {
+                    toggleMobileMenu();
+                }
+            });
+
+            // --- Language Switcher Logic ---
+            const toggleLanguageDropdown = () => languageDropdown.classList.toggle('hidden');
+            languageButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleLanguageDropdown();
+            });
+            document.querySelectorAll('.language-item').forEach(item => {
+                item.addEventListener('click', (e) => {
+                    const lang = e.currentTarget.getAttribute('data-lang');
+                    switchLanguage(lang);
+                    toggleLanguageDropdown();
+                });
+            });
+
+            // --- Global Click Listener to close menus ---
+            document.addEventListener('click', (e) => {
+                if (!languageButton.contains(e.target) && !languageDropdown.classList.contains('hidden')) {
+                    toggleLanguageDropdown();
+                }
+            });
+
+            // --- Carousel Logic ---
+            const images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg'];
             let currentIndex = 0;
 
             function createCarousel() {
+                carouselSlide.innerHTML = '';
+                dotsContainer.innerHTML = '';
                 images.forEach((src, index) => {
                     const img = document.createElement('img');
                     img.src = src;
                     img.alt = `Photo de l'activité de Yasmine Ahajoui ${index + 1}`;
                     img.loading = 'lazy';
+                    img.decoding = 'async';
                     carouselSlide.appendChild(img);
 
                     const dot = document.createElement('div');
                     dot.classList.add('carousel-dot');
                     dot.setAttribute('aria-label', `Aller à l'image ${index + 1}`);
-                    dot.addEventListener('click', () => {
-                        moveToSlide(index);
-                    });
+                    dot.addEventListener('click', () => moveToSlide(index));
                     dotsContainer.appendChild(dot);
                 });
                 updateCarousel();
             }
 
             function updateCarousel() {
-                const slideWidth = carouselSlide.clientWidth;
-                carouselSlide.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
-                
-                const dots = document.querySelectorAll('.carousel-dot');
-                dots.forEach((dot, index) => {
+                if(carouselSlide.clientWidth > 0){
+                    carouselSlide.style.transform = `translateX(${-currentIndex * carouselSlide.clientWidth}px)`;
+                }
+                document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
                     dot.classList.toggle('active', index === currentIndex);
                 });
             }
@@ -601,27 +571,26 @@
                 updateCarousel();
             });
 
-            window.addEventListener('resize', updateCarousel);
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(updateCarousel, 250);
+            });
 
             createCarousel();
         });
 
-        // Logique du sélecteur de langue
         const translations = {
             fr: {
-                // SEO Tags
                 meta_title: "Yasmine Ahajoui - Psychologue Maroc & Canada (Montréal)",
                 meta_description: "Psychologue francophone pour adultes, enfants et couples au Maroc et à Montréal, Canada. Yasmine Ahajoui offre des consultations en ligne pour anxiété, TOC, dépression, traumatismes. Prenez rendez-vous.",
-                // Navigation
                 nav_brand: "Yasmine AHAJOUI",
                 nav_skills: "Compétences",
                 nav_experience: "Expérience",
                 nav_contact: "Contact",
-                // Hero Section
                 hero_title: "Psychologue",
                 hero_subtitle: "J’accompagne chaque personne à travers des solutions d’intervention personnalisées et multidisciplinaires, conçues pour répondre à vos besoins spécifiques.<br>Ensemble, avançons vers plus d’équilibre et d’épanouissement.",
                 hero_contact_button: "Contacter",
-                // Skills Section
                 skills_title: "Pratique",
                 skill_program_design_title: "Conception de programmes",
                 skill_program_design_text: "Conception et animation de programmes et ateliers visant le développement des compétences psychosociales.",
@@ -635,7 +604,6 @@
                 skill_proactive_text: "Empathie, sens de l'initiative et approche proactive pour un accompagnement optimal.",
                 skill_collaboration_title: "Travail collaboratif",
                 skill_collaboration_text: "Expérience en travail collaboratif et coordination avec des équipes pluridisciplinaires.",
-                // Experience Section
                 experience_title: "Réalisations clés",
                 exp_coordinator_title: "Coordinatrice de projets",
                 exp_coordinator_org: "Association Y-PEER Morocco",
@@ -655,28 +623,21 @@
                 exp_pediatric_psychiatry_title: "Stage en pédopsychiatrie",
                 exp_pediatric_psychiatry_org: "Hôpital ARRAZI - Salé",
                 exp_pediatric_psychiatry_list: "<li>Observation des entretiens cliniques et participation aux séances de thérapie.</li><li>Analyse et observation des interactions parent-enfant.</li>",
-                // Photos Section
                 photos_title: "Images",
-                // Contact Section
                 contact_disclaimer: "La confidentialité et le respect de la vie privée constituent des principes fondamentaux de notre pratique. Toutes les informations partagées dans le cadre des échanges et consultations sont traitées avec la plus grande discrétion et protégées conformément aux standards éthiques et professionnels.",
                 contact_invitation: "N'hésitez pas à me contacter pour toute opportunité de collaboration ou de consultation en ligne.",
-                // Footer
                 footer_copyright: "© 2024 Yasmine AHAJOUI. Tous droits réservés."
             },
             en: {
-                // SEO Tags
                 meta_title: "Yasmine Ahajoui - Psychologist Morocco & Canada (Montreal)",
                 meta_description: "English-speaking psychologist for adults, children, and couples in Morocco and Montreal, Canada. Yasmine Ahajoui offers online counseling for anxiety, OCD, depression, trauma. Book an appointment.",
-                // Navigation
                 nav_brand: "Yasmine AHAJOUI",
                 nav_skills: "Skills",
                 nav_experience: "Experience",
                 nav_contact: "Contact",
-                // Hero Section
                 hero_title: "Psychologist",
                 hero_subtitle: "I accompany each person through personalized and multidisciplinary intervention solutions, designed to meet your specific needs.<br>Together, let's move towards more balance and fulfillment.",
                 hero_contact_button: "Contact",
-                // Skills Section
                 skills_title: "Practice",
                 skill_program_design_title: "Program Design",
                 skill_program_design_text: "Design and facilitation of programs and workshops aimed at developing psychosocial skills.",
@@ -690,7 +651,6 @@
                 skill_proactive_text: "Empathy, sense of initiative and proactive approach for optimal support.",
                 skill_collaboration_title: "Collaborative Work",
                 skill_collaboration_text: "Experience in collaborative work and coordination with multidisciplinary teams.",
-                // Experience Section
                 experience_title: "Key Achievements",
                 exp_coordinator_title: "Project Coordinator",
                 exp_coordinator_org: "Y-PEER Morocco Association",
@@ -710,28 +670,21 @@
                 exp_pediatric_psychiatry_title: "Pediatric Psychiatry Internship",
                 exp_pediatric_psychiatry_org: "ARRAZI Hospital - Salé",
                 exp_pediatric_psychiatry_list: "<li>Observation of clinical interviews and participation in therapy sessions.</li><li>Analysis and observation of parent-child interactions.</li>",
-                // Photos Section
                 photos_title: "Images",
-                // Contact Section
                 contact_disclaimer: "Confidentiality and respect for privacy are fundamental principles of our practice. All information shared during exchanges and consultations is treated with the utmost discretion and protected in accordance with ethical and professional standards.",
                 contact_invitation: "Feel free to contact me for any collaboration or online consultation opportunity.",
-                // Footer
                 footer_copyright: "© 2024 Yasmine AHAJOUI. All rights reserved."
             },
             ar: {
-                // SEO Tags
                 meta_title: "ياسمين أحجوي - أخصائية نفسية المغرب وكندا (مونتريال)",
                 meta_description: "أخصائية نفسية للبالغين والأطفال والأزواج في المغرب ومونتريال، كندا. تقدم ياسمين أحجوي استشارات عبر الإنترنت للقلق، الوسواس القهري، الاكتئاب، والصدمات النفسية. احجز موعدك.",
-                // Navigation
                 nav_brand: "ياسمين أحجوي",
                 nav_skills: "الكفاءات",
                 nav_experience: "الخبرة",
                 nav_contact: "اتصل بنا",
-                // Hero Section
                 hero_title: "أخصائية نفسانية",
                 hero_subtitle: "مرافقة شخصية لتلبية احتياجاتك عبر حلول شاملة ومتعددة التخصصات<br><br>معًا نحو تعزيز التوازن والرفاه النفسي في حياتك",
                 hero_contact_button: "اتصل بي",
-                // Skills Section
                 skills_title: "الممارسة",
                 skill_program_design_title: "تصميم البرامج",
                 skill_program_design_text: "تصميم وتيسير البرامج وورش العمل الهادفة إلى تطوير المهارات النفسية والاجتماعية.",
@@ -745,7 +698,6 @@
                 skill_proactive_text: "التعاطف، وحس المبادرة، والنهج الاستباقي لتحقيق أفضل مرافقة.",
                 skill_collaboration_title: "العمل التعاوني",
                 skill_collaboration_text: "خبرة في العمل التعاوني والتنسيق مع فرق متعددة التخصصات.",
-                // Experience Section
                 experience_title: "إنجازات رئيسية",
                 exp_coordinator_title: "منسقة مشاريع",
                 exp_coordinator_org: "جمعية Y-PEER Morocco",
@@ -765,32 +717,25 @@
                 exp_pediatric_psychiatry_title: "تدريب في الطب النفسي للأطفال",
                 exp_pediatric_psychiatry_org: "مستشفى الرازي - سلا",
                 exp_pediatric_psychiatry_list: "<li>ملاحظة المقابلات السريرية والمشاركة في جلسات العلاج.</li><li>تحليل وملاحظة التفاعلات بين الوالدين والطفل.</li>",
-                // Photos Section
                 photos_title: "صور",
-                // Contact Section
                 contact_disclaimer: "السرية واحترام الخصوصية هي مبادئ أساسية لممارستنا. يتم التعامل مع جميع المعلومات المشتركة في إطار التبادلات والاستشارات بأقصى درجات السرية ويتم حمايتها وفقًا للمعايير الأخلاقية والمهنية.",
                 contact_invitation: "لا تترددوا في الاتصال بي لأي فرصة للتعاون أو الاستشارة عبر الإنترنت.",
-                // Footer
                 footer_copyright: "© 2024 ياسمين أحجوي. جميع الحقوق محفوظة."
             }
         };
 
         function switchLanguage(lang) {
-            // Update HTML lang attribute
             document.documentElement.lang = lang;
-            
-            // Update meta tags for SEO
             document.title = translations[lang].meta_title;
             document.querySelector('meta[name="description"]').setAttribute('content', translations[lang].meta_description);
 
-            // Update visible text content
             document.querySelectorAll('[data-lang-key]').forEach(element => {
                 const key = element.getAttribute('data-lang-key');
                 if (translations[lang][key]) {
                     element.innerHTML = translations[lang][key];
                 }
             });
-            // Update flag
+            
             const currentFlag = document.getElementById('current-flag');
             const flagMap = {
                 fr: 'https://flagcdn.com/w160/fr.png',
@@ -799,27 +744,11 @@
             };
             currentFlag.src = flagMap[lang];
         }
-
-        document.getElementById('language-button').addEventListener('click', () => {
-            const dropdown = document.getElementById('language-dropdown');
-            dropdown.classList.toggle('hidden');
-        });
-
-        document.querySelectorAll('.language-item').forEach(item => {
-            item.addEventListener('click', (e) => {
-                const lang = e.currentTarget.getAttribute('data-lang');
-                switchLanguage(lang);
-                document.getElementById('language-dropdown').classList.add('hidden');
-            });
-        });
-
-        // Initialize with default language if not already set
-        const userLang = navigator.language.substring(0, 2) || 'fr';
-        if (translations[userLang]) {
-            switchLanguage(userLang);
-        } else {
-            switchLanguage('fr');
-        }
+        
+        // --- Init ---
+        const userLang = navigator.language.substring(0, 2);
+        const initialLang = translations[userLang] ? userLang : 'fr';
+        switchLanguage(initialLang);
 
     </script>
 </body>
