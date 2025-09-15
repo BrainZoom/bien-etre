@@ -3,16 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>Yasmine Ahajoui - Psychologue / psychothérapeute</title>
-    <meta name="description" content="Yasmine Ahajoui, psychologue et psychothérapeute à Montréal et au Maroc. Spécialisée dans le traitement des traumatismes, des TOC, de l'anxiété, de la dépression et des troubles de la personnalité. Thérapie de couple et pédopsychologie.">
-    <meta name="keywords" content="consultante, psychologue, pédopsychologue, thérapie, psychothérapie, psychothérapeute, traumatismes, TOC, anxiété, trouble, dépression, trouble de personnalité, thérapie de couple, Montréal, Québec, consultation en ligne, Yasmine Ahajoui, psychologie">
-    <meta name="author" content="Yasmine Ahajoui">
-    <meta property="og:title" content="Yasmine Ahajoui - Psychologue / psychothérapeute à Montréal">
-    <meta property="og:description" content="Consultante en psychologie spécialisée dans le traitement des traumatismes, des TOC, de l'anxiété et de la dépression. Offre des services de psychothérapie pour adultes, enfants (pédopsychologue) et couples.">
+    <!-- Balises méta SEO mises à jour (Français) -->
+    <title>Yasmine Ahajoui - Psychologue Maroc & Canada - Thérapie en ligne</title>
+    <meta name="description" content="Psychologue et psychothérapeute, Yasmine Ahajoui offre des consultations en ligne et en personne au Maroc (Rabat) et au Canada (Montréal). Spécialisée en traumatismes, anxiété, TOC, dépression et thérapie de couple.">
+    <meta name="keywords" content="psychologue Maroc, psychologue Montréal, psychothérapie en ligne, psychothérapeute Rabat, psychologue Canada, thérapie de couple, traitement traumatisme, anxiété, dépression, TOC, consultation psychologique, Yasmine Ahajoui">
+    <meta property="og:title" content="Yasmine Ahajoui - Psychologue au Maroc et Canada">
+    <meta property="og:description" content="Consultations de psychothérapie pour adultes, enfants et couples, en ligne et en personne, par Yasmine Ahajoui, psychologue certifiée.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://brainzoom.github.io/bien-etre/">
-    <meta property="og:image" content="URL_IMAGE_MINIATURE_ICI">
+    <meta property="og:image" content="https://brainzoom.github.io/bien-etre/assets/images/yasmine-ahajoui-profile.jpg">
+    <meta name="author" content="Yasmine Ahajoui">
     <link rel="canonical" href="https://brainzoom.github.io/bien-etre/">
+    <!-- Balises de langue pour le SEO multilingue -->
+    <link rel="alternate" href="https://brainzoom.github.io/bien-etre/" hreflang="fr-FR">
+    <link rel="alternate" href="https://brainzoom.github.io/bien-etre/" hreflang="en-CA">
+    <link rel="alternate" href="https://brainzoom.github.io/bien-etre/" hreflang="ar-MA">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -175,7 +180,7 @@
     <!-- Barre de navigation -->
     <nav class="bg-white shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <a href="#" class="text-xl font-bold text-indigo-800" data-lang-key="nav_brand">Yasmine AHAJOUI</a>
+            <a href="https://brainzoom.github.io/bien-etre/" class="text-xl font-bold text-indigo-800" data-lang-key="nav_brand">Yasmine AHAJOUI</a>
             <div class="flex items-center space-x-4">
                 <div class="space-x-4 hidden md:flex items-center">
                     <a href="#competences" class="text-gray-600 hover:text-indigo-600 transition-colors duration-200" data-lang-key="nav_skills">Compétences</a>
@@ -184,25 +189,25 @@
                 </div>
                 <!-- Language Selector -->
                 <div class="language-selector">
-                    <button class="language-button" id="language-button">
+                    <button class="language-button" id="language-button" aria-label="Sélectionner la langue">
                         <img src="https://flagcdn.com/w160/fr.png" alt="French Flag" class="flag-icon" id="current-flag">
                     </button>
                     <div class="language-dropdown hidden" id="language-dropdown">
-                        <div class="language-item" data-lang="fr">
+                        <div class="language-item" data-lang="fr" role="button" tabindex="0" aria-label="Changer la langue en Français">
                             <img src="https://flagcdn.com/w160/fr.png" alt="French Flag" class="flag-icon">
                             <span>Français</span>
                         </div>
-                        <div class="language-item" data-lang="en">
+                        <div class="language-item" data-lang="en" role="button" tabindex="0" aria-label="Change language to English">
                             <img src="https://flagcdn.com/w160/gb.png" alt="British Flag" class="flag-icon">
                             <span>English</span>
                         </div>
-                        <div class="language-item" data-lang="ar">
+                        <div class="language-item" data-lang="ar" role="button" tabindex="0" aria-label="تغيير اللغة إلى العربية">
                             <img src="https://flagcdn.com/w160/ma.png" alt="Moroccan Flag" class="flag-icon">
                             <span>العربية</span>
                         </div>
                     </div>
                 </div>
-                <button id="menu-button" class="md:hidden text-gray-600 hover:text-indigo-600 focus:outline-none">
+                <button id="menu-button" class="md:hidden text-gray-600 hover:text-indigo-600 focus:outline-none" aria-label="Menu de navigation">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
@@ -478,14 +483,13 @@
             });
 
             // Logique du carrousel
-            // Les chemins des images sont mis à jour pour être locaux
             const images = [
-                '1.jpg',
-                '2.jpg',
-                '3.jpg',
-                '4.jpg',
-                '5.jpg',
-                '6.jpg'
+                'https://brainzoom.github.io/bien-etre/assets/images/1.jpg',
+                'https://brainzoom.github.io/bien-etre/assets/images/2.jpg',
+                'https://brainzoom.github.io/bien-etre/assets/images/3.jpg',
+                'https://brainzoom.github.io/bien-etre/assets/images/4.jpg',
+                'https://brainzoom.github.io/bien-etre/assets/images/5.jpg',
+                'https://brainzoom.github.io/bien-etre/assets/images/6.jpg'
             ];
             const carouselSlide = document.getElementById('carousel-slide');
             const prevButton = document.querySelector('.carousel-button-prev');
@@ -544,6 +548,12 @@
         // Logique du sélecteur de langue
         const translations = {
             fr: {
+                // Balises Meta pour le SEO
+                meta_title: "Yasmine Ahajoui - Psychologue Maroc & Canada - Thérapie en ligne",
+                meta_description: "Psychologue et psychothérapeute, Yasmine Ahajoui offre des consultations en ligne et en personne au Maroc (Rabat) et au Canada (Montréal). Spécialisée en traumatismes, anxiété, TOC, dépression et thérapie de couple.",
+                meta_keywords: "psychologue Maroc, psychologue Montréal, psychothérapie en ligne, psychothérapeute Rabat, psychologue Canada, thérapie de couple, traitement traumatisme, anxiété, dépression, TOC, consultation psychologique, Yasmine Ahajoui",
+                og_title: "Yasmine Ahajoui - Psychologue au Maroc et Canada",
+                og_description: "Consultations de psychothérapie pour adultes, enfants et couples, en ligne et en personne, par Yasmine Ahajoui, psychologue certifiée.",
                 // Navigation
                 nav_brand: "Yasmine AHAJOUI",
                 nav_skills: "Compétences",
@@ -596,6 +606,12 @@
                 footer_copyright: "© 2024 Yasmine AHAJOUI. Tous droits réservés."
             },
             en: {
+                // Balises Meta pour le SEO
+                meta_title: "Yasmine Ahajoui - Psychologist in Morocco & Canada - Online Therapy",
+                meta_description: "Yasmine Ahajoui is a psychologist and psychotherapist offering online and in-person consultations in Morocco (Rabat) and Canada (Montreal). Specialized in trauma, anxiety, OCD, depression, and couples therapy.",
+                meta_keywords: "psychologist Morocco, psychologist Montreal, online psychotherapy, psychotherapist Rabat, psychologist Canada, couples therapy, trauma treatment, anxiety, depression, OCD, psychological consultation, Yasmine Ahajoui",
+                og_title: "Yasmine Ahajoui - Psychologist in Morocco and Canada",
+                og_description: "Psychotherapy consultations for adults, children, and couples, online and in-person, by Yasmine Ahajoui, a certified psychologist.",
                 // Navigation
                 nav_brand: "Yasmine AHAJOUI",
                 nav_skills: "Skills",
@@ -648,6 +664,12 @@
                 footer_copyright: "© 2024 Yasmine AHAJOUI. All rights reserved."
             },
             ar: {
+                // Balises Meta pour le SEO
+                meta_title: "ياسمين أحجوي - أخصائية نفسية في المغرب و كندا - علاج نفسي عبر الإنترنت",
+                meta_description: "ياسمين أحجوي أخصائية نفسية و معالجة نفسية تقدم استشارات عبر الإنترنت و حضورياً في المغرب (الرباط) و كندا (مونتريال). متخصصة في الصدمات و القلق و الوسواس القهري و الاكتئاب و علاج الأزواج.",
+                meta_keywords: "أخصائية نفسية المغرب, أخصائية نفسية مونتريال, علاج نفسي عبر الإنترنت, معالجة نفسية الرباط, أخصائية نفسية كندا, علاج الأزواج, علاج الصدمات, القلق, الاكتئاب, الوسواس القهري, استشارة نفسية, ياسمين أحجوي",
+                og_title: "ياسمين أحجوي - أخصائية نفسية في المغرب و كندا",
+                og_description: "استشارات العلاج النفسي للبالغين و الأطفال و الأزواج، عبر الإنترنت و حضورياً، من طرف ياسمين أحجوي، أخصائية نفسية معتمدة.",
                 // Navigation
                 nav_brand: "ياسمين أحجوي",
                 nav_skills: "الكفاءات",
@@ -692,7 +714,7 @@
                 exp_pediatric_psychiatry_org: "مستشفى الرازي - سلا",
                 exp_pediatric_psychiatry_list: "<li>ملاحظة المقابلات السريرية والمشاركة في جلسات العلاج.</li><li>تحليل وملاحظة التفاعلات بين الوالدين والطفل.</li>",
                 // Photos Section
-                photos_title: "صور",
+                photos_title: "Images",
                 // Contact Section
                 contact_disclaimer: "السرية واحترام الخصوصية هي مبادئ أساسية لممارستنا. يتم التعامل مع جميع المعلومات المشتركة في إطار التبادلات والاستشارات بأقصى درجات السرية ويتم حمايتها وفقًا للمعايير الأخلاقية والمهنية.",
                 contact_invitation: "لا تترددوا في الاتصال بي لأي فرصة للتعاون أو الاستشارة عبر الإنترنت.",
@@ -701,15 +723,34 @@
             }
         };
 
+        function updateMetaTags(lang) {
+            const metaTitle = document.querySelector('title');
+            const metaDescription = document.querySelector('meta[name="description"]');
+            const metaKeywords = document.querySelector('meta[name="keywords"]');
+            const ogTitle = document.querySelector('meta[property="og:title"]');
+            const ogDescription = document.querySelector('meta[property="og:description"]');
+
+            if (translations[lang]) {
+                const langContent = translations[lang];
+                metaTitle.textContent = langContent.meta_title;
+                metaDescription.setAttribute('content', langContent.meta_description);
+                metaKeywords.setAttribute('content', langContent.meta_keywords);
+                ogTitle.setAttribute('content', langContent.og_title);
+                ogDescription.setAttribute('content', langContent.og_description);
+            }
+        }
+
         function switchLanguage(lang) {
             document.documentElement.lang = lang;
+            updateMetaTags(lang);
+
             document.querySelectorAll('[data-lang-key]').forEach(element => {
                 const key = element.getAttribute('data-lang-key');
-                if (translations[lang][key]) {
+                if (translations[lang] && translations[lang][key]) {
                     element.innerHTML = translations[lang][key];
                 }
             });
-            // Update flag
+
             const currentFlag = document.getElementById('current-flag');
             const flagMap = {
                 fr: 'https://flagcdn.com/w160/fr.png',
@@ -732,7 +773,6 @@
             });
         });
 
-        // Initialize with default language if not already set
         const userLang = navigator.language.substring(0, 2) || 'fr';
         if (translations[userLang]) {
             switchLanguage(userLang);
