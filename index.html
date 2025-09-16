@@ -157,162 +157,123 @@
             </div>
         </section>
 
+        <!-- Section Quiz -->
         <section id="quiz" class="mb-20 fade-in-up">
-            <h2 class="text-3xl sm:text-4xl font-extrabold mb-8 text-center section-title" data-lang-key="quiz_title">Testez votre intelligence émotionnelle</h2>
-            <div id="quiz-container" class="space-y-6">
+            <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 text-center section-title" data-lang-key="quiz_title">Testez votre intelligence émotionnelle</h2>
+            <div id="quiz-container" class="max-w-3xl mx-auto">
                 <div id="quiz-start" class="text-center py-12 px-6 bg-white rounded-3xl shadow-lg border">
-                    <h3 class="text-xl sm:text-2xl font-bold text-emerald-700 mb-4" data-lang-key="quiz_start_title">Êtes-vous en harmonie avec vos émotions ?</h3>
-                    <p class="text-slate-600 mb-6" data-lang-key="quiz_start_text">Faites ce mini-quiz pour mieux comprendre votre relation avec vos émotions et découvrir des pistes de réflexion pour votre bien-être.</p>
-                    <button id="start-quiz-button" class="px-6 py-3 bg-emerald-600 text-white rounded-full font-medium hover:bg-emerald-700 transition-colors duration-300" data-lang-key="quiz_start_button">Commencer le quiz</button>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-emerald-700 mb-4" data-lang-key="quiz_start_title">Êtes-vous en harmonie avec vos émotions ?</h3>
+                    <p class="text-slate-600 mb-8" data-lang-key="quiz_start_text">Faites ce mini-quiz pour mieux comprendre votre relation avec vos émotions et découvrir des pistes de réflexion pour votre bien-être.</p>
+                    <button id="start-quiz-button" class="px-8 py-4 bg-emerald-600 text-white rounded-full font-semibold hover:bg-emerald-700 transition-all duration-300" data-lang-key="quiz_start_button">Commencer le quiz</button>
                 </div>
                 <div id="quiz-questions" class="hidden"></div>
                 <div id="quiz-result" class="hidden"></div>
             </div>
         </section>
 
-        <section id="competences" class="mb-20">
-            <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 text-center section-title fade-in-up" data-lang-key="skills_title">Pratique</h2>
+        <!-- Section Compétences -->
+        <section id="competences" class="mb-20 fade-in-up">
+            <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 text-center section-title" data-lang-key="skills_title">Pratique</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border hover:-translate-y-1 fade-in-up">
+                <div class="bg-white p-8 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                     <div class="flex items-center space-x-4 mb-4"><i data-lucide="clipboard-list" class="w-10 h-10 text-emerald-600"></i><h3 class="text-xl font-semibold" data-lang-key="skill_program_design_title">Conception de programmes</h3></div>
                     <p class="text-slate-600 text-justify" data-lang-key="skill_program_design_text">Conception et animation de programmes et ateliers visant le développement des compétences psychosociales.</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border hover:-translate-y-1 fade-in-up" style="animation-delay: 100ms;">
-                    <div class="flex items-center space-x-4 mb-4"><i data-lucide="brain-circuit" class="w-10 h-10 text-emerald-600"></i><h3 class="text-xl font-semibold" data-lang-key="skill_clinical_method_title">Méthodologie clinique</h3></div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="flex items-center space-x-4 mb-4"><i data-lucide="microscope" class="w-10 h-10 text-emerald-600"></i><h3 class="text-xl font-semibold" data-lang-key="skill_clinical_method_title">Méthodologie clinique</h3></div>
                     <p class="text-slate-600 text-justify" data-lang-key="skill_clinical_method_text">Maîtrise d'outils d'évaluation et de prise en charge psychologique, incluant l'entretien motivationnel, TCC, etc...</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border hover:-translate-y-1 fade-in-up" style="animation-delay: 200ms;">
-                    <div class="flex items-center space-x-4 mb-4"><i data-lucide="kanban-square" class="w-10 h-10 text-emerald-600"></i><h3 class="text-xl font-semibold" data-lang-key="skill_project_management_title">Gestion de projets</h3></div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="flex items-center space-x-4 mb-4"><i data-lucide="folder-kanban" class="w-10 h-10 text-emerald-600"></i><h3 class="text-xl font-semibold" data-lang-key="skill_project_management_title">Gestion de projets</h3></div>
                     <p class="text-slate-600 text-justify" data-lang-key="skill_project_management_text">Élaboration de projets individualisés et coordination avec des équipes pluridisciplinaires.</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border hover:-translate-y-1 fade-in-up" style="animation-delay: 300ms;">
-                    <div class="flex items-center space-x-4 mb-4"><i data-lucide="file-search-2" class="w-10 h-10 text-emerald-600"></i><h3 class="text-xl font-semibold" data-lang-key="skill_research_title">Recherche et analyse</h3></div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="flex items-center space-x-4 mb-4"><i data-lucide="search" class="w-10 h-10 text-emerald-600"></i><h3 class="text-xl font-semibold" data-lang-key="skill_research_title">Recherche et analyse</h3></div>
                     <p class="text-slate-600 text-justify" data-lang-key="skill_research_text">Bonne maîtrise de la méthodologie de recherche et aisance avec les outils bureautiques.</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border hover:-translate-y-1 fade-in-up" style="animation-delay: 400ms;">
-                    <div class="flex items-center space-x-4 mb-4"><i data-lucide="sparkles" class="w-10 h-10 text-emerald-600"></i><h3 class="text-xl font-semibold" data-lang-key="skill_proactive_title">Approche proactive</h3></div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="flex items-center space-x-4 mb-4"><i data-lucide="lightbulb" class="w-10 h-10 text-emerald-600"></i><h3 class="text-xl font-semibold" data-lang-key="skill_proactive_title">Approche proactive</h3></div>
                     <p class="text-slate-600 text-justify" data-lang-key="skill_proactive_text">Empathie, sens de l'initiative et approche proactive pour un accompagnement optimal.</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border hover:-translate-y-1 fade-in-up" style="animation-delay: 500ms;">
-                    <div class="flex items-center space-x-4 mb-4"><i data-lucide="users-2" class="w-10 h-10 text-emerald-600"></i><h3 class="text-xl font-semibold" data-lang-key="skill_collaboration_title">Travail collaboratif</h3></div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="flex items-center space-x-4 mb-4"><i data-lucide="users" class="w-10 h-10 text-emerald-600"></i><h3 class="text-xl font-semibold" data-lang-key="skill_collaboration_title">Travail collaboratif</h3></div>
                     <p class="text-slate-600 text-justify" data-lang-key="skill_collaboration_text">Expérience en travail collaboratif et coordination avec des équipes pluridisciplinaires.</p>
                 </div>
             </div>
         </section>
 
-        <section id="experience" class="mb-20">
-            <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 text-center section-title fade-in-up" data-lang-key="experience_title">Réalisations clés</h2>
+        <!-- Section Expérience -->
+        <section id="experience" class="mb-20 fade-in-up">
+            <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 text-center section-title" data-lang-key="experience_title">Réalisations clés</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-teal-50/50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 fade-in-up">
-                    <div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-white text-emerald-600 rounded-full flex items-center justify-center mr-4 shadow-md"><i data-lucide="settings" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-emerald-800" data-lang-key="exp_coordinator_title">Coordinatrice de projets</h3><p class="text-sm text-emerald-700" data-lang-key="exp_coordinator_org">Association Y-PEER Morocco</p></div></div>
-                    <ul class="list-disc list-inside space-y-1 text-emerald-800 text-justify" data-lang-key="exp_coordinator_list"><li>Contribution à la conception et mise en œuvre des activités de l'association.</li><li>Préparation des comptes rendus et élaboration des rapports requis.</li><li>Préparer les comptes rendus des visites de terrain.</li></ul>
-                </div>
-                <div class="bg-teal-50/50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 fade-in-up" style="animation-delay: 100ms;">
-                    <div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-white text-emerald-600 rounded-full flex items-center justify-center mr-4 shadow-md"><i data-lucide="accessibility" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-emerald-800" data-lang-key="exp_disability_expert_title">Experte en Handicap</h3><p class="text-sm text-emerald-700" data-lang-key="exp_disability_expert_org">Ministère de la Solidarité, de l'Insertion Sociale et de la famille</p></div></div>
-                    <p class="text-emerald-800 text-justify" data-lang-key="exp_disability_expert_text">Participation à la conception d'une campagne nationale de sensibilisation au handicap au Maroc, centrée sur l'éveil des consciences et la réduction de la stigmatisation.</p>
-                </div>
-                <div class="bg-teal-50/50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 fade-in-up" style="animation-delay: 200ms;">
-                    <div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-white text-emerald-600 rounded-full flex items-center justify-center mr-4 shadow-md"><i data-lucide="pen-tool" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-emerald-800" data-lang-key="exp_content_writer_title">Rédactrice de contenu éducatif</h3><p class="text-sm text-emerald-700" data-lang-key="exp_content_writer_org">Collaboration avec le bureau d'études ZA'THINK TANK, IPTC MENA et l'ALCS</p></div></div>
-                    <p class="text-emerald-800 text-justify" data-lang-key="exp_content_writer_text">Conception et production de capsules vidéo en 2D sur la santé sexuelle et reproductive et la prévention contre le VIH/SIDA.</p>
-                </div>
-                <div class="bg-teal-50/50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 fade-in-up" style="animation-delay: 300ms;">
-                    <div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-white text-emerald-600 rounded-full flex items-center justify-center mr-4 shadow-md"><i data-lucide="presentation" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-emerald-800" data-lang-key="exp_workshop_title">Facilitation d’ateliers psychoéducatifs</h3><p class="text-sm text-emerald-700" data-lang-key="exp_workshop_org">UNICEF - Projet U-Report Morocco</p></div></div>
-                    <ul class="list-disc list-inside space-y-1 text-emerald-800 text-justify" data-lang-key="exp_workshop_list"><li>Animation d'un atelier interactif au profit des jeunes de la région El Kebab.</li><li>Sujet: Le harcèlement scolaire.</li></ul>
-                </div>
-                <div class="bg-teal-50/50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 fade-in-up" style="animation-delay: 400ms;">
-                    <div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-white text-emerald-600 rounded-full flex items-center justify-center mr-4 shadow-md"><i data-lucide="user-check" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-emerald-800" data-lang-key="exp_adult_psychiatry_title">Stage en psychiatrie de l'adulte</h3><p class="text-sm text-emerald-700" data-lang-key="exp_adult_psychiatry_org">Hôpital militaire d’Instruction Mohamed V - Rabat</p></div></div>
-                    <ul class="list-disc list-inside space-y-1 text-emerald-800 text-justify" data-lang-key="exp_adult_psychiatry_list"><li>Observation et participation aux consultations et séances de thérapie.</li><li>Contribution aux réunions de service.</li></ul>
-                </div>
-                <div class="bg-teal-50/50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 fade-in-up" style="animation-delay: 500ms;">
-                    <div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-white text-emerald-600 rounded-full flex items-center justify-center mr-4 shadow-md"><i data-lucide="baby" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-emerald-800" data-lang-key="exp_pediatric_psychiatry_title">Stage en pédopsychiatrie</h3><p class="text-sm text-emerald-700" data-lang-key="exp_pediatric_psychiatry_org">Hôpital ARRAZI - Salé</p></div></div>
-                    <ul class="list-disc list-inside space-y-1 text-emerald-800 text-justify" data-lang-key="exp_pediatric_psychiatry_list"><li>Observation des entretiens cliniques et participation aux séances de thérapie.</li><li>Analyse et observation des interactions parent-enfant.</li></ul>
-                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mr-4"><i data-lucide="briefcase" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-slate-800" data-lang-key="exp_coordinator_title">Coordinatrice de projets</h3><p class="text-sm text-slate-500" data-lang-key="exp_coordinator_org">Association Y-PEER Morocco</p></div></div><ul class="list-disc list-inside space-y-2 text-slate-600 text-justify" data-lang-key="exp_coordinator_list"></ul></div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mr-4"><i data-lucide="accessibility" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-slate-800" data-lang-key="exp_disability_expert_title">Experte en Handicap</h3><p class="text-sm text-slate-500" data-lang-key="exp_disability_expert_org">Ministère de la Solidarité...</p></div></div><p class="text-slate-600 text-justify" data-lang-key="exp_disability_expert_text"></p></div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mr-4"><i data-lucide="video" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-slate-800" data-lang-key="exp_content_writer_title">Rédactrice de contenu</h3><p class="text-sm text-slate-500" data-lang-key="exp_content_writer_org">ZA'THINK TANK, IPTC MENA, ALCS</p></div></div><p class="text-slate-600 text-justify" data-lang-key="exp_content_writer_text"></p></div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mr-4"><i data-lucide="presentation" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-slate-800" data-lang-key="exp_workshop_title">Facilitation d’ateliers</h3><p class="text-sm text-slate-500" data-lang-key="exp_workshop_org">UNICEF - U-Report Morocco</p></div></div><ul class="list-disc list-inside space-y-2 text-slate-600 text-justify" data-lang-key="exp_workshop_list"></ul></div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mr-4"><i data-lucide="hospital" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-slate-800" data-lang-key="exp_adult_psychiatry_title">Stage en psychiatrie</h3><p class="text-sm text-slate-500" data-lang-key="exp_adult_psychiatry_org">Hôpital militaire Mohamed V</p></div></div><ul class="list-disc list-inside space-y-2 text-slate-600 text-justify" data-lang-key="exp_adult_psychiatry_list"></ul></div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mr-4"><i data-lucide="baby" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-slate-800" data-lang-key="exp_pediatric_psychiatry_title">Stage en pédopsychiatrie</h3><p class="text-sm text-slate-500" data-lang-key="exp_pediatric_psychiatry_org">Hôpital ARRAZI - Salé</p></div></div><ul class="list-disc list-inside space-y-2 text-slate-600 text-justify" data-lang-key="exp_pediatric_psychiatry_list"></ul></div>
             </div>
         </section>
-
-        <section id="approche" class="mb-20">
-            <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 text-center section-title fade-in-up" data-lang-key="approach_title">Approche Thérapeutique</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                <div class="bg-white p-8 rounded-2xl shadow-lg border fade-in-up">
-                    <div class="inline-block p-4 bg-emerald-100 rounded-full mb-4">
-                        <i data-lucide="combine" class="w-10 h-10 text-emerald-700"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2" data-lang-key="approach_integrative_title">Approche Intégrative</h3>
-                    <p class="text-slate-600" data-lang-key="approach_integrative_text">J'utilise une approche intégrative, combinant différentes théories (TCC, humaniste, systémique) pour créer une intervention sur mesure qui correspond à votre réalité unique.</p>
-                </div>
-                <div class="bg-white p-8 rounded-2xl shadow-lg border fade-in-up" style="animation-delay: 200ms;">
-                    <div class="inline-block p-4 bg-emerald-100 rounded-full mb-4">
-                        <i data-lucide="heart-handshake" class="w-10 h-10 text-emerald-700"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2" data-lang-key="approach_centered_title">Centrée sur la Personne</h3>
-                    <p class="text-slate-600" data-lang-key="approach_centered_text">Notre collaboration est au cœur du processus. Je vous offre un espace d'écoute sécuritaire, empathique et sans jugement, où vous êtes l'expert(e) de votre propre vie.</p>
-                </div>
-                <div class="bg-white p-8 rounded-2xl shadow-lg border fade-in-up" style="animation-delay: 400ms;">
-                    <div class="inline-block p-4 bg-emerald-100 rounded-full mb-4">
-                        <i data-lucide="goal" class="w-10 h-10 text-emerald-700"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2" data-lang-key="approach_solutions_title">Orientée vers les Solutions</h3>
-                    <p class="text-slate-600" data-lang-key="approach_solutions_text">Tout en explorant les racines des difficultés, nous nous concentrons sur le développement de stratégies concrètes pour favoriser votre autonomie et votre bien-être au quotidien.</p>
-                </div>
+        
+        <!-- Section Approche -->
+        <section id="approach" class="mb-20 fade-in-up">
+            <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 text-center section-title" data-lang-key="approach_title">Approche Thérapeutique</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-lg border text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><i data-lucide="puzzle" class="w-12 h-12 text-emerald-600 mx-auto mb-4"></i><h3 class="text-xl font-bold mb-2" data-lang-key="approach_integrative_title">Approche Intégrative</h3><p class="text-slate-600" data-lang-key="approach_integrative_text"></p></div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg border text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><i data-lucide="hand-heart" class="w-12 h-12 text-emerald-600 mx-auto mb-4"></i><h3 class="text-xl font-bold mb-2" data-lang-key="approach_centered_title">Centrée sur la Personne</h3><p class="text-slate-600" data-lang-key="approach_centered_text"></p></div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg border text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><i data-lucide="target" class="w-12 h-12 text-emerald-600 mx-auto mb-4"></i><h3 class="text-xl font-bold mb-2" data-lang-key="approach_solutions_title">Orientée vers les Solutions</h3><p class="text-slate-600" data-lang-key="approach_solutions_text"></p></div>
             </div>
         </section>
-
+        
+        <!-- Section Galerie -->
         <section id="gallery" class="mb-20 fade-in-up">
             <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 text-center section-title" data-lang-key="gallery_title">Galerie</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Vidéo intégrée comme GIF -->
-                <div class="bg-white p-4 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                    <div class="group relative block w-full h-64 rounded-xl overflow-hidden">
-                        <video src="V.mp4" autoplay loop muted playsinline class="w-full h-full object-cover"></video>
-                    </div>
-                </div>
-                 <!-- Image 2 -->
-                <div class="bg-white p-4 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                    <div class="group relative block w-full h-64 rounded-xl overflow-hidden">
-                        <img src="2.jpg" alt="Activité 2" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out">
-                    </div>
-                </div>
-                 <!-- Image 3 -->
-                <div class="bg-white p-4 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                    <div class="group relative block w-full h-64 rounded-xl overflow-hidden">
-                        <img src="3.jpg" alt="Activité 3" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out">
-                    </div>
-                </div>
-                 <!-- Image 4 -->
-                <div class="bg-white p-4 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                    <div class="group relative block w-full h-64 rounded-xl overflow-hidden">
-                        <img src="4.jpg" alt="Activité 4" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out">
-                    </div>
-                </div>
-                 <!-- Image 5 -->
-                <div class="bg-white p-4 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                    <div class="group relative block w-full h-64 rounded-xl overflow-hidden">
-                        <img src="5.jpg" alt="Activité 5" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out">
-                    </div>
-                </div>
-                 <!-- Image 6 -->
-                <div class="bg-white p-4 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                    <div class="group relative block w-full h-64 rounded-xl overflow-hidden">
-                        <img src="6.jpg" alt="Activité 6" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out">
-                    </div>
-                </div>
+                <div class="bg-white p-4 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><div class="group relative block w-full h-64 rounded-xl overflow-hidden"><video src="V.mp4" autoplay loop muted playsinline class="w-full h-full object-cover"></video></div></div>
+                <div class="bg-white p-4 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><div class="group relative block w-full h-64 rounded-xl overflow-hidden"><img src="2.jpg" alt="Activité 2" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out"></div></div>
+                <div class="bg-white p-4 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><div class="group relative block w-full h-64 rounded-xl overflow-hidden"><img src="3.jpg" alt="Activité 3" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out"></div></div>
+                <div class="bg-white p-4 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><div class="group relative block w-full h-64 rounded-xl overflow-hidden"><img src="4.jpg" alt="Activité 4" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out"></div></div>
+                <div class="bg-white p-4 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><div class="group relative block w-full h-64 rounded-xl overflow-hidden"><img src="5.jpg" alt="Activité 5" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out"></div></div>
+                <div class="bg-white p-4 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><div class="group relative block w-full h-64 rounded-xl overflow-hidden"><img src="6.jpg" alt="Activité 6" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out"></div></div>
             </div>
         </section>
 
-        <section id="contact" class="text-center py-16 bg-white rounded-3xl shadow-lg border">
-             <div class="max-w-3xl mx-auto px-4">
-                <p class="text-lg text-slate-700 font-semibold mb-6" data-lang-key="contact_invitation">N'hésitez pas à me contacter pour toute opportunité de collaboration ou de consultation en ligne.</p>
-                <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
-                    <a href="https://wa.me/14384554137" class="w-full sm:w-auto flex items-center justify-center space-x-3 px-6 py-3 bg-green-500 text-white rounded-full font-medium hover:bg-green-600 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-whatsapp-icon"><title id="title-whatsapp-icon">Icône WhatsApp</title><path d="M12.04 2C6.54 2 2 6.54 2 12.04c0 1.74.45 3.48 1.32 5.01L2 22l4.95-1.32c1.53.87 3.27 1.32 5.01 1.32C17.54 22 22 17.46 22 11.96 22 6.46 17.46 2 12.04 2zm3.17 14.94a1.05 1.05 0 01-1.35.48c-.6-.2-2.18-.87-3.95-2.52s-2.73-3.75-2.92-4.35a1.05 1.05 0 01.5-1.35l.93-.46c.15-.08.31-.13.48-.16l1.04-.26c.17-.04.34-.05.5.01.17.06.32.17.44.3a1.05 1.05 0 01.32.74c0 .2-.06.4-.18.57L11.75 12c.5.87.95 1.62 1.45 2.12s1.1.95 1.97 1.45L15.34 14c.18-.12.37-.18.57-.18.2 0 .39.06.56.18.17.12.28.28.34.45l.26 1.04c.06.17.05.34-.01.5-.06.17-.18.32-.3.44l-.46.93z" /></svg>
-                        <span>+1 438 455 4137</span>
-                    </a>
-                    <a href="mailto:brain.zoom@outlook.com" class="w-full sm:w-auto flex items-center justify-center space-x-3 px-6 py-3 bg-emerald-600 text-white rounded-full font-medium hover:bg-emerald-700 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-email-icon"><title id="title-email-icon">Icône e-mail</title><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" /></svg>
-                        <span>brain.zoom@outlook.com</span>
-                    </a>
+        <section id="contact" class="mb-20 fade-in-up">
+            <div class="bg-white rounded-3xl shadow-lg border p-8 md:p-12 lg:p-16">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <!-- Colonne de texte -->
+                    <div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold section-title mb-4" data-lang-key="contact_title">Entrons en contact</h2>
+                        <p class="text-lg text-slate-600 mb-6 text-justify" data-lang-key="contact_invitation">N'hésitez pas à me contacter pour toute opportunité de collaboration ou de consultation en ligne.</p>
+                        <p class="text-sm text-slate-500 italic text-justify" data-lang-key="contact_disclaimer">La confidentialité et le respect de la vie privée constituent des principes fondamentaux de notre pratique. Toutes les informations partagées sont traitées avec la plus grande discrétion et protégées conformément aux standards éthiques et professionnels.</p>
+                    </div>
+
+                    <!-- Méthodes de contact -->
+                    <div class="space-y-6">
+                        <!-- Carte WhatsApp -->
+                        <a href="https://wa.me/14384554137" target="_blank" rel="noopener noreferrer" class="group flex items-center p-6 bg-slate-50 rounded-2xl border hover:border-emerald-500 hover:bg-emerald-50 transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="mr-5">
+                                <i data-lucide="message-square" class="w-8 h-8 text-green-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-slate-800 group-hover:text-emerald-800" data-lang-key="contact_whatsapp_title">WhatsApp</h3>
+                                <p class="text-slate-600">+1 438 455 4137</p>
+                            </div>
+                            <i data-lucide="arrow-right" class="w-6 h-6 text-slate-400 ml-auto group-hover:text-emerald-600 transition-transform duration-300 transform group-hover:translate-x-1"></i>
+                        </a>
+                        <!-- Carte Courriel -->
+                        <a href="mailto:brain.zoom@outlook.com" class="group flex items-center p-6 bg-slate-50 rounded-2xl border hover:border-emerald-500 hover:bg-emerald-50 transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="mr-5">
+                                <i data-lucide="mail" class="w-8 h-8 text-emerald-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-slate-800 group-hover:text-emerald-800" data-lang-key="contact_email_title">Courriel</h3>
+                                <p class="text-slate-600">brain.zoom@outlook.com</p>
+                            </div>
+                            <i data-lucide="arrow-right" class="w-6 h-6 text-slate-400 ml-auto group-hover:text-emerald-600 transition-transform duration-300 transform group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
                 </div>
-                <p class="text-sm text-slate-500 italic mt-8" data-lang-key="contact_disclaimer">La confidentialité et le respect de la vie privée constituent des principes fondamentaux de notre pratique. Toutes les informations partagées sont traitées avec la plus grande discrétion et protégées conformément aux standards éthiques et professionnels.</p>
             </div>
         </section>
     </main>
@@ -339,11 +300,13 @@
             let score = 0;
             let selectedAnswer = null;
             
-            startQuizButton.addEventListener('click', () => {
-                quizStartSection.classList.add('hidden');
-                quizQuestionsSection.classList.remove('hidden');
-                startQuiz();
-            });
+            if (startQuizButton) {
+                startQuizButton.addEventListener('click', () => {
+                    quizStartSection.classList.add('hidden');
+                    quizQuestionsSection.classList.remove('hidden');
+                    startQuiz();
+                });
+            }
 
             function startQuiz() {
                 currentQuestionIndex = 0;
@@ -507,6 +470,9 @@
                 gallery_caption_4: "Intervention en milieu scolaire",
                 gallery_caption_5: "Formation pour professionnels",
                 gallery_caption_6: "Consultation en ligne",
+                contact_title: "Entrons en contact",
+                contact_whatsapp_title: "WhatsApp",
+                contact_email_title: "Courriel",
                 contact_disclaimer: "La confidentialité et le respect de la vie privée constituent des principes fondamentaux de notre pratique. Toutes les informations partagées sont traitées avec la plus grande discrétion et protégées conformément aux standards éthiques et professionnels.",
                 contact_invitation: "N'hésitez pas à me contacter pour toute opportunité de collaboration ou de consultation en ligne.",
                 footer_copyright: "© 2024 Yasmine AHAJOUI. Tous droits réservés."
@@ -576,6 +542,9 @@
                 gallery_caption_4: "Intervention in a School Setting",
                 gallery_caption_5: "Training for Professionals",
                 gallery_caption_6: "Online Consultation",
+                contact_title: "Let's Get in Touch",
+                contact_whatsapp_title: "WhatsApp",
+                contact_email_title: "Email",
                 contact_disclaimer: "Confidentiality and respect for privacy are fundamental principles of our practice. All information shared is treated with the utmost discretion and protected in accordance with ethical and professional standards.",
                 contact_invitation: "Feel free to contact me for any collaboration or online consultation opportunity.",
                 footer_copyright: "© 2024 Yasmine AHAJOUI. All rights reserved."
@@ -645,6 +614,9 @@
                 gallery_caption_4: "تدخل في البيئة المدرسية",
                 gallery_caption_5: "تدريب للمهنيين",
                 gallery_caption_6: "استشارة عبر الإنترنت",
+                contact_title: "لنتواصل",
+                contact_whatsapp_title: "واتساب",
+                contact_email_title: "البريد الإلكتروني",
                 contact_disclaimer: "السرية واحترام الخصوصية هي مبادئ أساسية لممارستنا. يتم التعامل مع جميع المعلومات المشتركة بأقصى درجات السرية ويتم حمايتها وفقًا للمعايير الأخلاقية والمهنية.",
                 contact_invitation: "لا تترددوا في الاتصال بي لأي فرصة للتعاون أو الاستشارة عبر الإنترنت.",
                 footer_copyright: "© 2024 ياسمين أحجوي. جميع الحقوق محفوظة."
@@ -664,9 +636,12 @@
                 if (translations[lang][key]) { element.innerHTML = translations[lang][key]; }
             });
 
-            document.getElementById('quiz-start').classList.remove('hidden');
-            document.getElementById('quiz-questions').classList.add('hidden');
-            document.getElementById('quiz-result').classList.add('hidden');
+            const quizStartSection = document.getElementById('quiz-start');
+            if(quizStartSection) {
+                quizStartSection.classList.remove('hidden');
+                document.getElementById('quiz-questions').classList.add('hidden');
+                document.getElementById('quiz-result').classList.add('hidden');
+            }
             
             const currentFlag = document.getElementById('current-flag');
             const flagMap = { fr: 'https://flagcdn.com/w160/fr.png', en: 'https://flagcdn.com/w160/gb.png', ar: 'https://flagcdn.com/w160/ma.png' };
@@ -677,3 +652,5 @@
     </script>
 </body>
 </html>
+
+
