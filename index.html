@@ -555,6 +555,8 @@
     </footer>
 
     <script>
+        let currentLanguage = 'fr'; // Default language
+
         document.addEventListener('DOMContentLoaded', () => {
             // --- Elements Cache ---
             const screenshotOverlay = document.getElementById('screenshot-overlay');
@@ -571,49 +573,7 @@
             const quizResultSection = document.getElementById('quiz-result');
             const startQuizButton = document.getElementById('start-quiz-button');
             
-            // --- Quiz Questions Data ---
-            const quizQuestions = [
-                {
-                    question: "Lorsque vous ressentez une forte émotion (colère, tristesse), comment réagissez-vous la plupart du temps ?",
-                    answers: [
-                        { text: "Je l'ignore en espérant qu'elle disparaisse.", score: 0 },
-                        { text: "Je la reconnais, j'essaie de comprendre d'où elle vient, puis j'agis calmement.", score: 1 },
-                        { text: "Je la laisse me submerger et j'agis de manière impulsive.", score: 0 }
-                    ]
-                },
-                {
-                    question: "Un ami proche vous confie ses soucis. Quelle est votre première réaction ?",
-                    answers: [
-                        { text: "Je lui donne des conseils et des solutions directes pour résoudre son problème.", score: 0 },
-                        { text: "Je l'écoute attentivement, sans jugement, et j'essaie de me mettre à sa place.", score: 1 },
-                        { text: "Je change de sujet car les émotions intenses me mettent mal à l'aise.", score: 0 }
-                    ]
-                },
-                {
-                    question: "Vous faites face à un revers inattendu au travail ou dans votre vie personnelle. Comment vous adaptez-vous ?",
-                    answers: [
-                        { text: "Je me sens dépassé et je me concentre sur l'échec.", score: 0 },
-                        { text: "Je prends du recul, j'évalue la situation et cherche une nouvelle approche.", score: 1 },
-                        { text: "Je minimise le problème et fais comme s'il n'existait pas.", score: 0 }
-                    ]
-                },
-                {
-                    question: "Comment gérez-vous le stress au quotidien ?",
-                    answers: [
-                        { text: "En me plaignant ou en me sentant impuissant face aux événements.", score: 0 },
-                        { text: "En pratiquant des activités relaxantes (méditation, sport, etc.) et en acceptant que le stress fait partie de la vie.", score: 1 },
-                        { text: "En travaillant encore plus dur, jusqu'à l'épuisement.", score: 0 }
-                    ]
-                },
-                {
-                    question: "Un commentaire d'un proche vous blesse. Que faites-vous ?",
-                    answers: [
-                        { text: "J'en fais une affaire personnelle et je rumine pendant des jours.", score: 0 },
-                        { text: "J'exprime calmement mon ressenti et j'essaie de comprendre la perspective de l'autre.", score: 1 },
-                        { text: "Je me fâche et je réponds de manière agressive.", score: 0 }
-                    ]
-                }
-            ];
+            // --- Quiz Questions Data (MOVED TO TRANSLATIONS OBJECT) ---
 
             let currentQuestionIndex = 0;
             let score = 0;
@@ -633,15 +593,16 @@
             }
 
             function displayQuestion() {
-                if (currentQuestionIndex >= quizQuestions.length) {
+                const quizData = translations[currentLanguage].quiz;
+                if (currentQuestionIndex >= quizData.questions.length) {
                     showResult();
                     return;
                 }
 
-                const questionData = quizQuestions[currentQuestionIndex];
+                const questionData = quizData.questions[currentQuestionIndex];
                 quizQuestionsSection.innerHTML = `
                     <div class="question-card flex flex-col items-center">
-                        <p class="text-lg sm:text-xl font-medium text-gray-700 mb-6 text-center">${currentQuestionIndex + 1} / ${quizQuestions.length}</p>
+                        <p class="text-lg sm:text-xl font-medium text-gray-700 mb-6 text-center">${currentQuestionIndex + 1} / ${quizData.questions.length}</p>
                         <h4 class="text-xl sm:text-2xl font-semibold text-emerald-700 mb-8 text-center">${questionData.question}</h4>
                         <div class="grid grid-cols-1 md:grid-cols-1 gap-4 w-full">
                             ${questionData.answers.map((answer, index) => `
@@ -651,7 +612,7 @@
                             `).join('')}
                         </div>
                         <button id="next-button" class="quiz-button mt-8 w-full max-w-xs" disabled>
-                            Suivant
+                            ${quizData.next_button}
                         </button>
                     </div>
                 `;
@@ -677,31 +638,8 @@
             }
 
             function showResult() {
-                const results = [
-                    {
-                        minScore: 0,
-                        maxScore: 1,
-                        title: "Votre boussole émotionnelle est en recherche de signal.",
-                        text: "Votre quiz montre que la gestion de vos émotions peut être un défi. Beaucoup de personnes se sentent de cette façon. Le chemin vers un meilleur équilibre commence par un simple pas : prendre conscience de ses émotions. Un professionnel peut vous aider à identifier vos défis et vous donner des outils pratiques pour y faire face et retrouver votre bien-être.",
-                        cta: "Découvrir comment je peux vous aider"
-                    },
-                    {
-                        minScore: 2,
-                        maxScore: 3,
-                        title: "Vous avez une bonne base, mais il y a de la place pour la croissance !",
-                        text: "Votre quiz indique que vous avez déjà une bonne conscience de vos émotions, mais que vous pourriez bénéficier de stratégies supplémentaires pour les gérer plus efficacement. De petits ajustements peuvent faire une grande différence. Un psychologue peut vous accompagner pour perfectionner ces compétences et vous aider à vous sentir plus confiant dans votre vie quotidienne.",
-                        cta: "Améliorer votre bien-être"
-                    },
-                    {
-                        minScore: 4,
-                        maxScore: 5,
-                        title: "Vous êtes en parfaite harmonie avec vos émotions !",
-                        text: "Félicitations ! Vos réponses démontrent une grande intelligence émotionnelle. Vous êtes capable de reconnaître et de gérer vos émotions de manière saine et constructive. Vous êtes résilient face aux défis et vous maintenez un bon équilibre dans votre vie. Continuez sur cette belle lancée !",
-                        cta: "Continuez à vous épanouir"
-                    }
-                ];
-
-                const result = results.find(r => score >= r.minScore && score <= r.maxScore);
+                const quizData = translations[currentLanguage].quiz;
+                const result = quizData.results.find(r => score >= r.minScore && score <= r.maxScore);
 
                 quizQuestionsSection.classList.add('hidden');
                 quizResultSection.classList.remove('hidden');
@@ -710,7 +648,7 @@
                     <div class="result-card">
                         <h3 class="text-2xl font-bold mb-4">${result.title}</h3>
                         <p class="text-gray-700 mb-6">${result.text}</p>
-                        <a href="#contact" class="px-6 py-3 bg-emerald-600 text-white rounded-full font-medium hover:bg-emerald-700 transition-colors duration-300" data-lang-key="result_contact_button">${result.cta}</a>
+                        <a href="#contact" class="px-6 py-3 bg-emerald-600 text-white rounded-full font-medium hover:bg-emerald-700 transition-colors duration-300">${result.cta}</a>
                     </div>
                 `;
             }
@@ -834,7 +772,74 @@
                 quiz_start_title: "Êtes-vous en harmonie avec vos émotions ?",
                 quiz_start_text: "Faites ce mini-quiz pour mieux comprendre votre relation avec vos émotions et découvrir des pistes de réflexion pour votre bien-être.",
                 quiz_start_button: "Commencer le quiz",
-                result_contact_button: "Découvrir comment je peux vous aider",
+                quiz: {
+                    next_button: "Suivant",
+                    questions: [
+                        {
+                            question: "Lorsque vous ressentez une forte émotion (colère, tristesse), comment réagissez-vous la plupart du temps ?",
+                            answers: [
+                                { text: "Je l'ignore en espérant qu'elle disparaisse.", score: 0 },
+                                { text: "Je la reconnais, j'essaie de comprendre d'où elle vient, puis j'agis calmement.", score: 1 },
+                                { text: "Je la laisse me submerger et j'agis de manière impulsive.", score: 0 }
+                            ]
+                        },
+                        {
+                            question: "Un ami proche vous confie ses soucis. Quelle est votre première réaction ?",
+                            answers: [
+                                { text: "Je lui donne des conseils et des solutions directes pour résoudre son problème.", score: 0 },
+                                { text: "Je l'écoute attentivement, sans jugement, et j'essaie de me mettre à sa place.", score: 1 },
+                                { text: "Je change de sujet car les émotions intenses me mettent mal à l'aise.", score: 0 }
+                            ]
+                        },
+                        {
+                            question: "Vous faites face à un revers inattendu au travail ou dans votre vie personnelle. Comment vous adaptez-vous ?",
+                            answers: [
+                                { text: "Je me sens dépassé et je me concentre sur l'échec.", score: 0 },
+                                { text: "Je prends du recul, j'évalue la situation et cherche une nouvelle approche.", score: 1 },
+                                { text: "Je minimise le problème et fais comme s'il n'existait pas.", score: 0 }
+                            ]
+                        },
+                        {
+                            question: "Comment gérez-vous le stress au quotidien ?",
+                            answers: [
+                                { text: "En me plaignant ou en me sentant impuissant face aux événements.", score: 0 },
+                                { text: "En pratiquant des activités relaxantes (méditation, sport, etc.) et en acceptant que le stress fait partie de la vie.", score: 1 },
+                                { text: "En travaillant encore plus dur, jusqu'à l'épuisement.", score: 0 }
+                            ]
+                        },
+                        {
+                            question: "Un commentaire d'un proche vous blesse. Que faites-vous ?",
+                            answers: [
+                                { text: "J'en fais une affaire personnelle et je rumine pendant des jours.", score: 0 },
+                                { text: "J'exprime calmement mon ressenti et j'essaie de comprendre la perspective de l'autre.", score: 1 },
+                                { text: "Je me fâche et je réponds de manière agressive.", score: 0 }
+                            ]
+                        }
+                    ],
+                    results: [
+                        {
+                            minScore: 0,
+                            maxScore: 1,
+                            title: "Votre boussole émotionnelle est en recherche de signal.",
+                            text: "Votre quiz montre que la gestion de vos émotions peut être un défi. Beaucoup de personnes se sentent de cette façon. Le chemin vers un meilleur équilibre commence par un simple pas : prendre conscience de ses émotions. Un professionnel peut vous aider à identifier vos défis et vous donner des outils pratiques pour y faire face et retrouver votre bien-être.",
+                            cta: "Découvrir comment je peux vous aider"
+                        },
+                        {
+                            minScore: 2,
+                            maxScore: 3,
+                            title: "Vous avez une bonne base, mais il y a de la place pour la croissance !",
+                            text: "Votre quiz indique que vous avez déjà une bonne conscience de vos émotions, mais que vous pourriez bénéficier de stratégies supplémentaires pour les gérer plus efficacement. De petits ajustements peuvent faire une grande différence. Un psychologue peut vous accompagner pour perfectionner ces compétences et vous aider à vous sentir plus confiant dans votre vie quotidienne.",
+                            cta: "Améliorer votre bien-être"
+                        },
+                        {
+                            minScore: 4,
+                            maxScore: 5,
+                            title: "Vous êtes en parfaite harmonie avec vos émotions !",
+                            text: "Félicitations ! Vos réponses démontrent une grande intelligence émotionnelle. Vous êtes capable de reconnaître et de gérer vos émotions de manière saine et constructive. Vous êtes résilient face aux défis et vous maintenez un bon équilibre dans votre vie. Continuez sur cette belle lancée !",
+                            cta: "Continuez à vous épanouir"
+                        }
+                    ]
+                },
                 skills_title: "Pratique",
                 skill_program_design_title: "Conception de programmes",
                 skill_program_design_text: "Conception et animation de programmes et ateliers visant le développement des compétences psychosociales.",
@@ -886,7 +891,74 @@
                 quiz_start_title: "Are you in harmony with your emotions?",
                 quiz_start_text: "Take this mini-quiz to better understand your relationship with your emotions and discover new avenues for your well-being.",
                 quiz_start_button: "Start the quiz",
-                result_contact_button: "Find out how I can help you",
+                quiz: {
+                    next_button: "Next",
+                    questions: [
+                        {
+                            question: "When you feel a strong emotion (anger, sadness), how do you usually react?",
+                            answers: [
+                                { text: "I ignore it, hoping it will go away.", score: 0 },
+                                { text: "I acknowledge it, try to understand where it comes from, and then act calmly.", score: 1 },
+                                { text: "I let it overwhelm me and act impulsively.", score: 0 }
+                            ]
+                        },
+                        {
+                            question: "A close friend confides in you about their problems. What is your first reaction?",
+                            answers: [
+                                { text: "I give them direct advice and solutions to solve their problem.", score: 0 },
+                                { text: "I listen to them attentively, without judgment, and try to put myself in their shoes.", score: 1 },
+                                { text: "I change the subject because intense emotions make me uncomfortable.", score: 0 }
+                            ]
+                        },
+                        {
+                            question: "You face an unexpected setback at work or in your personal life. How do you adapt?",
+                            answers: [
+                                { text: "I feel overwhelmed and focus on the failure.", score: 0 },
+                                { text: "I take a step back, assess the situation, and look for a new approach.", score: 1 },
+                                { text: "I downplay the problem and pretend it doesn't exist.", score: 0 }
+                            ]
+                        },
+                        {
+                            question: "How do you manage daily stress?",
+                            answers: [
+                                { text: "By complaining or feeling powerless about events.", score: 0 },
+                                { text: "By practicing relaxing activities (meditation, sports, etc.) and accepting that stress is part of life.", score: 1 },
+                                { text: "By working even harder, to the point of exhaustion.", score: 0 }
+                            ]
+                        },
+                        {
+                            question: "A comment from a loved one hurts you. What do you do?",
+                            answers: [
+                                { text: "I take it personally and dwell on it for days.", score: 0 },
+                                { text: "I calmly express my feelings and try to understand the other person's perspective.", score: 1 },
+                                { text: "I get angry and respond aggressively.", score: 0 }
+                            ]
+                        }
+                    ],
+                    results: [
+                        {
+                            minScore: 0,
+                            maxScore: 1,
+                            title: "Your emotional compass is searching for a signal.",
+                            text: "Your quiz shows that managing your emotions can be a challenge. Many people feel this way. The path to better balance begins with a simple step: becoming aware of your emotions. A professional can help you identify your challenges and give you practical tools to cope and regain your well-being.",
+                            cta: "Discover how I can help you"
+                        },
+                        {
+                            minScore: 2,
+                            maxScore: 3,
+                            title: "You have a good foundation, but there's room for growth!",
+                            text: "Your quiz indicates that you already have good emotional awareness, but you could benefit from additional strategies to manage them more effectively. Small adjustments can make a big difference. A psychologist can guide you in refining these skills and help you feel more confident in your daily life.",
+                            cta: "Improve your well-being"
+                        },
+                        {
+                            minScore: 4,
+                            maxScore: 5,
+                            title: "You are in perfect harmony with your emotions!",
+                            text: "Congratulations! Your answers show great emotional intelligence. You are able to recognize and manage your emotions in a healthy and constructive way. You are resilient in the face of challenges and maintain a good balance in your life. Keep up the great work!",
+                            cta: "Continue to thrive"
+                        }
+                    ]
+                },
                 skills_title: "Practice",
                 skill_program_design_title: "Program Design",
                 skill_program_design_text: "Design and facilitation of programs and workshops aimed at developing psychosocial skills.",
@@ -938,7 +1010,74 @@
                 quiz_start_title: "هل أنت في وئام مع مشاعرك؟",
                 quiz_start_text: "قم بهذا الاختبار المصغر لفهم أفضل لعلاقتك بمشاعرك واكتشاف سبل للتفكير في رفاهيتك.",
                 quiz_start_button: "ابدأ الاختبار",
-                result_contact_button: "اكتشف كيف يمكنني مساعدتك",
+                quiz: {
+                    next_button: "التالي",
+                    questions: [
+                        {
+                            question: "عندما تشعر بعاطفة قوية (غضب، حزن)، كيف تتصرف عادة؟",
+                            answers: [
+                                { text: "أتجاهلها على أمل أن تختفي.", score: 0 },
+                                { text: "أعترف بها، وأحاول أن أفهم مصدرها، ثم أتصرف بهدوء.", score: 1 },
+                                { text: "أدعها تسيطر علي وأتصرف باندفاع.", score: 0 }
+                            ]
+                        },
+                        {
+                            question: "صديق مقرب يشاركك همومه. ما هو رد فعلك الأول؟",
+                            answers: [
+                                { text: "أقدم له نصائح وحلول مباشرة لمشكلته.", score: 0 },
+                                { text: "أستمع إليه باهتمام، دون حكم، وأحاول أن أضع نفسي مكانه.", score: 1 },
+                                { text: "أغير الموضوع لأن المشاعر القوية تزعجني.", score: 0 }
+                            ]
+                        },
+                        {
+                            question: "تواجه نكسة غير متوقعة في العمل أو في حياتك الشخصية. كيف تتكيف؟",
+                            answers: [
+                                { text: "أشعر بالإرهاق وأركز على الفشل.", score: 0 },
+                                { text: "آخذ خطوة للوراء، أقيم الوضع، وأبحث عن نهج جديد.", score: 1 },
+                                { text: "أقلل من شأن المشكلة وأتصرف كأنها غير موجودة.", score: 0 }
+                            ]
+                        },
+                        {
+                            question: "كيف تتعامل مع التوتر اليومي؟",
+                            answers: [
+                                { text: "بالشكوى أو الشعور بالعجز أمام الأحداث.", score: 0 },
+                                { text: "بممارسة أنشطة مريحة (تأمل، رياضة، إلخ) وقبول أن التوتر جزء من الحياة.", score: 1 },
+                                { text: "بالعمل بجد أكبر، حتى الإرهاق.", score: 0 }
+                            ]
+                        },
+                        {
+                            question: "تعليق من شخص عزيز يجرحك. ماذا تفعل؟",
+                            answers: [
+                                { text: "آخذ الأمر على محمل شخصي وأفكر فيه لأيام.", score: 0 },
+                                { text: "أعبر عن مشاعري بهدوء وأحاول فهم وجهة نظر الآخر.", score: 1 },
+                                { text: "أغضب وأرد بعدوانية.", score: 0 }
+                            ]
+                        }
+                    ],
+                    results: [
+                        {
+                            minScore: 0,
+                            maxScore: 1,
+                            title: "بوصلتك العاطفية تبحث عن إشارة.",
+                            text: "يُظهر اختبارك أن إدارة عواطفك قد تكون تحديًا. يشعر الكثير من الناس بهذه الطريقة. يبدأ الطريق نحو توازن أفضل بخطوة بسيطة: الوعي بمشاعرك. يمكن للمختص مساعدتك في تحديد تحدياتك ومنحك أدوات عملية للتعامل معها واستعادة رفاهيتك.",
+                            cta: "اكتشف كيف يمكنني مساعدتك"
+                        },
+                        {
+                            minScore: 2,
+                            maxScore: 3,
+                            title: "لديك أساس جيد، ولكن هناك مجال للنمو!",
+                            text: "يشير اختبارك إلى أن لديك بالفعل وعيًا جيدًا بمشاعرك، ولكنك قد تستفيد من استراتيجيات إضافية لإدارتها بفعالية أكبر. يمكن أن تحدث التعديلات الصغيرة فرقًا كبيرًا. يمكن للأخصائي النفسي إرشادك لتحسين هذه المهارات ومساعدتك على الشعور بثقة أكبر في حياتك اليومية.",
+                            cta: "تحسين رفاهيتك"
+                        },
+                        {
+                            minScore: 4,
+                            maxScore: 5,
+                            title: "أنت في وئام تام مع مشاعرك!",
+                            text: "تهانينا! تُظهر إجاباتك ذكاءً عاطفيًا كبيرًا. أنت قادر على التعرف على مشاعرك وإدارتها بطريقة صحية وبناءة. أنت مرن في مواجهة التحديات وتحافظ على توازن جيد في حياتك. استمر في هذا العمل الرائع!",
+                            cta: "استمر في التطور"
+                        }
+                    ]
+                },
                 skills_title: "الممارسة",
                 skill_program_design_title: "تصميم البرامج",
                 skill_program_design_text: "تصميم وتيسير البرامج وورش العمل الهادفة إلى تطوير المهارات النفسية والاجتماعية.",
@@ -979,6 +1118,7 @@
         };
 
         function switchLanguage(lang) {
+            currentLanguage = lang;
             document.documentElement.lang = lang;
             document.title = translations[lang].meta_title;
             document.querySelector('meta[name="description"]').setAttribute('content', translations[lang].meta_description);
@@ -989,6 +1129,11 @@
                     element.innerHTML = translations[lang][key];
                 }
             });
+
+            // Reset quiz view to start when language changes
+            document.getElementById('quiz-start').classList.remove('hidden');
+            document.getElementById('quiz-questions').classList.add('hidden');
+            document.getElementById('quiz-result').classList.add('hidden');
             
             const currentFlag = document.getElementById('current-flag');
             const flagMap = {
@@ -1007,3 +1152,5 @@
     </script>
 </body>
 </html>
+
+
