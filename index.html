@@ -39,7 +39,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -67,44 +67,50 @@
     </script>
 
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --brand-primary: #047857; /* Emerald 700 */
+            --brand-secondary: #a7f3d0; /* Emerald 200 */
+            --background: #f8fafc; /* Slate 50 */
+            --text-primary: #1e293b; /* Slate 800 */
+            --text-secondary: #475569; /* Slate 600 */
+        }
+        body { font-family: 'Inter', sans-serif; background-color: var(--background); color: var(--text-primary); }
+        .section-title { color: var(--brand-primary); }
         
         /* Styles du carrousel */
-        .carousel-container { position: relative; overflow: hidden; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); max-width: 600px; margin-left: auto; margin-right: auto; }
+        .carousel-container { position: relative; overflow: hidden; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05); max-width: 600px; margin-left: auto; margin-right: auto; }
         .carousel-slide { display: flex; transition: transform 0.5s ease-in-out; }
         .carousel-slide img { width: 100%; flex-shrink: 0; object-fit: cover; aspect-ratio: 16 / 9; display: block; }
-        .carousel-button { position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(0, 0, 0, 0.5); color: white; border: none; padding: 0.75rem; cursor: pointer; z-index: 10; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background-color 0.3s; }
-        .carousel-button:hover { background-color: rgba(0, 0, 0, 0.7); }
-        .carousel-button-prev { left: 0.5rem; }
-        .carousel-button-next { right: 0.5rem; }
-        .carousel-dots { position: absolute; bottom: 0.75rem; left: 50%; transform: translateX(-50%); display: flex; gap: 0.5rem; }
-        .carousel-dot { width: 8px; height: 8px; background-color: rgba(255, 255, 255, 0.5); border-radius: 50%; cursor: pointer; transition: background-color 0.3s ease; }
-        .carousel-dot.active { background-color: white; }
+        .carousel-button { position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(30, 41, 59, 0.5); color: white; border: none; padding: 0.5rem; cursor: pointer; z-index: 10; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background-color 0.3s; }
+        .carousel-button:hover { background-color: rgba(30, 41, 59, 0.7); }
+        .carousel-button-prev { left: 0.75rem; }
+        .carousel-button-next { right: 0.75rem; }
+        .carousel-dots { position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%); display: flex; gap: 0.5rem; }
+        .carousel-dot { width: 10px; height: 10px; background-color: rgba(255, 255, 255, 0.5); border-radius: 50%; cursor: pointer; transition: all 0.3s ease; }
+        .carousel-dot.active { background-color: white; transform: scale(1.2); }
         @media (max-width: 640px) { .carousel-slide img { aspect-ratio: 4 / 3; } }
 
         /* Protection de contenu */
-        #screenshot-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(240, 244, 250, 0.95); backdrop-filter: blur(4px); color: #4a5568; display: none; justify-content: center; align-items: center; text-align: center; font-size: 1.5rem; font-weight: bold; z-index: 1000; }
+        #screenshot-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(240, 244, 250, 0.95); backdrop-filter: blur(8px); color: var(--text-secondary); display: none; justify-content: center; align-items: center; text-align: center; font-size: 1.5rem; font-weight: bold; z-index: 1000; }
         #screenshot-overlay.visible { display: flex; }
 
         /* Sélecteur de langue */
-        .language-selector { position: relative; }
-        .language-dropdown { position: absolute; top: 100%; right: 0; background-color: white; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); z-index: 20; padding: 0.5rem; margin-top: 0.5rem; min-width: 10rem; }
+        .language-dropdown { position: absolute; top: 100%; right: 0; background-color: white; border-radius: 0.5rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); z-index: 20; padding: 0.5rem; margin-top: 0.5rem; min-width: 10rem; border: 1px solid #e5e7eb; }
         .language-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem; border-radius: 0.375rem; cursor: pointer; transition: background-color 0.2s; }
         .language-item:hover { background-color: #f3f4f6; }
         .flag-icon { width: 1.5rem; height: 1.5rem; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1); }
         
         /* Styles du Quiz */
-        #quiz-container { max-width: 768px; margin-left: auto; margin-right: auto; }
-        .question-card { background: white; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); animation: fadeIn 0.5s ease-in-out; }
-        .quiz-option { background: #f1f5f9; border: 2px solid #e2e8f0; border-radius: 0.75rem; padding: 1rem; cursor: pointer; transition: all 0.2s ease; }
-        .quiz-option:hover { background: #e2e8f0; border-color: #038554; }
-        .quiz-option.selected { background: #c3e2d6; border-color: #038554; transform: scale(1.02); box-shadow: 0 2px 8px rgba(3, 133, 84, 0.2); }
-        .quiz-button { background: #038554; color: white; padding: 1rem 2rem; border-radius: 9999px; font-weight: bold; transition: background-color 0.2s; }
-        .quiz-button:hover { background: #026b45; }
+        .question-card { background: white; border-radius: 1.5rem; padding: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); animation: fadeIn 0.5s ease-in-out; border: 1px solid #e5e7eb; }
+        .quiz-option { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 0.75rem; padding: 1rem; cursor: pointer; transition: all 0.2s ease; text-align: left; }
+        .quiz-option:hover { background: var(--brand-secondary); border-color: var(--brand-primary); }
+        .quiz-option.selected { background: var(--brand-secondary); border-color: var(--brand-primary); transform: scale(1.02); box-shadow: 0 2px 8px rgba(3, 133, 84, 0.2); font-weight: 600; color: var(--brand-primary); }
+        .quiz-button { background: var(--brand-primary); color: white; padding: 1rem 2rem; border-radius: 9999px; font-weight: bold; transition: background-color 0.2s; }
+        .quiz-button:hover { background: #065f46; }
         .quiz-button:disabled { background: #9ca3af; cursor: not-allowed; }
-        .result-card { background: #fff; padding: 2.5rem; border-radius: 1.5rem; box-shadow: 0 8px 20px rgba(0,0,0,0.08); text-align: center; animation: slideInUp 0.7s ease; }
-        .result-card h3 { font-size: 2rem; font-weight: bold; color: #038554; margin-bottom: 1rem; }
-        .result-card p { color: #4a5568; font-size: 1.125rem; line-height: 1.6; }
+        .result-card { background: linear-gradient(135deg, #ecfdf5, #d1fae5); padding: 2.5rem; border-radius: 1.5rem; box-shadow: 0 8px 20px rgba(0,0,0,0.08); text-align: center; animation: slideInUp 0.7s ease; border: 1px solid var(--brand-secondary); }
+        .result-card h3 { font-size: 2rem; font-weight: bold; color: var(--brand-primary); margin-bottom: 1rem; }
+        .result-card p { color: #065f46; font-size: 1.125rem; line-height: 1.6; }
 
         /* Animations */
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -115,27 +121,24 @@
             transform: translateY(20px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-        .fade-in-up.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .fade-in-up.is-visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-slate-50 text-slate-800">
 
     <div id="screenshot-overlay">Le contenu est protégé.</div>
 
     <nav class="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-50 transition-colors duration-300">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
             <a href="https://brainzoom.github.io/bien-etre/" class="text-xl font-bold text-emerald-700" data-lang-key="nav_brand">Yasmine AHAJOUI</a>
-            <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-2 sm:space-x-4">
                 <div class="space-x-4 hidden md:flex items-center" id="desktop-menu">
-                    <a href="#competences" class="text-gray-600 hover:text-emerald-700 transition-colors duration-200" data-lang-key="nav_skills">Compétences</a>
-                    <a href="#experience" class="text-gray-600 hover:text-emerald-700 transition-colors duration-200" data-lang-key="nav_experience">Expérience</a>
-                    <a href="#contact" class="px-4 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700 transition-colors duration-200" data-lang-key="nav_contact">Contact</a>
+                    <a href="#competences" class="text-slate-600 hover:text-emerald-700 transition-colors duration-200" data-lang-key="nav_skills">Compétences</a>
+                    <a href="#experience" class="text-slate-600 hover:text-emerald-700 transition-colors duration-200" data-lang-key="nav_experience">Expérience</a>
+                    <a href="#contact" class="px-5 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700 transition-colors duration-200 text-sm font-semibold" data-lang-key="nav_contact">Contact</a>
                 </div>
-                <div class="language-selector">
-                    <button class="language-button p-2 rounded-full transition-colors hover:bg-gray-200" id="language-button" aria-label="Changer de langue">
+                <div class="language-selector relative">
+                    <button class="language-button p-2 rounded-full transition-colors hover:bg-slate-200" id="language-button" aria-label="Changer de langue">
                         <img src="https://flagcdn.com/w160/fr.png" alt="French Flag" class="flag-icon" id="current-flag">
                     </button>
                     <div class="language-dropdown hidden" id="language-dropdown">
@@ -144,35 +147,35 @@
                         <div class="language-item" data-lang="ar"><img src="https://flagcdn.com/w160/ma.png" alt="Drapeau Marocain" class="flag-icon"><span>العربية</span></div>
                     </div>
                 </div>
-                <button id="menu-button" class="md:hidden text-gray-600 hover:text-emerald-700 focus:outline-none p-2" aria-label="Ouvrir le menu">
+                <button id="menu-button" class="md:hidden text-slate-600 hover:text-emerald-700 focus:outline-none p-2" aria-label="Ouvrir le menu">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
             </div>
         </div>
-        <div id="mobile-menu" class="md:hidden hidden">
+        <div id="mobile-menu" class="md:hidden hidden border-t border-slate-200">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#competences" class="block px-3 py-2 rounded-md text-base font-medium text-gray-800 hover:text-emerald-700 hover:bg-gray-100" data-lang-key="nav_skills">Compétences</a>
-                <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-gray-800 hover:text-emerald-700 hover:bg-gray-100" data-lang-key="nav_experience">Expérience</a>
-                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium bg-emerald-600 text-white hover:bg-emerald-700" data-lang-key="nav_contact">Contact</a>
+                <a href="#competences" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 hover:text-emerald-700 hover:bg-slate-100" data-lang-key="nav_skills">Compétences</a>
+                <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 hover:text-emerald-700 hover:bg-slate-100" data-lang-key="nav_experience">Expérience</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium bg-emerald-600 text-white hover:bg-emerald-700 mt-2" data-lang-key="nav_contact">Contact</a>
             </div>
         </div>
     </nav>
 
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <section class="text-center py-20 bg-gradient-to-br from-emerald-50 to-white rounded-3xl shadow-lg mb-12 fade-in-up">
-            <div class="max-w-3xl mx-auto px-4">
-                <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight mb-4" data-lang-key="hero_title">Psychologue</h1>
-                <p class="text-lg sm:text-xl text-gray-600 mb-8" data-lang-key="hero_subtitle">J’accompagne chaque personne à travers des solutions d’intervention personnalisées et multidisciplinaires, conçues pour répondre à vos besoins spécifiques.<br>Ensemble, avançons vers plus d’équilibre et d’épanouissement.</p>
-                <a href="#contact" class="px-8 py-4 bg-emerald-600 text-white rounded-full font-medium hover:bg-emerald-700 transition-all duration-300 transform hover:scale-105 inline-block shadow-lg hover:shadow-xl" data-lang-key="hero_contact_button">Contacter</a>
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <section class="text-center py-20 bg-gradient-to-br from-emerald-50 to-white rounded-3xl mb-20 fade-in-up">
+            <div class="max-w-4xl mx-auto px-4">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight mb-4" data-lang-key="hero_title">Psychologue</h1>
+                <p class="text-lg sm:text-xl text-slate-600 mb-8 max-w-2xl mx-auto" data-lang-key="hero_subtitle">J’accompagne chaque personne à travers des solutions d’intervention personnalisées et multidisciplinaires, conçues pour répondre à vos besoins spécifiques.<br>Ensemble, avançons vers plus d’équilibre et d’épanouissement.</p>
+                <a href="#contact" class="px-8 py-4 bg-emerald-600 text-white rounded-full font-semibold hover:bg-emerald-700 transition-all duration-300 transform hover:scale-105 inline-block shadow-lg hover:shadow-xl" data-lang-key="hero_contact_button">Contacter</a>
             </div>
         </section>
 
-        <section id="quiz" class="mb-12 fade-in-up">
-            <h2 class="text-2xl sm:text-3xl font-extrabold mb-6 text-center text-emerald-700" data-lang-key="quiz_title">Testez votre intelligence émotionnelle</h2>
+        <section id="quiz" class="mb-20 fade-in-up">
+            <h2 class="text-3xl sm:text-4xl font-extrabold mb-8 text-center section-title" data-lang-key="quiz_title">Testez votre intelligence émotionnelle</h2>
             <div id="quiz-container" class="space-y-6">
-                <div id="quiz-start" class="text-center py-12 px-6 bg-white rounded-3xl shadow-lg">
+                <div id="quiz-start" class="text-center py-12 px-6 bg-white rounded-3xl shadow-lg border">
                     <h3 class="text-xl sm:text-2xl font-bold text-emerald-700 mb-4" data-lang-key="quiz_start_title">Êtes-vous en harmonie avec vos émotions ?</h3>
-                    <p class="text-gray-600 mb-6" data-lang-key="quiz_start_text">Faites ce mini-quiz pour mieux comprendre votre relation avec vos émotions et découvrir des pistes de réflexion pour votre bien-être.</p>
+                    <p class="text-slate-600 mb-6" data-lang-key="quiz_start_text">Faites ce mini-quiz pour mieux comprendre votre relation avec vos émotions et découvrir des pistes de réflexion pour votre bien-être.</p>
                     <button id="start-quiz-button" class="px-6 py-3 bg-emerald-600 text-white rounded-full font-medium hover:bg-emerald-700 transition-colors duration-300" data-lang-key="quiz_start_button">Commencer le quiz</button>
                 </div>
                 <div id="quiz-questions" class="hidden"></div>
@@ -180,68 +183,68 @@
             </div>
         </section>
 
-        <section id="competences" class="mb-12">
-            <h2 class="text-2xl sm:text-3xl font-extrabold mb-8 text-center text-emerald-700 fade-in-up" data-lang-key="skills_title">Pratique</h2>
+        <section id="competences" class="mb-20">
+            <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 text-center section-title fade-in-up" data-lang-key="skills_title">Pratique</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-transparent hover:border-emerald-200 hover:-translate-y-1 fade-in-up">
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border hover:-translate-y-1 fade-in-up">
                     <div class="flex items-center space-x-4 mb-4"><i data-lucide="clipboard-list" class="w-10 h-10 text-emerald-600"></i><h3 class="text-xl font-semibold" data-lang-key="skill_program_design_title">Conception de programmes</h3></div>
-                    <p class="text-gray-600 text-justify" data-lang-key="skill_program_design_text">Conception et animation de programmes et ateliers visant le développement des compétences psychosociales.</p>
+                    <p class="text-slate-600 text-justify" data-lang-key="skill_program_design_text">Conception et animation de programmes et ateliers visant le développement des compétences psychosociales.</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-transparent hover:border-emerald-200 hover:-translate-y-1 fade-in-up" style="animation-delay: 100ms;">
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border hover:-translate-y-1 fade-in-up" style="animation-delay: 100ms;">
                     <div class="flex items-center space-x-4 mb-4"><i data-lucide="brain-circuit" class="w-10 h-10 text-emerald-600"></i><h3 class="text-xl font-semibold" data-lang-key="skill_clinical_method_title">Méthodologie clinique</h3></div>
-                    <p class="text-gray-600 text-justify" data-lang-key="skill_clinical_method_text">Maîtrise d'outils d'évaluation et de prise en charge psychologique, incluant l'entretien motivationnel, TCC, etc...</p>
+                    <p class="text-slate-600 text-justify" data-lang-key="skill_clinical_method_text">Maîtrise d'outils d'évaluation et de prise en charge psychologique, incluant l'entretien motivationnel, TCC, etc...</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-transparent hover:border-emerald-200 hover:-translate-y-1 fade-in-up" style="animation-delay: 200ms;">
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border hover:-translate-y-1 fade-in-up" style="animation-delay: 200ms;">
                     <div class="flex items-center space-x-4 mb-4"><i data-lucide="kanban-square" class="w-10 h-10 text-emerald-600"></i><h3 class="text-xl font-semibold" data-lang-key="skill_project_management_title">Gestion de projets</h3></div>
-                    <p class="text-gray-600 text-justify" data-lang-key="skill_project_management_text">Élaboration de projets individualisés et coordination avec des équipes pluridisciplinaires.</p>
+                    <p class="text-slate-600 text-justify" data-lang-key="skill_project_management_text">Élaboration de projets individualisés et coordination avec des équipes pluridisciplinaires.</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-transparent hover:border-emerald-200 hover:-translate-y-1 fade-in-up" style="animation-delay: 300ms;">
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border hover:-translate-y-1 fade-in-up" style="animation-delay: 300ms;">
                     <div class="flex items-center space-x-4 mb-4"><i data-lucide="file-search-2" class="w-10 h-10 text-emerald-600"></i><h3 class="text-xl font-semibold" data-lang-key="skill_research_title">Recherche et analyse</h3></div>
-                    <p class="text-gray-600 text-justify" data-lang-key="skill_research_text">Bonne maîtrise de la méthodologie de recherche et aisance avec les outils bureautiques.</p>
+                    <p class="text-slate-600 text-justify" data-lang-key="skill_research_text">Bonne maîtrise de la méthodologie de recherche et aisance avec les outils bureautiques.</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-transparent hover:border-emerald-200 hover:-translate-y-1 fade-in-up" style="animation-delay: 400ms;">
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border hover:-translate-y-1 fade-in-up" style="animation-delay: 400ms;">
                     <div class="flex items-center space-x-4 mb-4"><i data-lucide="sparkles" class="w-10 h-10 text-emerald-600"></i><h3 class="text-xl font-semibold" data-lang-key="skill_proactive_title">Approche proactive</h3></div>
-                    <p class="text-gray-600 text-justify" data-lang-key="skill_proactive_text">Empathie, sens de l'initiative et approche proactive pour un accompagnement optimal.</p>
+                    <p class="text-slate-600 text-justify" data-lang-key="skill_proactive_text">Empathie, sens de l'initiative et approche proactive pour un accompagnement optimal.</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-transparent hover:border-emerald-200 hover:-translate-y-1 fade-in-up" style="animation-delay: 500ms;">
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border hover:-translate-y-1 fade-in-up" style="animation-delay: 500ms;">
                     <div class="flex items-center space-x-4 mb-4"><i data-lucide="users-2" class="w-10 h-10 text-emerald-600"></i><h3 class="text-xl font-semibold" data-lang-key="skill_collaboration_title">Travail collaboratif</h3></div>
-                    <p class="text-gray-600 text-justify" data-lang-key="skill_collaboration_text">Expérience en travail collaboratif et coordination avec des équipes pluridisciplinaires.</p>
+                    <p class="text-slate-600 text-justify" data-lang-key="skill_collaboration_text">Expérience en travail collaboratif et coordination avec des équipes pluridisciplinaires.</p>
                 </div>
             </div>
         </section>
 
-        <section id="experience" class="mb-12">
-            <h2 class="text-2xl sm:text-3xl font-extrabold mb-8 text-center text-emerald-700 fade-in-up" data-lang-key="experience_title">Réalisations clés</h2>
+        <section id="experience" class="mb-20">
+            <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 text-center section-title fade-in-up" data-lang-key="experience_title">Réalisations clés</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-teal-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 fade-in-up">
-                    <div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-teal-100 text-emerald-600 rounded-full flex items-center justify-center mr-4"><i data-lucide="settings" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-emerald-700" data-lang-key="exp_coordinator_title">Coordinatrice de projets</h3><p class="text-sm text-emerald-600" data-lang-key="exp_coordinator_org">Association Y-PEER Morocco</p></div></div>
-                    <ul class="list-disc list-inside space-y-1 text-emerald-700 text-justify" data-lang-key="exp_coordinator_list"><li>Contribution à la conception et mise en œuvre des activités de l'association.</li><li>Préparation des comptes rendus et élaboration des rapports requis.</li><li>Préparer les comptes rendus des visites de terrain.</li></ul>
+                <div class="bg-teal-50/50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 fade-in-up">
+                    <div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-white text-emerald-600 rounded-full flex items-center justify-center mr-4 shadow-md"><i data-lucide="settings" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-emerald-800" data-lang-key="exp_coordinator_title">Coordinatrice de projets</h3><p class="text-sm text-emerald-700" data-lang-key="exp_coordinator_org">Association Y-PEER Morocco</p></div></div>
+                    <ul class="list-disc list-inside space-y-1 text-emerald-800 text-justify" data-lang-key="exp_coordinator_list"><li>Contribution à la conception et mise en œuvre des activités de l'association.</li><li>Préparation des comptes rendus et élaboration des rapports requis.</li><li>Préparer les comptes rendus des visites de terrain.</li></ul>
                 </div>
-                <div class="bg-teal-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 fade-in-up" style="animation-delay: 100ms;">
-                    <div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-teal-100 text-emerald-600 rounded-full flex items-center justify-center mr-4"><i data-lucide="accessibility" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-emerald-700" data-lang-key="exp_disability_expert_title">Experte en Handicap</h3><p class="text-sm text-emerald-600" data-lang-key="exp_disability_expert_org">Ministère de la Solidarité, de l'Insertion Sociale et de la famille</p></div></div>
-                    <p class="text-emerald-700 text-justify" data-lang-key="exp_disability_expert_text">Participation à la conception d'une campagne nationale de sensibilisation au handicap au Maroc, centrée sur l'éveil des consciences et la réduction de la stigmatisation.</p>
+                <div class="bg-teal-50/50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 fade-in-up" style="animation-delay: 100ms;">
+                    <div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-white text-emerald-600 rounded-full flex items-center justify-center mr-4 shadow-md"><i data-lucide="accessibility" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-emerald-800" data-lang-key="exp_disability_expert_title">Experte en Handicap</h3><p class="text-sm text-emerald-700" data-lang-key="exp_disability_expert_org">Ministère de la Solidarité, de l'Insertion Sociale et de la famille</p></div></div>
+                    <p class="text-emerald-800 text-justify" data-lang-key="exp_disability_expert_text">Participation à la conception d'une campagne nationale de sensibilisation au handicap au Maroc, centrée sur l'éveil des consciences et la réduction de la stigmatisation.</p>
                 </div>
-                <div class="bg-teal-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 fade-in-up" style="animation-delay: 200ms;">
-                    <div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-teal-100 text-emerald-600 rounded-full flex items-center justify-center mr-4"><i data-lucide="pen-tool" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-emerald-700" data-lang-key="exp_content_writer_title">Rédactrice de contenu éducatif</h3><p class="text-sm text-emerald-600" data-lang-key="exp_content_writer_org">Collaboration avec le bureau d'études ZA'THINK TANK, IPTC MENA et l'ALCS</p></div></div>
-                    <p class="text-emerald-700 text-justify" data-lang-key="exp_content_writer_text">Conception et production de capsules vidéo en 2D sur la santé sexuelle et reproductive et la prévention contre le VIH/SIDA.</p>
+                <div class="bg-teal-50/50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 fade-in-up" style="animation-delay: 200ms;">
+                    <div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-white text-emerald-600 rounded-full flex items-center justify-center mr-4 shadow-md"><i data-lucide="pen-tool" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-emerald-800" data-lang-key="exp_content_writer_title">Rédactrice de contenu éducatif</h3><p class="text-sm text-emerald-700" data-lang-key="exp_content_writer_org">Collaboration avec le bureau d'études ZA'THINK TANK, IPTC MENA et l'ALCS</p></div></div>
+                    <p class="text-emerald-800 text-justify" data-lang-key="exp_content_writer_text">Conception et production de capsules vidéo en 2D sur la santé sexuelle et reproductive et la prévention contre le VIH/SIDA.</p>
                 </div>
-                <div class="bg-teal-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 fade-in-up" style="animation-delay: 300ms;">
-                    <div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-teal-100 text-emerald-600 rounded-full flex items-center justify-center mr-4"><i data-lucide="presentation" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-emerald-700" data-lang-key="exp_workshop_title">Facilitation d’ateliers psychoéducatifs</h3><p class="text-sm text-emerald-600" data-lang-key="exp_workshop_org">UNICEF - Projet U-Report Morocco</p></div></div>
-                    <ul class="list-disc list-inside space-y-1 text-emerald-700 text-justify" data-lang-key="exp_workshop_list"><li>Animation d'un atelier interactif au profit des jeunes de la région El Kebab.</li><li>Sujet: Le harcèlement scolaire.</li></ul>
+                <div class="bg-teal-50/50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 fade-in-up" style="animation-delay: 300ms;">
+                    <div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-white text-emerald-600 rounded-full flex items-center justify-center mr-4 shadow-md"><i data-lucide="presentation" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-emerald-800" data-lang-key="exp_workshop_title">Facilitation d’ateliers psychoéducatifs</h3><p class="text-sm text-emerald-700" data-lang-key="exp_workshop_org">UNICEF - Projet U-Report Morocco</p></div></div>
+                    <ul class="list-disc list-inside space-y-1 text-emerald-800 text-justify" data-lang-key="exp_workshop_list"><li>Animation d'un atelier interactif au profit des jeunes de la région El Kebab.</li><li>Sujet: Le harcèlement scolaire.</li></ul>
                 </div>
-                <div class="bg-teal-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 fade-in-up" style="animation-delay: 400ms;">
-                    <div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-teal-100 text-emerald-600 rounded-full flex items-center justify-center mr-4"><i data-lucide="user-check" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-emerald-700" data-lang-key="exp_adult_psychiatry_title">Stage en psychiatrie de l'adulte</h3><p class="text-sm text-emerald-600" data-lang-key="exp_adult_psychiatry_org">Hôpital militaire d’Instruction Mohamed V - Rabat</p></div></div>
-                    <ul class="list-disc list-inside space-y-1 text-emerald-700 text-justify" data-lang-key="exp_adult_psychiatry_list"><li>Observation et participation aux consultations et séances de thérapie.</li><li>Contribution aux réunions de service.</li></ul>
+                <div class="bg-teal-50/50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 fade-in-up" style="animation-delay: 400ms;">
+                    <div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-white text-emerald-600 rounded-full flex items-center justify-center mr-4 shadow-md"><i data-lucide="user-check" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-emerald-800" data-lang-key="exp_adult_psychiatry_title">Stage en psychiatrie de l'adulte</h3><p class="text-sm text-emerald-700" data-lang-key="exp_adult_psychiatry_org">Hôpital militaire d’Instruction Mohamed V - Rabat</p></div></div>
+                    <ul class="list-disc list-inside space-y-1 text-emerald-800 text-justify" data-lang-key="exp_adult_psychiatry_list"><li>Observation et participation aux consultations et séances de thérapie.</li><li>Contribution aux réunions de service.</li></ul>
                 </div>
-                <div class="bg-teal-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 fade-in-up" style="animation-delay: 500ms;">
-                    <div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-teal-100 text-emerald-600 rounded-full flex items-center justify-center mr-4"><i data-lucide="baby" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-emerald-700" data-lang-key="exp_pediatric_psychiatry_title">Stage en pédopsychiatrie</h3><p class="text-sm text-emerald-600" data-lang-key="exp_pediatric_psychiatry_org">Hôpital ARRAZI - Salé</p></div></div>
-                    <ul class="list-disc list-inside space-y-1 text-emerald-700 text-justify" data-lang-key="exp_pediatric_psychiatry_list"><li>Observation des entretiens cliniques et participation aux séances de thérapie.</li><li>Analyse et observation des interactions parent-enfant.</li></ul>
+                <div class="bg-teal-50/50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 fade-in-up" style="animation-delay: 500ms;">
+                    <div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-white text-emerald-600 rounded-full flex items-center justify-center mr-4 shadow-md"><i data-lucide="baby" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-emerald-800" data-lang-key="exp_pediatric_psychiatry_title">Stage en pédopsychiatrie</h3><p class="text-sm text-emerald-700" data-lang-key="exp_pediatric_psychiatry_org">Hôpital ARRAZI - Salé</p></div></div>
+                    <ul class="list-disc list-inside space-y-1 text-emerald-800 text-justify" data-lang-key="exp_pediatric_psychiatry_list"><li>Observation des entretiens cliniques et participation aux séances de thérapie.</li><li>Analyse et observation des interactions parent-enfant.</li></ul>
                 </div>
             </div>
         </section>
 
-        <section id="photos" class="mb-12 fade-in-up">
-            <h2 class="text-2xl sm:text-3xl font-extrabold mb-8 text-center text-emerald-700" data-lang-key="photos_title">Images</h2>
+        <section id="photos" class="mb-20 fade-in-up">
+            <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 text-center section-title" data-lang-key="photos_title">Images</h2>
             <div class="carousel-container">
                 <div class="carousel-slide" id="carousel-slide"></div>
                 <button class="carousel-button carousel-button-prev" aria-label="Image précédente"><i data-lucide="chevron-left" class="w-6 h-6"></i></button>
@@ -250,23 +253,25 @@
             </div>
         </section>
 
-        <section id="contact" class="text-center py-12 bg-gray-100 rounded-3xl shadow-inner">
-            <p class="text-center text-gray-600 italic mb-6 max-w-3xl mx-auto" data-lang-key="contact_disclaimer">La confidentialité et le respect de la vie privée constituent des principes fondamentaux de notre pratique. Toutes les informations partagées dans le cadre des échanges et consultations sont traitées avec la plus grande discrétion et protégées conformément aux standards éthiques et professionnels.</p>
-            <p class="text-lg text-gray-700 font-semibold mb-6 text-center" data-lang-key="contact_invitation">N'hésitez pas à me contacter pour toute opportunité de collaboration ou de consultation en ligne.</p>
-            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8">
-                <a href="https://wa.me/14384554137" class="flex items-center space-x-3 px-6 py-3 bg-green-500 text-white rounded-full font-medium hover:bg-green-600 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-whatsapp-icon"><title id="title-whatsapp-icon">Icône WhatsApp</title><path d="M12.04 2C6.54 2 2 6.54 2 12.04c0 1.74.45 3.48 1.32 5.01L2 22l4.95-1.32c1.53.87 3.27 1.32 5.01 1.32C17.54 22 22 17.46 22 11.96 22 6.46 17.46 2 12.04 2zm3.17 14.94a1.05 1.05 0 01-1.35.48c-.6-.2-2.18-.87-3.95-2.52s-2.73-3.75-2.92-4.35a1.05 1.05 0 01.5-1.35l.93-.46c.15-.08.31-.13.48-.16l1.04-.26c.17-.04.34-.05.5.01.17.06.32.17.44.3a1.05 1.05 0 01.32.74c0 .2-.06.4-.18.57L11.75 12c.5.87.95 1.62 1.45 2.12s1.1.95 1.97 1.45L15.34 14c.18-.12.37-.18.57-.18.2 0 .39.06.56.18.17.12.28.28.34.45l.26 1.04c.06.17.05.34-.01.5-.06.17-.18.32-.3.44l-.46.93z" /></svg>
-                    <span>+1 438 455 4137</span>
-                </a>
-                <a href="mailto:brain.zoom@outlook.com" class="flex items-center space-x-3 px-6 py-3 bg-emerald-600 text-white rounded-full font-medium hover:bg-emerald-700 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-email-icon"><title id="title-email-icon">Icône e-mail</title><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" /></svg>
-                    <span>brain.zoom@outlook.com</span>
-                </a>
+        <section id="contact" class="text-center py-16 bg-white rounded-3xl shadow-lg border">
+             <div class="max-w-3xl mx-auto px-4">
+                <p class="text-lg text-slate-700 font-semibold mb-6" data-lang-key="contact_invitation">N'hésitez pas à me contacter pour toute opportunité de collaboration ou de consultation en ligne.</p>
+                <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="https://wa.me/14384554137" class="w-full sm:w-auto flex items-center justify-center space-x-3 px-6 py-3 bg-green-500 text-white rounded-full font-medium hover:bg-green-600 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-whatsapp-icon"><title id="title-whatsapp-icon">Icône WhatsApp</title><path d="M12.04 2C6.54 2 2 6.54 2 12.04c0 1.74.45 3.48 1.32 5.01L2 22l4.95-1.32c1.53.87 3.27 1.32 5.01 1.32C17.54 22 22 17.46 22 11.96 22 6.46 17.46 2 12.04 2zm3.17 14.94a1.05 1.05 0 01-1.35.48c-.6-.2-2.18-.87-3.95-2.52s-2.73-3.75-2.92-4.35a1.05 1.05 0 01.5-1.35l.93-.46c.15-.08.31-.13.48-.16l1.04-.26c.17-.04.34-.05.5.01.17.06.32.17.44.3a1.05 1.05 0 01.32.74c0 .2-.06.4-.18.57L11.75 12c.5.87.95 1.62 1.45 2.12s1.1.95 1.97 1.45L15.34 14c.18-.12.37-.18.57-.18.2 0 .39.06.56.18.17.12.28.28.34.45l.26 1.04c.06.17.05.34-.01.5-.06.17-.18.32-.3.44l-.46.93z" /></svg>
+                        <span>+1 438 455 4137</span>
+                    </a>
+                    <a href="mailto:brain.zoom@outlook.com" class="w-full sm:w-auto flex items-center justify-center space-x-3 px-6 py-3 bg-emerald-600 text-white rounded-full font-medium hover:bg-emerald-700 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-email-icon"><title id="title-email-icon">Icône e-mail</title><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" /></svg>
+                        <span>brain.zoom@outlook.com</span>
+                    </a>
+                </div>
+                <p class="text-sm text-slate-500 italic mt-8" data-lang-key="contact_disclaimer">La confidentialité et le respect de la vie privée constituent des principes fondamentaux de notre pratique. Toutes les informations partagées sont traitées avec la plus grande discrétion et protégées conformément aux standards éthiques et professionnels.</p>
             </div>
         </section>
     </main>
     
-    <footer class="bg-white py-4 mt-12 text-center text-gray-500 text-sm">
+    <footer class="bg-white py-6 mt-12 text-center text-slate-500 text-sm border-t">
         <p data-lang-key="footer_copyright">© 2024 Yasmine AHAJOUI. Tous droits réservés.</p>
     </footer>
 
@@ -314,9 +319,9 @@
                 const questionData = quizData.questions[currentQuestionIndex];
                 quizQuestionsSection.innerHTML = `
                     <div class="question-card flex flex-col items-center">
-                        <p class="text-lg sm:text-xl font-medium text-gray-700 mb-6 text-center">${currentQuestionIndex + 1} / ${quizData.questions.length}</p>
+                        <p class="text-lg sm:text-xl font-medium text-slate-700 mb-6 text-center">${currentQuestionIndex + 1} / ${quizData.questions.length}</p>
                         <h4 class="text-xl sm:text-2xl font-semibold text-emerald-700 mb-8 text-center">${questionData.question}</h4>
-                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 w-full">
+                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 w-full max-w-lg">
                             ${questionData.answers.map((answer, index) => `
                                 <button class="quiz-option text-left" data-score="${answer.score}" data-index="${index}">${answer.text}</button>
                             `).join('')}
@@ -355,7 +360,7 @@
                 quizResultSection.innerHTML = `
                     <div class="result-card">
                         <h3 class="text-2xl font-bold mb-4">${result.title}</h3>
-                        <p class="text-gray-700 mb-6">${result.text}</p>
+                        <p class="mb-6">${result.text}</p>
                         <a href="#contact" class="px-6 py-3 bg-emerald-600 text-white rounded-full font-medium hover:bg-emerald-700 transition-colors duration-300">${result.cta}</a>
                     </div>
                 `;
@@ -414,11 +419,7 @@
             // --- Animation au défilement ---
             const animatedElements = document.querySelectorAll('.fade-in-up');
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                    }
-                });
+                entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); } });
             }, { threshold: 0.1 });
             animatedElements.forEach(el => observer.observe(el));
             
@@ -482,7 +483,7 @@
                 exp_pediatric_psychiatry_org: "Hôpital ARRAZI - Salé",
                 exp_pediatric_psychiatry_list: "<li>Observation des entretiens cliniques et participation aux séances de thérapie.</li><li>Analyse et observation des interactions parent-enfant.</li>",
                 photos_title: "Images",
-                contact_disclaimer: "La confidentialité et le respect de la vie privée constituent des principes fondamentaux de notre pratique. Toutes les informations partagées dans le cadre des échanges et consultations sont traitées avec la plus grande discrétion et protégées conformément aux standards éthiques et professionnels.",
+                contact_disclaimer: "La confidentialité et le respect de la vie privée constituent des principes fondamentaux de notre pratique. Toutes les informations partagées sont traitées avec la plus grande discrétion et protégées conformément aux standards éthiques et professionnels.",
                 contact_invitation: "N'hésitez pas à me contacter pour toute opportunité de collaboration ou de consultation en ligne.",
                 footer_copyright: "© 2024 Yasmine AHAJOUI. Tous droits réservés."
             },
@@ -538,7 +539,7 @@
                 exp_pediatric_psychiatry_org: "ARRAZI Hospital - Salé",
                 exp_pediatric_psychiatry_list: "<li>Observation of clinical interviews and participation in therapy sessions.</li><li>Analysis and observation of parent-child interactions.</li>",
                 photos_title: "Images",
-                contact_disclaimer: "Confidentiality and respect for privacy are fundamental principles of our practice. All information shared during exchanges and consultations is treated with the utmost discretion and protected in accordance with ethical and professional standards.",
+                contact_disclaimer: "Confidentiality and respect for privacy are fundamental principles of our practice. All information shared is treated with the utmost discretion and protected in accordance with ethical and professional standards.",
                 contact_invitation: "Feel free to contact me for any collaboration or online consultation opportunity.",
                 footer_copyright: "© 2024 Yasmine AHAJOUI. All rights reserved."
             },
@@ -594,7 +595,7 @@
                 exp_pediatric_psychiatry_org: "مستشفى الرازي - سلا",
                 exp_pediatric_psychiatry_list: "<li>ملاحظة المقابلات السريرية والمشاركة في جلسات العلاج.</li><li>تحليل وملاحظة التفاعلات بين الوالدين والطفل.</li>",
                 photos_title: "صور",
-                contact_disclaimer: "السرية واحترام الخصوصية هي مبادئ أساسية لممارستنا. يتم التعامل مع جميع المعلومات المشتركة في إطار التبادلات والاستشارات بأقصى درجات السرية ويتم حمايتها وفقًا للمعايير الأخلاقية والمهنية.",
+                contact_disclaimer: "السرية واحترام الخصوصية هي مبادئ أساسية لممارستنا. يتم التعامل مع جميع المعلومات المشتركة بأقصى درجات السرية ويتم حمايتها وفقًا للمعايير الأخلاقية والمهنية.",
                 contact_invitation: "لا تترددوا في الاتصال بي لأي فرصة للتعاون أو الاستشارة عبر الإنترنت.",
                 footer_copyright: "© 2024 ياسمين أحجوي. جميع الحقوق محفوظة."
             }
@@ -603,8 +604,7 @@
         function switchLanguage(lang) {
             currentLanguage = lang;
             document.documentElement.lang = lang;
-            // Ne pas ajouter dir="rtl" pour l'arabe
-            document.documentElement.dir = '';
+            document.documentElement.dir = ''; // Assurer LTR pour toutes les langues
             
             document.title = translations[lang].meta_title;
             document.querySelector('meta[name="description"]').setAttribute('content', translations[lang].meta_description);
@@ -622,9 +622,9 @@
             const flagMap = { fr: 'https://flagcdn.com/w160/fr.png', en: 'https://flagcdn.com/w160/gb.png', ar: 'https://flagcdn.com/w160/ma.png' };
             currentFlag.src = flagMap[lang];
             
-            // Recréer les icônes après le changement de langue pour s'assurer qu'elles s'affichent correctement
             lucide.createIcons();
         }
     </script>
 </body>
 </html>
+
