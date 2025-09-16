@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -17,7 +17,6 @@
     <link rel="alternate" hreflang="en-ca" href="https://brainzoom.github.io/bien-etre/">
     <link rel="alternate" hreflang="ar-ma" href="https://brainzoom.github.io/bien-etre/">
     <link rel="alternate" hreflang="x-default" href="https://brainzoom.github.io/bien-etre/">
-
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -37,11 +36,12 @@
     <meta name="twitter:image" content="https://placehold.co/1200x630/038554/ffffff?text=Yasmine+Ahajoui%0A--%0APsychologue">
     
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- JSON-LD Structured Data for Rich Snippets -->
+    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -62,224 +62,70 @@
         { "@type": "MedicalProcedure", "name": "Thérapie pour l'anxiété" },
         { "@type": "MedicalProcedure", "name": "Thérapie pour la dépression" }
       ],
-      "areaServed": [
-        {
-          "@type": "AdministrativeArea",
-          "name": "Montréal",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Montréal",
-            "addressRegion": "QC",
-            "addressCountry": "CA"
-          }
-        },
-        {
-          "@type": "Country",
-          "name": "Maroc"
-        }
-      ]
+      "areaServed": [{"@type": "AdministrativeArea","name": "Montréal","address": {"@type": "PostalAddress","addressLocality": "Montréal","addressRegion": "QC","addressCountry": "CA"}},{"@type": "Country","name": "Maroc"}]
     }
     </script>
 
     <style>
-        html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; }
-        .carousel-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 1rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .carousel-slide {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-        .carousel-slide img {
-            width: 100%;
-            flex-shrink: 0;
-            object-fit: cover;
-            aspect-ratio: 16 / 9;
-            display: block;
-        }
-        .carousel-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 0.75rem;
-            cursor: pointer;
-            z-index: 10;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+        
+        /* Styles du carrousel */
+        .carousel-container { position: relative; overflow: hidden; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); max-width: 600px; margin-left: auto; margin-right: auto; }
+        .carousel-slide { display: flex; transition: transform 0.5s ease-in-out; }
+        .carousel-slide img { width: 100%; flex-shrink: 0; object-fit: cover; aspect-ratio: 16 / 9; display: block; }
+        .carousel-button { position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(0, 0, 0, 0.5); color: white; border: none; padding: 0.75rem; cursor: pointer; z-index: 10; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background-color 0.3s; }
+        .carousel-button:hover { background-color: rgba(0, 0, 0, 0.7); }
         .carousel-button-prev { left: 0.5rem; }
         .carousel-button-next { right: 0.5rem; }
-        .carousel-dots {
-            position: absolute;
-            bottom: 0.75rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 0.5rem;
-        }
-        .carousel-dot {
-            width: 8px;
-            height: 8px;
-            background-color: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+        .carousel-dots { position: absolute; bottom: 0.75rem; left: 50%; transform: translateX(-50%); display: flex; gap: 0.5rem; }
+        .carousel-dot { width: 8px; height: 8px; background-color: rgba(255, 255, 255, 0.5); border-radius: 50%; cursor: pointer; transition: background-color 0.3s ease; }
         .carousel-dot.active { background-color: white; }
-        @media (max-width: 640px) {
-            .carousel-slide img { aspect-ratio: 4 / 3; }
-        }
-        #screenshot-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(240, 244, 250, 0.9);
-            color: #4a5568;
-            display: none; /* Changed from visibility/opacity for performance */
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            z-index: 1000;
-        }
+        @media (max-width: 640px) { .carousel-slide img { aspect-ratio: 4 / 3; } }
+
+        /* Protection de contenu */
+        #screenshot-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(240, 244, 250, 0.95); backdrop-filter: blur(4px); color: #4a5568; display: none; justify-content: center; align-items: center; text-align: center; font-size: 1.5rem; font-weight: bold; z-index: 1000; }
         #screenshot-overlay.visible { display: flex; }
+
+        /* Sélecteur de langue */
         .language-selector { position: relative; }
-        .language-button {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            padding: 0.5rem;
-            border-radius: 9999px;
-            transition: background-color 0.2s;
-            border: 2px solid transparent;
-        }
-        .language-button:hover { background-color: #e2e8f0; }
-        .language-dropdown {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background-color: white;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            z-index: 20;
-            padding: 0.5rem;
-            margin-top: 0.5rem;
-            min-width: 10rem;
-        }
-        .language-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem;
-            border-radius: 0.375rem;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
+        .language-dropdown { position: absolute; top: 100%; right: 0; background-color: white; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); z-index: 20; padding: 0.5rem; margin-top: 0.5rem; min-width: 10rem; }
+        .language-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem; border-radius: 0.375rem; cursor: pointer; transition: background-color 0.2s; }
         .language-item:hover { background-color: #f3f4f6; }
-        .flag-icon {
-            width: 1.5rem;
-            height: 1.5rem;
-            border-radius: 50%;
-            object-fit: cover;
-            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
-        }
-        /* Quiz Styling */
-        #quiz-container {
-            max-width: 768px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .question-card {
-            background: white;
-            border-radius: 1rem;
-            padding: 2rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            animation: fadeIn 0.5s ease-in-out;
-        }
-        .quiz-option {
-            background: #f1f5f9;
-            border: 2px solid #e2e8f0;
-            border-radius: 0.75rem;
-            padding: 1rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        .quiz-option:hover {
-            background: #e2e8f0;
-            border-color: #038554;
-        }
-        .quiz-option.selected {
-            background: #c3e2d6;
-            border-color: #038554;
-            transform: scale(1.02);
-            box-shadow: 0 2px 8px rgba(3, 133, 84, 0.2);
-        }
-        .quiz-button {
-            background: #038554;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 9999px;
-            font-weight: bold;
-            transition: background-color 0.2s;
-        }
+        .flag-icon { width: 1.5rem; height: 1.5rem; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1); }
+        
+        /* Styles du Quiz */
+        #quiz-container { max-width: 768px; margin-left: auto; margin-right: auto; }
+        .question-card { background: white; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); animation: fadeIn 0.5s ease-in-out; }
+        .quiz-option { background: #f1f5f9; border: 2px solid #e2e8f0; border-radius: 0.75rem; padding: 1rem; cursor: pointer; transition: all 0.2s ease; }
+        .quiz-option:hover { background: #e2e8f0; border-color: #038554; }
+        .quiz-option.selected { background: #c3e2d6; border-color: #038554; transform: scale(1.02); box-shadow: 0 2px 8px rgba(3, 133, 84, 0.2); }
+        .quiz-button { background: #038554; color: white; padding: 1rem 2rem; border-radius: 9999px; font-weight: bold; transition: background-color 0.2s; }
         .quiz-button:hover { background: #026b45; }
-        .quiz-button:disabled {
-            background: #9ca3af;
-            cursor: not-allowed;
+        .quiz-button:disabled { background: #9ca3af; cursor: not-allowed; }
+        .result-card { background: #fff; padding: 2.5rem; border-radius: 1.5rem; box-shadow: 0 8px 20px rgba(0,0,0,0.08); text-align: center; animation: slideInUp 0.7s ease; }
+        .result-card h3 { font-size: 2rem; font-weight: bold; color: #038554; margin-bottom: 1rem; }
+        .result-card p { color: #4a5568; font-size: 1.125rem; line-height: 1.6; }
+
+        /* Animations */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-        .result-card {
-            background: #fff;
-            padding: 2.5rem;
-            border-radius: 1.5rem;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-            text-align: center;
-            animation: slideInUp 0.7s ease;
-        }
-        .result-card h3 {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #038554;
-            margin-bottom: 1rem;
-        }
-        .result-card p {
-            color: #4a5568;
-            font-size: 1.125rem;
-            line-height: 1.6;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes slideInUp {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
+        .fade-in-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-    <!-- Overlay de blocage de capture d'écran -->
-    <div id="screenshot-overlay">
-        Le contenu est protégé.
-    </div>
+    <div id="screenshot-overlay">Le contenu est protégé.</div>
 
-    <!-- Barre de navigation -->
-    <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <nav class="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-50 transition-colors duration-300">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <a href="https://brainzoom.github.io/bien-etre/" class="text-xl font-bold text-emerald-700" data-lang-key="nav_brand">Yasmine AHAJOUI</a>
             <div class="flex items-center space-x-4">
@@ -288,28 +134,18 @@
                     <a href="#experience" class="text-gray-600 hover:text-emerald-700 transition-colors duration-200" data-lang-key="nav_experience">Expérience</a>
                     <a href="#contact" class="px-4 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700 transition-colors duration-200" data-lang-key="nav_contact">Contact</a>
                 </div>
-                <!-- Language Selector -->
                 <div class="language-selector">
-                    <button class="language-button" id="language-button" aria-label="Changer de langue">
+                    <button class="language-button p-2 rounded-full transition-colors hover:bg-gray-200" id="language-button" aria-label="Changer de langue">
                         <img src="https://flagcdn.com/w160/fr.png" alt="French Flag" class="flag-icon" id="current-flag">
                     </button>
                     <div class="language-dropdown hidden" id="language-dropdown">
-                        <div class="language-item" data-lang="fr">
-                            <img src="https://flagcdn.com/w160/fr.png" alt="Drapeau Français" class="flag-icon">
-                            <span>Français</span>
-                        </div>
-                        <div class="language-item" data-lang="en">
-                            <img src="https://flagcdn.com/w160/gb.png" alt="Drapeau Britannique" class="flag-icon">
-                            <span>English</span>
-                        </div>
-                        <div class="language-item" data-lang="ar">
-                            <img src="https://flagcdn.com/w160/ma.png" alt="Drapeau Marocain" class="flag-icon">
-                            <span>العربية</span>
-                        </div>
+                        <div class="language-item" data-lang="fr"><img src="https://flagcdn.com/w160/fr.png" alt="Drapeau Français" class="flag-icon"><span>Français</span></div>
+                        <div class="language-item" data-lang="en"><img src="https://flagcdn.com/w160/gb.png" alt="Drapeau Britannique" class="flag-icon"><span>English</span></div>
+                        <div class="language-item" data-lang="ar"><img src="https://flagcdn.com/w160/ma.png" alt="Drapeau Marocain" class="flag-icon"><span>العربية</span></div>
                     </div>
                 </div>
-                <button id="menu-button" class="md:hidden text-gray-600 hover:text-emerald-700 focus:outline-none" aria-label="Ouvrir le menu">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-menu-icon"><title id="title-menu-icon">Icône du menu</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                <button id="menu-button" class="md:hidden text-gray-600 hover:text-emerald-700 focus:outline-none p-2" aria-label="Ouvrir le menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
             </div>
         </div>
@@ -323,242 +159,121 @@
     </nav>
 
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <!-- Section "Héro" -->
-        <section class="text-center py-20 bg-gradient-to-br from-teal-100 to-white rounded-3xl shadow-lg mb-12">
+        <section class="text-center py-20 bg-gradient-to-br from-emerald-50 to-white rounded-3xl shadow-lg mb-12 fade-in-up">
             <div class="max-w-3xl mx-auto px-4">
-                <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight mb-4" data-lang-key="hero_title">
-                    Psychologue
-                </h1>
-                <p class="text-lg sm:text-xl text-gray-600 mb-8 text-center" data-lang-key="hero_subtitle">
-                    J’accompagne chaque personne à travers des solutions d’intervention personnalisées et multidisciplinaires, conçues pour répondre à vos besoins spécifiques.<br>
-                    Ensemble, avançons vers plus d’équilibre et d’épanouissement.
-                </p>
-                <a href="#contact" class="px-8 py-4 bg-emerald-600 text-white rounded-full font-medium hover:bg-emerald-700 transition-colors duration-300 transform hover:scale-105 inline-block" data-lang-key="hero_contact_button">
-                    Contacter
-                </a>
+                <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight mb-4" data-lang-key="hero_title">Psychologue</h1>
+                <p class="text-lg sm:text-xl text-gray-600 mb-8" data-lang-key="hero_subtitle">J’accompagne chaque personne à travers des solutions d’intervention personnalisées et multidisciplinaires, conçues pour répondre à vos besoins spécifiques.<br>Ensemble, avançons vers plus d’équilibre et d’épanouissement.</p>
+                <a href="#contact" class="px-8 py-4 bg-emerald-600 text-white rounded-full font-medium hover:bg-emerald-700 transition-all duration-300 transform hover:scale-105 inline-block shadow-lg hover:shadow-xl" data-lang-key="hero_contact_button">Contacter</a>
             </div>
         </section>
 
-        <!-- Section Quiz -->
-        <section id="quiz" class="mb-12">
-            <h2 class="text-2xl sm:text-3xl lg:text-3xl font-extrabold mb-6 text-center text-emerald-700 pb-2" data-lang-key="quiz_title">Testez votre intelligence émotionnelle</h2>
+        <section id="quiz" class="mb-12 fade-in-up">
+            <h2 class="text-2xl sm:text-3xl font-extrabold mb-6 text-center text-emerald-700" data-lang-key="quiz_title">Testez votre intelligence émotionnelle</h2>
             <div id="quiz-container" class="space-y-6">
                 <div id="quiz-start" class="text-center py-12 px-6 bg-white rounded-3xl shadow-lg">
                     <h3 class="text-xl sm:text-2xl font-bold text-emerald-700 mb-4" data-lang-key="quiz_start_title">Êtes-vous en harmonie avec vos émotions ?</h3>
                     <p class="text-gray-600 mb-6" data-lang-key="quiz_start_text">Faites ce mini-quiz pour mieux comprendre votre relation avec vos émotions et découvrir des pistes de réflexion pour votre bien-être.</p>
                     <button id="start-quiz-button" class="px-6 py-3 bg-emerald-600 text-white rounded-full font-medium hover:bg-emerald-700 transition-colors duration-300" data-lang-key="quiz_start_button">Commencer le quiz</button>
                 </div>
-
-                <div id="quiz-questions" class="hidden">
-                    <!-- Les questions du quiz seront injectées ici par JavaScript -->
-                </div>
-
-                <div id="quiz-result" class="hidden">
-                    <!-- Les résultats du quiz seront affichés ici par JavaScript -->
-                </div>
+                <div id="quiz-questions" class="hidden"></div>
+                <div id="quiz-result" class="hidden"></div>
             </div>
         </section>
 
-        <!-- Section des compétences -->
         <section id="competences" class="mb-12">
-            <h2 class="text-2xl sm:text-3xl lg:text-3xl font-extrabold mb-6 text-center text-emerald-700 pb-2" data-lang-key="skills_title">Pratique</h2>
-              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div class="flex items-center space-x-4 mb-4">
-                        <svg class="w-10 h-10 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-program-design"><title id="title-program-design">Icône de conception de programmes</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L12 19.25M12 19.25L14.25 17M12 19.25V5.5M5.25 12H18.75"></path></svg>
-                        <h3 class="text-xl font-semibold" data-lang-key="skill_program_design_title">Conception de programmes</h3>
-                    </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold mb-8 text-center text-emerald-700 fade-in-up" data-lang-key="skills_title">Pratique</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-transparent hover:border-emerald-200 hover:-translate-y-1 fade-in-up">
+                    <div class="flex items-center space-x-4 mb-4"><i data-lucide="clipboard-list" class="w-10 h-10 text-emerald-600"></i><h3 class="text-xl font-semibold" data-lang-key="skill_program_design_title">Conception de programmes</h3></div>
                     <p class="text-gray-600 text-justify" data-lang-key="skill_program_design_text">Conception et animation de programmes et ateliers visant le développement des compétences psychosociales.</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div class="flex items-center space-x-4 mb-4">
-                        <svg class="w-10 h-10 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-clinical-method"><title id="title-clinical-method">Icône de méthodologie clinique</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.333 0 2.667 0 4 0l-4 8M12 8l-4 8m4-8V5.5M15.75 12H8.25M12 19.25V16"></path></svg>
-                        <h3 class="text-xl font-semibold" data-lang-key="skill_clinical_method_title">Méthodologie clinique</h3>
-                    </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-transparent hover:border-emerald-200 hover:-translate-y-1 fade-in-up" style="animation-delay: 100ms;">
+                    <div class="flex items-center space-x-4 mb-4"><i data-lucide="brain-circuit" class="w-10 h-10 text-emerald-600"></i><h3 class="text-xl font-semibold" data-lang-key="skill_clinical_method_title">Méthodologie clinique</h3></div>
                     <p class="text-gray-600 text-justify" data-lang-key="skill_clinical_method_text">Maîtrise d'outils d'évaluation et de prise en charge psychologique, incluant l'entretien motivationnel, TCC, etc...</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div class="flex items-center space-x-4 mb-4">
-                        <svg class="w-10 h-10 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-project-management"><title id="title-project-management">Icône de gestion de projets</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h.01M9 10h.01M5 10h.01M19 10h.01M12 10h.01"></path></svg>
-                        <h3 class="text-xl font-semibold" data-lang-key="skill_project_management_title">Gestion de projets</h3>
-                    </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-transparent hover:border-emerald-200 hover:-translate-y-1 fade-in-up" style="animation-delay: 200ms;">
+                    <div class="flex items-center space-x-4 mb-4"><i data-lucide="kanban-square" class="w-10 h-10 text-emerald-600"></i><h3 class="text-xl font-semibold" data-lang-key="skill_project_management_title">Gestion de projets</h3></div>
                     <p class="text-gray-600 text-justify" data-lang-key="skill_project_management_text">Élaboration de projets individualisés et coordination avec des équipes pluridisciplinaires.</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div class="flex items-center space-x-4 mb-4">
-                        <svg class="w-10 h-10 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-research"><title id="title-research">Icône de recherche et analyse</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m-6 4h6M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H4a2 2 0 00-2 2v16a2 2 0 002 2z"></path></svg>
-                        <h3 class="text-xl font-semibold" data-lang-key="skill_research_title">Recherche et analyse</h3>
-                    </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-transparent hover:border-emerald-200 hover:-translate-y-1 fade-in-up" style="animation-delay: 300ms;">
+                    <div class="flex items-center space-x-4 mb-4"><i data-lucide="file-search-2" class="w-10 h-10 text-emerald-600"></i><h3 class="text-xl font-semibold" data-lang-key="skill_research_title">Recherche et analyse</h3></div>
                     <p class="text-gray-600 text-justify" data-lang-key="skill_research_text">Bonne maîtrise de la méthodologie de recherche et aisance avec les outils bureautiques.</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div class="flex items-center space-x-4 mb-4">
-                        <svg class="w-10 h-10 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-proactive"><title id="title-proactive">Icône d'approche proactive</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657l-1.414 1.414m0 0l-1.414 1.414m1.414-1.414l-1.414-1.414m1.414 1.414V6.5M10.5 12.5a2 2 0 100-4 2 2 0 000 4z"></path></svg>
-                        <h3 class="text-xl font-semibold" data-lang-key="skill_proactive_title">Approche proactive</h3>
-                    </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-transparent hover:border-emerald-200 hover:-translate-y-1 fade-in-up" style="animation-delay: 400ms;">
+                    <div class="flex items-center space-x-4 mb-4"><i data-lucide="sparkles" class="w-10 h-10 text-emerald-600"></i><h3 class="text-xl font-semibold" data-lang-key="skill_proactive_title">Approche proactive</h3></div>
                     <p class="text-gray-600 text-justify" data-lang-key="skill_proactive_text">Empathie, sens de l'initiative et approche proactive pour un accompagnement optimal.</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div class="flex items-center space-x-4 mb-4">
-                        <svg class="w-10 h-10 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-collaboration"><title id="title-collaboration">Icône de travail collaboratif</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-4m0 0l4-4m-4 4l-4-4m4 4l4 4M4 14l4 4m0 0l4-4m-4 4l-4-4m4 4l4 4"></path></svg>
-                        <h3 class="text-xl font-semibold" data-lang-key="skill_collaboration_title">Travail collaboratif</h3>
-                    </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-transparent hover:border-emerald-200 hover:-translate-y-1 fade-in-up" style="animation-delay: 500ms;">
+                    <div class="flex items-center space-x-4 mb-4"><i data-lucide="users-2" class="w-10 h-10 text-emerald-600"></i><h3 class="text-xl font-semibold" data-lang-key="skill_collaboration_title">Travail collaboratif</h3></div>
                     <p class="text-gray-600 text-justify" data-lang-key="skill_collaboration_text">Expérience en travail collaboratif et coordination avec des équipes pluridisciplinaires.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Section "Expérience" -->
         <section id="experience" class="mb-12">
-            <h2 class="text-2xl sm:text-3xl lg:text-3xl font-extrabold mb-6 text-center text-emerald-700 pb-2" data-lang-key="experience_title">Réalisations clés</h2>
+            <h2 class="text-2xl sm:text-3xl font-extrabold mb-8 text-center text-emerald-700 fade-in-up" data-lang-key="experience_title">Réalisations clés</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Coordinatrice de projets -->
-                <div class="bg-teal-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform transition-transform duration-300 hover:scale-105">
-                    <div class="flex items-start mb-4">
-                        <div class="flex-shrink-0 w-12 h-12 bg-teal-100 text-emerald-600 rounded-full flex items-center justify-center mr-4">
-                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-coordinator"><title id="title-coordinator">Icône de coordination de projets</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.58.355 1.28.514 1.948.563v.192c-.347.935-.873 1.905-1.517 2.975-.98.98-1.52.98-1.52 0-.25-.436-.37-.954-.37-1.544 0-1.025.2-1.996.65-2.756.28-.48.65-.91.95-1.29.35-.44.75-.82.85-.82.1 0 .25.2.45.54.45.69.83 1.45 1.15 2.21.32.76.65 1.5.95 2.14.3.64.6.96.9 1.14.3.18.55.27.75.27.2 0 .45-.09.7-.27.25-.18.55-.5.9-.94.35-.44.65-.92.85-1.45.2-.53.4-.95.4-.95-.15.25-.3.45-.4.65-.1.2-.15.25-.15.25z"/></svg>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-emerald-700" data-lang-key="exp_coordinator_title">Coordinatrice de projets</h3>
-                            <p class="text-sm text-emerald-600" data-lang-key="exp_coordinator_org">Association Y-PEER Morocco</p>
-                        </div>
-                    </div>
-                    <ul class="list-disc list-inside space-y-1 text-emerald-700 text-justify" data-lang-key="exp_coordinator_list">
-                        <li>Contribution à la conception et mise en œuvre des activités de l'association.</li>
-                        <li>Préparation des comptes rendus et élaboration des rapports requis.</li>
-                        <li>Préparer les comptes rendus des visites de terrain.</li>
-                    </ul>
+                <div class="bg-teal-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 fade-in-up">
+                    <div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-teal-100 text-emerald-600 rounded-full flex items-center justify-center mr-4"><i data-lucide="settings" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-emerald-700" data-lang-key="exp_coordinator_title">Coordinatrice de projets</h3><p class="text-sm text-emerald-600" data-lang-key="exp_coordinator_org">Association Y-PEER Morocco</p></div></div>
+                    <ul class="list-disc list-inside space-y-1 text-emerald-700 text-justify" data-lang-key="exp_coordinator_list"><li>Contribution à la conception et mise en œuvre des activités de l'association.</li><li>Préparation des comptes rendus et élaboration des rapports requis.</li><li>Préparer les comptes rendus des visites de terrain.</li></ul>
                 </div>
-                <!-- Experte en Handicap -->
-                <div class="bg-teal-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform transition-transform duration-300 hover:scale-105">
-                    <div class="flex items-start mb-4">
-                        <div class="flex-shrink-0 w-12 h-12 bg-teal-100 text-emerald-600 rounded-full flex items-center justify-center mr-4">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-disability-expert"><title id="title-disability-expert">Icône d'expertise en handicap</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-emerald-700" data-lang-key="exp_disability_expert_title">Experte en Handicap</h3>
-                            <p class="text-sm text-emerald-600" data-lang-key="exp_disability_expert_org">Ministère de la Solidarité, de l'Insertion Sociale et de la famille</p>
-                        </div>
-                    </div>
+                <div class="bg-teal-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 fade-in-up" style="animation-delay: 100ms;">
+                    <div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-teal-100 text-emerald-600 rounded-full flex items-center justify-center mr-4"><i data-lucide="accessibility" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-emerald-700" data-lang-key="exp_disability_expert_title">Experte en Handicap</h3><p class="text-sm text-emerald-600" data-lang-key="exp_disability_expert_org">Ministère de la Solidarité, de l'Insertion Sociale et de la famille</p></div></div>
                     <p class="text-emerald-700 text-justify" data-lang-key="exp_disability_expert_text">Participation à la conception d'une campagne nationale de sensibilisation au handicap au Maroc, centrée sur l'éveil des consciences et la réduction de la stigmatisation.</p>
                 </div>
-                <!-- Rédactrice de contenu éducatif -->
-                <div class="bg-teal-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform transition-transform duration-300 hover:scale-105">
-                    <div class="flex items-start mb-4">
-                        <div class="flex-shrink-0 w-12 h-12 bg-teal-100 text-emerald-600 rounded-full flex items-center justify-center mr-4">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-content-writer"><title id="title-content-writer">Icône de rédaction de contenu</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13a.854.854 0 00-1.708 0v13m1.708-13a.854.854 0 011.708 0v13m-1.708-13c-.352 0-.642.067-.93.197L9 6.253A1.064 1.064 0 007.87 7.07l-2.73 2.73A1.064 1.064 0 004 10.963V18a2 2 0 002 2h12a2 2 0 002-2v-7.037a1.064 1.064 0 00-.91-1.09l-2.73-2.73a1.064 1.064 0 00-.91-1.09L12 6.253z"/></svg>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-emerald-700" data-lang-key="exp_content_writer_title">Rédactrice de contenu éducatif</h3>
-                            <p class="text-sm text-emerald-600" data-lang-key="exp_content_writer_org">Collaboration avec le bureau d'études ZA'THINK TANK, IPTC MENA et l'ALCS</p>
-                        </div>
-                    </div>
+                <div class="bg-teal-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 fade-in-up" style="animation-delay: 200ms;">
+                    <div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-teal-100 text-emerald-600 rounded-full flex items-center justify-center mr-4"><i data-lucide="pen-tool" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-emerald-700" data-lang-key="exp_content_writer_title">Rédactrice de contenu éducatif</h3><p class="text-sm text-emerald-600" data-lang-key="exp_content_writer_org">Collaboration avec le bureau d'études ZA'THINK TANK, IPTC MENA et l'ALCS</p></div></div>
                     <p class="text-emerald-700 text-justify" data-lang-key="exp_content_writer_text">Conception et production de capsules vidéo en 2D sur la santé sexuelle et reproductive et la prévention contre le VIH/SIDA.</p>
                 </div>
-                <!-- Animation d'atelier interactif -->
-                <div class="bg-teal-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform transition-transform duration-300 hover:scale-105">
-                    <div class="flex items-start mb-4">
-                        <div class="flex-shrink-0 w-12 h-12 bg-teal-100 text-emerald-600 rounded-full flex items-center justify-center mr-4">
-                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-workshop"><title id="title-workshop">Icône de facilitation d'ateliers</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292 4 4 0 010-5.292zM12 11a4 4 0 110 5.292 4 4 0 010-5.292zM12 17a4 4 0 110 5.292 4 4 0 010-5.292zM12 6c-2.761 0-5 2.239-5 5s2.239 5 5 5 5-2.239 5-5-2.239-5-5-5z"></path></svg>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-emerald-700" data-lang-key="exp_workshop_title">Facilitation d’ateliers psychoéducatifs</h3>
-                            <p class="text-sm text-emerald-600" data-lang-key="exp_workshop_org">UNICEF - Projet U-Report Morocco</p>
-                        </div>
-                    </div>
-                    <ul class="list-disc list-inside space-y-1 text-emerald-700 text-justify" data-lang-key="exp_workshop_list">
-                        <li>Animation d'un atelier interactif au profit des jeunes de la région El Kebab.</li>
-                        <li>Sujet: Le harcèlement scolaire.</li>
-                    </ul>
+                <div class="bg-teal-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 fade-in-up" style="animation-delay: 300ms;">
+                    <div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-teal-100 text-emerald-600 rounded-full flex items-center justify-center mr-4"><i data-lucide="presentation" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-emerald-700" data-lang-key="exp_workshop_title">Facilitation d’ateliers psychoéducatifs</h3><p class="text-sm text-emerald-600" data-lang-key="exp_workshop_org">UNICEF - Projet U-Report Morocco</p></div></div>
+                    <ul class="list-disc list-inside space-y-1 text-emerald-700 text-justify" data-lang-key="exp_workshop_list"><li>Animation d'un atelier interactif au profit des jeunes de la région El Kebab.</li><li>Sujet: Le harcèlement scolaire.</li></ul>
                 </div>
-                <!-- Stage en psychiatrie de l'adulte -->
-                <div class="bg-teal-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform transition-transform duration-300 hover:scale-105">
-                    <div class="flex items-start mb-4">
-                        <div class="flex-shrink-0 w-12 h-12 bg-teal-100 text-emerald-600 rounded-full flex items-center justify-center mr-4">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-adult-psychiatry"><title id="title-adult-psychiatry">Icône de psychiatrie de l'adulte</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 6a2 2 0 11-4 0 2 2 0 014 0zM12 2a10 10 0 100 20 10 10 0 000-20z"></path></svg>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-emerald-700" data-lang-key="exp_adult_psychiatry_title">Stage en psychiatrie de l'adulte</h3>
-                            <p class="text-sm text-emerald-600" data-lang-key="exp_adult_psychiatry_org">Hôpital militaire d’Instruction Mohamed V - Rabat</p>
-                        </div>
-                    </div>
-                    <ul class="list-disc list-inside space-y-1 text-emerald-700 text-justify" data-lang-key="exp_adult_psychiatry_list">
-                        <li>Observation et participation aux consultations et séances de thérapie.</li>
-                        <li>Contribution aux réunions de service.</li>
-                    </ul>
+                <div class="bg-teal-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 fade-in-up" style="animation-delay: 400ms;">
+                    <div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-teal-100 text-emerald-600 rounded-full flex items-center justify-center mr-4"><i data-lucide="user-check" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-emerald-700" data-lang-key="exp_adult_psychiatry_title">Stage en psychiatrie de l'adulte</h3><p class="text-sm text-emerald-600" data-lang-key="exp_adult_psychiatry_org">Hôpital militaire d’Instruction Mohamed V - Rabat</p></div></div>
+                    <ul class="list-disc list-inside space-y-1 text-emerald-700 text-justify" data-lang-key="exp_adult_psychiatry_list"><li>Observation et participation aux consultations et séances de thérapie.</li><li>Contribution aux réunions de service.</li></ul>
                 </div>
-                <!-- Stage en pédopsychiatrie -->
-                <div class="bg-teal-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform transition-transform duration-300 hover:scale-105">
-                    <div class="flex items-start mb-4">
-                        <div class="flex-shrink-0 w-12 h-12 bg-teal-100 text-emerald-600 rounded-full flex items-center justify-center mr-4">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-pediatric-psychiatry"><title id="title-pediatric-psychiatry">Icône de pédopsychiatrie</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM21 21l-6-6"></path></svg>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-emerald-700" data-lang-key="exp_pediatric_psychiatry_title">Stage en pédopsychiatrie</h3>
-                            <p class="text-sm text-emerald-600" data-lang-key="exp_pediatric_psychiatry_org">Hôpital ARRAZI - Salé</p>
-                        </div>
-                    </div>
-                    <ul class="list-disc list-inside space-y-1 text-emerald-700 text-justify" data-lang-key="exp_pediatric_psychiatry_list">
-                        <li>Observation des entretiens cliniques et participation aux séances de thérapie.</li>
-                        <li>Analyse et observation des interactions parent-enfant.</li>
-                    </ul>
+                <div class="bg-teal-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 fade-in-up" style="animation-delay: 500ms;">
+                    <div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-teal-100 text-emerald-600 rounded-full flex items-center justify-center mr-4"><i data-lucide="baby" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-emerald-700" data-lang-key="exp_pediatric_psychiatry_title">Stage en pédopsychiatrie</h3><p class="text-sm text-emerald-600" data-lang-key="exp_pediatric_psychiatry_org">Hôpital ARRAZI - Salé</p></div></div>
+                    <ul class="list-disc list-inside space-y-1 text-emerald-700 text-justify" data-lang-key="exp_pediatric_psychiatry_list"><li>Observation des entretiens cliniques et participation aux séances de thérapie.</li><li>Analyse et observation des interactions parent-enfant.</li></ul>
                 </div>
             </div>
         </section>
 
-        <!-- Section Carrousel des photos -->
-        <section id="photos" class="mb-12">
-            <h2 class="text-2xl sm:text-3xl lg:text-3xl font-extrabold mb-6 text-center text-emerald-700 pb-2" data-lang-key="photos_title">Images</h2>
+        <section id="photos" class="mb-12 fade-in-up">
+            <h2 class="text-2xl sm:text-3xl font-extrabold mb-8 text-center text-emerald-700" data-lang-key="photos_title">Images</h2>
             <div class="carousel-container">
-                <div class="carousel-slide" id="carousel-slide">
-                    <!-- Les images seront ajoutées ici par JavaScript -->
-                </div>
-                <button class="carousel-button carousel-button-prev" aria-label="Image précédente">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-prev-arrow"><title id="title-prev-arrow">Flèche précédente</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                </button>
-                <button class="carousel-button carousel-button-next" aria-label="Image suivante">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-next-arrow"><title id="title-next-arrow">Flèche suivante</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                </button>
+                <div class="carousel-slide" id="carousel-slide"></div>
+                <button class="carousel-button carousel-button-prev" aria-label="Image précédente"><i data-lucide="chevron-left" class="w-6 h-6"></i></button>
+                <button class="carousel-button carousel-button-next" aria-label="Image suivante"><i data-lucide="chevron-right" class="w-6 h-6"></i></button>
                 <div class="carousel-dots" id="carousel-dots"></div>
             </div>
         </section>
 
-        <!-- Section de contact -->
         <section id="contact" class="text-center py-12 bg-gray-100 rounded-3xl shadow-inner">
-            <p class="text-center text-gray-600 italic mb-6" data-lang-key="contact_disclaimer">
-                La confidentialité et le respect de la vie privée constituent des principes fondamentaux de notre pratique. Toutes les informations partagées dans le cadre des échanges et consultations sont traitées avec la plus grande discrétion et protégées conformément aux standards éthiques et professionnels.
-            </p>
-            <p class="text-lg text-gray-600 font-bold mb-6 text-center" data-lang-key="contact_invitation">N'hésitez pas à me contacter pour toute opportunité de collaboration ou de consultation en ligne.</p>
+            <p class="text-center text-gray-600 italic mb-6 max-w-3xl mx-auto" data-lang-key="contact_disclaimer">La confidentialité et le respect de la vie privée constituent des principes fondamentaux de notre pratique. Toutes les informations partagées dans le cadre des échanges et consultations sont traitées avec la plus grande discrétion et protégées conformément aux standards éthiques et professionnels.</p>
+            <p class="text-lg text-gray-700 font-semibold mb-6 text-center" data-lang-key="contact_invitation">N'hésitez pas à me contacter pour toute opportunité de collaboration ou de consultation en ligne.</p>
             <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8">
-                <!-- Lien WhatsApp avec icône -->
-                <a href="https://wa.me/14384554137" class="flex items-center space-x-2 px-6 py-3 bg-green-500 text-white rounded-full font-medium hover:bg-green-600 transition-colors duration-300">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-whatsapp-icon"><title id="title-whatsapp-icon">Icône WhatsApp</title>
-                        <path d="M12.04 2C6.54 2 2 6.54 2 12.04c0 1.74.45 3.48 1.32 5.01L2 22l4.95-1.32c1.53.87 3.27 1.32 5.01 1.32C17.54 22 22 17.46 22 11.96 22 6.46 17.46 2 12.04 2zm3.17 14.94a1.05 1.05 0 01-1.35.48c-.6-.2-2.18-.87-3.95-2.52s-2.73-3.75-2.92-4.35a1.05 1.05 0 01.5-1.35l.93-.46c.15-.08.31-.13.48-.16l1.04-.26c.17-.04.34-.05.5.01.17.06.32.17.44.3a1.05 1.05 0 01.32.74c0 .2-.06.4-.18.57L11.75 12c.5.87.95 1.62 1.45 2.12s1.1.95 1.97 1.45L15.34 14c.18-.12.37-.18.57-.18.2 0 .39.06.56.18.17.12.28.28.34.45l.26 1.04c.06.17.05.34-.01.5-.06.17-.18.32-.3.44l-.46.93z" />
-                    </svg>
+                <a href="https://wa.me/14384554137" class="flex items-center space-x-3 px-6 py-3 bg-green-500 text-white rounded-full font-medium hover:bg-green-600 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-whatsapp-icon"><title id="title-whatsapp-icon">Icône WhatsApp</title><path d="M12.04 2C6.54 2 2 6.54 2 12.04c0 1.74.45 3.48 1.32 5.01L2 22l4.95-1.32c1.53.87 3.27 1.32 5.01 1.32C17.54 22 22 17.46 22 11.96 22 6.46 17.46 2 12.04 2zm3.17 14.94a1.05 1.05 0 01-1.35.48c-.6-.2-2.18-.87-3.95-2.52s-2.73-3.75-2.92-4.35a1.05 1.05 0 01.5-1.35l.93-.46c.15-.08.31-.13.48-.16l1.04-.26c.17-.04.34-.05.5.01.17.06.32.17.44.3a1.05 1.05 0 01.32.74c0 .2-.06.4-.18.57L11.75 12c.5.87.95 1.62 1.45 2.12s1.1.95 1.97 1.45L15.34 14c.18-.12.37-.18.57-.18.2 0 .39.06.56.18.17.12.28.28.34.45l.26 1.04c.06.17.05.34-.01.5-.06.17-.18.32-.3.44l-.46.93z" /></svg>
                     <span>+1 438 455 4137</span>
                 </a>
-                
-                <!-- Lien e-mail avec icône -->
-                <a href="mailto:brain.zoom@outlook.com" class="flex items-center space-x-2 px-6 py-3 bg-emerald-600 text-white rounded-full font-medium hover:bg-emerald-700 transition-colors duration-300">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-email-icon"><title id="title-email-icon">Icône e-mail</title>
-                        <path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" />
-                    </svg>
+                <a href="mailto:brain.zoom@outlook.com" class="flex items-center space-x-3 px-6 py-3 bg-emerald-600 text-white rounded-full font-medium hover:bg-emerald-700 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-email-icon"><title id="title-email-icon">Icône e-mail</title><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" /></svg>
                     <span>brain.zoom@outlook.com</span>
                 </a>
             </div>
         </section>
     </main>
     
-    <!-- Pied de page -->
     <footer class="bg-white py-4 mt-12 text-center text-gray-500 text-sm">
         <p data-lang-key="footer_copyright">© 2024 Yasmine AHAJOUI. Tous droits réservés.</p>
     </footer>
 
     <script>
-        let currentLanguage = 'fr'; // Default language
+        let currentLanguage = 'fr';
 
         document.addEventListener('DOMContentLoaded', () => {
-            // --- Elements Cache ---
             const screenshotOverlay = document.getElementById('screenshot-overlay');
             const menuButton = document.getElementById('menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
@@ -573,13 +288,10 @@
             const quizResultSection = document.getElementById('quiz-result');
             const startQuizButton = document.getElementById('start-quiz-button');
             
-            // --- Quiz Questions Data (MOVED TO TRANSLATIONS OBJECT) ---
-
             let currentQuestionIndex = 0;
             let score = 0;
             let selectedAnswer = null;
             
-            // --- Quiz Logic ---
             startQuizButton.addEventListener('click', () => {
                 quizStartSection.classList.add('hidden');
                 quizQuestionsSection.classList.remove('hidden');
@@ -606,14 +318,10 @@
                         <h4 class="text-xl sm:text-2xl font-semibold text-emerald-700 mb-8 text-center">${questionData.question}</h4>
                         <div class="grid grid-cols-1 md:grid-cols-1 gap-4 w-full">
                             ${questionData.answers.map((answer, index) => `
-                                <button class="quiz-option text-left" data-score="${answer.score}" data-index="${index}">
-                                    ${answer.text}
-                                </button>
+                                <button class="quiz-option text-left" data-score="${answer.score}" data-index="${index}">${answer.text}</button>
                             `).join('')}
                         </div>
-                        <button id="next-button" class="quiz-button mt-8 w-full max-w-xs" disabled>
-                            ${quizData.next_button}
-                        </button>
+                        <button id="next-button" class="quiz-button mt-8 w-full max-w-xs" disabled>${quizData.next_button}</button>
                     </div>
                 `;
                 
@@ -653,54 +361,26 @@
                 `;
             }
 
-            // --- Security / Anti-Copy ---
+            // --- Sécurité Anti-Copie ---
             document.body.style.userSelect = 'none';
             document.addEventListener('contextmenu', event => event.preventDefault());
-            document.addEventListener('keydown', event => {
-                if ((event.ctrlKey || event.metaKey) && ['c', 'x', 'a'].includes(event.key.toLowerCase())) {
-                    event.preventDefault();
-                }
-            });
+            document.addEventListener('keydown', event => { if ((event.ctrlKey || event.metaKey) && ['c', 'x', 'a', 's', 'p'].includes(event.key.toLowerCase())) { event.preventDefault(); } });
             window.addEventListener('blur', () => screenshotOverlay.classList.add('visible'));
             window.addEventListener('focus', () => screenshotOverlay.classList.remove('visible'));
-            document.addEventListener('keyup', (e) => {
-                if (e.key === 'PrintScreen') {
-                    screenshotOverlay.classList.add('visible');
-                    setTimeout(() => screenshotOverlay.classList.remove('visible'), 1000);
-                }
-            });
+            document.addEventListener('keyup', (e) => { if (e.key === 'PrintScreen') { screenshotOverlay.classList.add('visible'); setTimeout(() => screenshotOverlay.classList.remove('visible'), 1000); } });
 
-            // --- Menu Logic ---
+            // --- Menu Mobile ---
             const toggleMobileMenu = () => mobileMenu.classList.toggle('hidden');
             menuButton.addEventListener('click', toggleMobileMenu);
-            mobileMenu.addEventListener('click', (e) => {
-                if (e.target.tagName === 'A') {
-                    toggleMobileMenu();
-                }
-            });
+            mobileMenu.addEventListener('click', (e) => { if (e.target.tagName === 'A') { toggleMobileMenu(); } });
 
-            // --- Language Switcher Logic ---
+            // --- Sélecteur de langue ---
             const toggleLanguageDropdown = () => languageDropdown.classList.toggle('hidden');
-            languageButton.addEventListener('click', (e) => {
-                e.stopPropagation();
-                toggleLanguageDropdown();
-            });
-            document.querySelectorAll('.language-item').forEach(item => {
-                item.addEventListener('click', (e) => {
-                    const lang = e.currentTarget.getAttribute('data-lang');
-                    switchLanguage(lang);
-                    toggleLanguageDropdown();
-                });
-            });
+            languageButton.addEventListener('click', (e) => { e.stopPropagation(); toggleLanguageDropdown(); });
+            document.querySelectorAll('.language-item').forEach(item => { item.addEventListener('click', (e) => { const lang = e.currentTarget.getAttribute('data-lang'); switchLanguage(lang); toggleLanguageDropdown(); }); });
+            document.addEventListener('click', (e) => { if (!languageButton.contains(e.target) && !languageDropdown.classList.contains('hidden')) { toggleLanguageDropdown(); } });
 
-            // --- Global Click Listener to close menus ---
-            document.addEventListener('click', (e) => {
-                if (!languageButton.contains(e.target) && !languageDropdown.classList.contains('hidden')) {
-                    toggleLanguageDropdown();
-                }
-            });
-
-            // --- Carousel Logic ---
+            // --- Logique du Carrousel ---
             const images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg'];
             let currentIndex = 0;
 
@@ -714,7 +394,6 @@
                     img.loading = 'lazy';
                     img.decoding = 'async';
                     carouselSlide.appendChild(img);
-
                     const dot = document.createElement('div');
                     dot.classList.add('carousel-dot');
                     dot.setAttribute('aria-label', `Aller à l'image ${index + 1}`);
@@ -724,37 +403,30 @@
                 updateCarousel();
             }
 
-            function updateCarousel() {
-                if(carouselSlide.clientWidth > 0){
-                    carouselSlide.style.transform = `translateX(${-currentIndex * carouselSlide.clientWidth}px)`;
-                }
-                document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentIndex);
-                });
-            }
-
-            function moveToSlide(index) {
-                currentIndex = index;
-                updateCarousel();
-            }
-
-            prevButton.addEventListener('click', () => {
-                currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
-                updateCarousel();
-            });
-
-            nextButton.addEventListener('click', () => {
-                currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
-                updateCarousel();
-            });
-
+            function updateCarousel() { if(carouselSlide.clientWidth > 0){ carouselSlide.style.transform = `translateX(${-currentIndex * carouselSlide.clientWidth}px)`; } document.querySelectorAll('.carousel-dot').forEach((dot, index) => { dot.classList.toggle('active', index === currentIndex); }); }
+            function moveToSlide(index) { currentIndex = index; updateCarousel(); }
+            prevButton.addEventListener('click', () => { currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1; updateCarousel(); });
+            nextButton.addEventListener('click', () => { currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0; updateCarousel(); });
             let resizeTimer;
-            window.addEventListener('resize', () => {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(updateCarousel, 250);
-            });
-
+            window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(updateCarousel, 250); });
             createCarousel();
+
+            // --- Animation au défilement ---
+            const animatedElements = document.querySelectorAll('.fade-in-up');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            animatedElements.forEach(el => observer.observe(el));
+            
+            // --- Initialisation des icônes et de la langue ---
+            lucide.createIcons();
+            const userLang = navigator.language.substring(0, 2);
+            const initialLang = translations[userLang] ? userLang : 'fr';
+            switchLanguage(initialLang);
         });
 
         const translations = {
@@ -774,71 +446,8 @@
                 quiz_start_button: "Commencer le quiz",
                 quiz: {
                     next_button: "Suivant",
-                    questions: [
-                        {
-                            question: "Lorsque vous ressentez une forte émotion (colère, tristesse), comment réagissez-vous la plupart du temps ?",
-                            answers: [
-                                { text: "Je l'ignore en espérant qu'elle disparaisse.", score: 0 },
-                                { text: "Je la reconnais, j'essaie de comprendre d'où elle vient, puis j'agis calmement.", score: 1 },
-                                { text: "Je la laisse me submerger et j'agis de manière impulsive.", score: 0 }
-                            ]
-                        },
-                        {
-                            question: "Un ami proche vous confie ses soucis. Quelle est votre première réaction ?",
-                            answers: [
-                                { text: "Je lui donne des conseils et des solutions directes pour résoudre son problème.", score: 0 },
-                                { text: "Je l'écoute attentivement, sans jugement, et j'essaie de me mettre à sa place.", score: 1 },
-                                { text: "Je change de sujet car les émotions intenses me mettent mal à l'aise.", score: 0 }
-                            ]
-                        },
-                        {
-                            question: "Vous faites face à un revers inattendu au travail ou dans votre vie personnelle. Comment vous adaptez-vous ?",
-                            answers: [
-                                { text: "Je me sens dépassé et je me concentre sur l'échec.", score: 0 },
-                                { text: "Je prends du recul, j'évalue la situation et cherche une nouvelle approche.", score: 1 },
-                                { text: "Je minimise le problème et fais comme s'il n'existait pas.", score: 0 }
-                            ]
-                        },
-                        {
-                            question: "Comment gérez-vous le stress au quotidien ?",
-                            answers: [
-                                { text: "En me plaignant ou en me sentant impuissant face aux événements.", score: 0 },
-                                { text: "En pratiquant des activités relaxantes (méditation, sport, etc.) et en acceptant que le stress fait partie de la vie.", score: 1 },
-                                { text: "En travaillant encore plus dur, jusqu'à l'épuisement.", score: 0 }
-                            ]
-                        },
-                        {
-                            question: "Un commentaire d'un proche vous blesse. Que faites-vous ?",
-                            answers: [
-                                { text: "J'en fais une affaire personnelle et je rumine pendant des jours.", score: 0 },
-                                { text: "J'exprime calmement mon ressenti et j'essaie de comprendre la perspective de l'autre.", score: 1 },
-                                { text: "Je me fâche et je réponds de manière agressive.", score: 0 }
-                            ]
-                        }
-                    ],
-                    results: [
-                        {
-                            minScore: 0,
-                            maxScore: 1,
-                            title: "Votre boussole émotionnelle est en recherche de signal.",
-                            text: "Votre quiz montre que la gestion de vos émotions peut être un défi. Beaucoup de personnes se sentent de cette façon. Le chemin vers un meilleur équilibre commence par un simple pas : prendre conscience de ses émotions. Un professionnel peut vous aider à identifier vos défis et vous donner des outils pratiques pour y faire face et retrouver votre bien-être.",
-                            cta: "Découvrir comment je peux vous aider"
-                        },
-                        {
-                            minScore: 2,
-                            maxScore: 3,
-                            title: "Vous avez une bonne base, mais il y a de la place pour la croissance !",
-                            text: "Votre quiz indique que vous avez déjà une bonne conscience de vos émotions, mais que vous pourriez bénéficier de stratégies supplémentaires pour les gérer plus efficacement. De petits ajustements peuvent faire une grande différence. Un psychologue peut vous accompagner pour perfectionner ces compétences et vous aider à vous sentir plus confiant dans votre vie quotidienne.",
-                            cta: "Améliorer votre bien-être"
-                        },
-                        {
-                            minScore: 4,
-                            maxScore: 5,
-                            title: "Vous êtes en parfaite harmonie avec vos émotions !",
-                            text: "Félicitations ! Vos réponses démontrent une grande intelligence émotionnelle. Vous êtes capable de reconnaître et de gérer vos émotions de manière saine et constructive. Vous êtes résilient face aux défis et vous maintenez un bon équilibre dans votre vie. Continuez sur cette belle lancée !",
-                            cta: "Continuez à vous épanouir"
-                        }
-                    ]
+                    questions: [{question: "Lorsque vous ressentez une forte émotion (colère, tristesse), comment réagissez-vous la plupart du temps ?",answers: [{ text: "Je l'ignore en espérant qu'elle disparaisse.", score: 0 },{ text: "Je la reconnais, j'essaie de comprendre d'où elle vient, puis j'agis calmement.", score: 1 },{ text: "Je la laisse me submerger et j'agis de manière impulsive.", score: 0 }]},{question: "Un ami proche vous confie ses soucis. Quelle est votre première réaction ?",answers: [{ text: "Je lui donne des conseils et des solutions directes pour résoudre son problème.", score: 0 },{ text: "Je l'écoute attentivement, sans jugement, et j'essaie de me mettre à sa place.", score: 1 },{ text: "Je change de sujet car les émotions intenses me mettent mal à l'aise.", score: 0 }]},{question: "Vous faites face à un revers inattendu au travail ou dans votre vie personnelle. Comment vous adaptez-vous ?",answers: [{ text: "Je me sens dépassé et je me concentre sur l'échec.", score: 0 },{ text: "Je prends du recul, j'évalue la situation et cherche une nouvelle approche.", score: 1 },{ text: "Je minimise le problème et fais comme s'il n'existait pas.", score: 0 }]},{question: "Comment gérez-vous le stress au quotidien ?",answers: [{ text: "En me plaignant ou en me sentant impuissant face aux événements.", score: 0 },{ text: "En pratiquant des activités relaxantes (méditation, sport, etc.) et en acceptant que le stress fait partie de la vie.", score: 1 },{ text: "En travaillant encore plus dur, jusqu'à l'épuisement.", score: 0 }]},{question: "Un commentaire d'un proche vous blesse. Que faites-vous ?",answers: [{ text: "J'en fais une affaire personnelle et je rumine pendant des jours.", score: 0 },{ text: "J'exprime calmement mon ressenti et j'essaie de comprendre la perspective de l'autre.", score: 1 },{ text: "Je me fâche et je réponds de manière agressive.", score: 0 }]}],
+                    results: [{minScore: 0, maxScore: 1, title: "Votre boussole émotionnelle est en recherche de signal.", text: "Votre quiz montre que la gestion de vos émotions peut être un défi. Beaucoup de personnes se sentent de cette façon. Le chemin vers un meilleur équilibre commence par un simple pas : prendre conscience de ses émotions. Un professionnel peut vous aider à identifier vos défis et vous donner des outils pratiques pour y faire face et retrouver votre bien-être.", cta: "Découvrir comment je peux vous aider"},{minScore: 2, maxScore: 3, title: "Vous avez une bonne base, mais il y a de la place pour la croissance !", text: "Votre quiz indique que vous avez déjà une bonne conscience de vos émotions, mais que vous pourriez bénéficier de stratégies supplémentaires pour les gérer plus efficacement. De petits ajustements peuvent faire une grande différence. Un psychologue peut vous accompagner pour perfectionner ces compétences et vous aider à vous sentir plus confiant dans votre vie quotidienne.", cta: "Améliorer votre bien-être"},{minScore: 4, maxScore: 5, title: "Vous êtes en parfaite harmonie avec vos émotions !", text: "Félicitations ! Vos réponses démontrent une grande intelligence émotionnelle. Vous êtes capable de reconnaître et de gérer vos émotions de manière saine et constructive. Vous êtes résilient face aux défis et vous maintenez un bon équilibre dans votre vie. Continuez sur cette belle lancée !", cta: "Continuez à vous épanouir"}]
                 },
                 skills_title: "Pratique",
                 skill_program_design_title: "Conception de programmes",
@@ -893,71 +502,8 @@
                 quiz_start_button: "Start the quiz",
                 quiz: {
                     next_button: "Next",
-                    questions: [
-                        {
-                            question: "When you feel a strong emotion (anger, sadness), how do you usually react?",
-                            answers: [
-                                { text: "I ignore it, hoping it will go away.", score: 0 },
-                                { text: "I acknowledge it, try to understand where it comes from, and then act calmly.", score: 1 },
-                                { text: "I let it overwhelm me and act impulsively.", score: 0 }
-                            ]
-                        },
-                        {
-                            question: "A close friend confides in you about their problems. What is your first reaction?",
-                            answers: [
-                                { text: "I give them direct advice and solutions to solve their problem.", score: 0 },
-                                { text: "I listen to them attentively, without judgment, and try to put myself in their shoes.", score: 1 },
-                                { text: "I change the subject because intense emotions make me uncomfortable.", score: 0 }
-                            ]
-                        },
-                        {
-                            question: "You face an unexpected setback at work or in your personal life. How do you adapt?",
-                            answers: [
-                                { text: "I feel overwhelmed and focus on the failure.", score: 0 },
-                                { text: "I take a step back, assess the situation, and look for a new approach.", score: 1 },
-                                { text: "I downplay the problem and pretend it doesn't exist.", score: 0 }
-                            ]
-                        },
-                        {
-                            question: "How do you manage daily stress?",
-                            answers: [
-                                { text: "By complaining or feeling powerless about events.", score: 0 },
-                                { text: "By practicing relaxing activities (meditation, sports, etc.) and accepting that stress is part of life.", score: 1 },
-                                { text: "By working even harder, to the point of exhaustion.", score: 0 }
-                            ]
-                        },
-                        {
-                            question: "A comment from a loved one hurts you. What do you do?",
-                            answers: [
-                                { text: "I take it personally and dwell on it for days.", score: 0 },
-                                { text: "I calmly express my feelings and try to understand the other person's perspective.", score: 1 },
-                                { text: "I get angry and respond aggressively.", score: 0 }
-                            ]
-                        }
-                    ],
-                    results: [
-                        {
-                            minScore: 0,
-                            maxScore: 1,
-                            title: "Your emotional compass is searching for a signal.",
-                            text: "Your quiz shows that managing your emotions can be a challenge. Many people feel this way. The path to better balance begins with a simple step: becoming aware of your emotions. A professional can help you identify your challenges and give you practical tools to cope and regain your well-being.",
-                            cta: "Discover how I can help you"
-                        },
-                        {
-                            minScore: 2,
-                            maxScore: 3,
-                            title: "You have a good foundation, but there's room for growth!",
-                            text: "Your quiz indicates that you already have good emotional awareness, but you could benefit from additional strategies to manage them more effectively. Small adjustments can make a big difference. A psychologist can guide you in refining these skills and help you feel more confident in your daily life.",
-                            cta: "Improve your well-being"
-                        },
-                        {
-                            minScore: 4,
-                            maxScore: 5,
-                            title: "You are in perfect harmony with your emotions!",
-                            text: "Congratulations! Your answers show great emotional intelligence. You are able to recognize and manage your emotions in a healthy and constructive way. You are resilient in the face of challenges and maintain a good balance in your life. Keep up the great work!",
-                            cta: "Continue to thrive"
-                        }
-                    ]
+                    questions: [{question: "When you feel a strong emotion (anger, sadness), how do you usually react?",answers: [{ text: "I ignore it, hoping it will go away.", score: 0 },{ text: "I acknowledge it, try to understand where it comes from, and then act calmly.", score: 1 },{ text: "I let it overwhelm me and act impulsively.", score: 0 }]},{question: "A close friend confides in you about their problems. What is your first reaction?",answers: [{ text: "I give them direct advice and solutions to solve their problem.", score: 0 },{ text: "I listen to them attentively, without judgment, and try to put myself in their shoes.", score: 1 },{ text: "I change the subject because intense emotions make me uncomfortable.", score: 0 }]},{question: "You face an unexpected setback at work or in your personal life. How do you adapt?",answers: [{ text: "I feel overwhelmed and focus on the failure.", score: 0 },{ text: "I take a step back, assess the situation, and look for a new approach.", score: 1 },{ text: "I downplay the problem and pretend it doesn't exist.", score: 0 }]},{question: "How do you manage daily stress?",answers: [{ text: "By complaining or feeling powerless about events.", score: 0 },{ text: "By practicing relaxing activities (meditation, sports, etc.) and accepting that stress is part of life.", score: 1 },{ text: "By working even harder, to the point of exhaustion.", score: 0 }]},{question: "A comment from a loved one hurts you. What do you do?",answers: [{ text: "I take it personally and dwell on it for days.", score: 0 },{ text: "I calmly express my feelings and try to understand the other person's perspective.", score: 1 },{ text: "I get angry and respond aggressively.", score: 0 }]}],
+                    results: [{minScore: 0,maxScore: 1,title: "Your emotional compass is searching for a signal.",text: "Your quiz shows that managing your emotions can be a challenge. Many people feel this way. The path to better balance begins with a simple step: becoming aware of your emotions. A professional can help you identify your challenges and give you practical tools to cope and regain your well-being.",cta: "Discover how I can help you"},{minScore: 2,maxScore: 3,title: "You have a good foundation, but there's room for growth!",text: "Your quiz indicates that you already have good emotional awareness, but you could benefit from additional strategies to manage them more effectively. Small adjustments can make a big difference. A psychologist can guide you in refining these skills and help you feel more confident in your daily life.",cta: "Improve your well-being"},{minScore: 4,maxScore: 5,title: "You are in perfect harmony with your emotions!",text: "Congratulations! Your answers show great emotional intelligence. You are able to recognize and manage your emotions in a healthy and constructive way. You are resilient in the face of challenges and maintain a good balance in your life. Keep up the great work!",cta: "Continue to thrive"}]
                 },
                 skills_title: "Practice",
                 skill_program_design_title: "Program Design",
@@ -1012,71 +558,8 @@
                 quiz_start_button: "ابدأ الاختبار",
                 quiz: {
                     next_button: "التالي",
-                    questions: [
-                        {
-                            question: "عندما تشعر بعاطفة قوية (غضب، حزن)، كيف تتصرف عادة؟",
-                            answers: [
-                                { text: "أتجاهلها على أمل أن تختفي.", score: 0 },
-                                { text: "أعترف بها، وأحاول أن أفهم مصدرها، ثم أتصرف بهدوء.", score: 1 },
-                                { text: "أدعها تسيطر علي وأتصرف باندفاع.", score: 0 }
-                            ]
-                        },
-                        {
-                            question: "صديق مقرب يشاركك همومه. ما هو رد فعلك الأول؟",
-                            answers: [
-                                { text: "أقدم له نصائح وحلول مباشرة لمشكلته.", score: 0 },
-                                { text: "أستمع إليه باهتمام، دون حكم، وأحاول أن أضع نفسي مكانه.", score: 1 },
-                                { text: "أغير الموضوع لأن المشاعر القوية تزعجني.", score: 0 }
-                            ]
-                        },
-                        {
-                            question: "تواجه نكسة غير متوقعة في العمل أو في حياتك الشخصية. كيف تتكيف؟",
-                            answers: [
-                                { text: "أشعر بالإرهاق وأركز على الفشل.", score: 0 },
-                                { text: "آخذ خطوة للوراء، أقيم الوضع، وأبحث عن نهج جديد.", score: 1 },
-                                { text: "أقلل من شأن المشكلة وأتصرف كأنها غير موجودة.", score: 0 }
-                            ]
-                        },
-                        {
-                            question: "كيف تتعامل مع التوتر اليومي؟",
-                            answers: [
-                                { text: "بالشكوى أو الشعور بالعجز أمام الأحداث.", score: 0 },
-                                { text: "بممارسة أنشطة مريحة (تأمل، رياضة، إلخ) وقبول أن التوتر جزء من الحياة.", score: 1 },
-                                { text: "بالعمل بجد أكبر، حتى الإرهاق.", score: 0 }
-                            ]
-                        },
-                        {
-                            question: "تعليق من شخص عزيز يجرحك. ماذا تفعل؟",
-                            answers: [
-                                { text: "آخذ الأمر على محمل شخصي وأفكر فيه لأيام.", score: 0 },
-                                { text: "أعبر عن مشاعري بهدوء وأحاول فهم وجهة نظر الآخر.", score: 1 },
-                                { text: "أغضب وأرد بعدوانية.", score: 0 }
-                            ]
-                        }
-                    ],
-                    results: [
-                        {
-                            minScore: 0,
-                            maxScore: 1,
-                            title: "بوصلتك العاطفية تبحث عن إشارة.",
-                            text: "يُظهر اختبارك أن إدارة عواطفك قد تكون تحديًا. يشعر الكثير من الناس بهذه الطريقة. يبدأ الطريق نحو توازن أفضل بخطوة بسيطة: الوعي بمشاعرك. يمكن للمختص مساعدتك في تحديد تحدياتك ومنحك أدوات عملية للتعامل معها واستعادة رفاهيتك.",
-                            cta: "اكتشف كيف يمكنني مساعدتك"
-                        },
-                        {
-                            minScore: 2,
-                            maxScore: 3,
-                            title: "لديك أساس جيد، ولكن هناك مجال للنمو!",
-                            text: "يشير اختبارك إلى أن لديك بالفعل وعيًا جيدًا بمشاعرك، ولكنك قد تستفيد من استراتيجيات إضافية لإدارتها بفعالية أكبر. يمكن أن تحدث التعديلات الصغيرة فرقًا كبيرًا. يمكن للأخصائي النفسي إرشادك لتحسين هذه المهارات ومساعدتك على الشعور بثقة أكبر في حياتك اليومية.",
-                            cta: "تحسين رفاهيتك"
-                        },
-                        {
-                            minScore: 4,
-                            maxScore: 5,
-                            title: "أنت في وئام تام مع مشاعرك!",
-                            text: "تهانينا! تُظهر إجاباتك ذكاءً عاطفيًا كبيرًا. أنت قادر على التعرف على مشاعرك وإدارتها بطريقة صحية وبناءة. أنت مرن في مواجهة التحديات وتحافظ على توازن جيد في حياتك. استمر في هذا العمل الرائع!",
-                            cta: "استمر في التطور"
-                        }
-                    ]
+                    questions: [{question: "عندما تشعر بعاطفة قوية (غضب، حزن)، كيف تتصرف عادة؟",answers: [{ text: "أتجاهلها على أمل أن تختفي.", score: 0 },{ text: "أعترف بها، وأحاول أن أفهم مصدرها، ثم أتصرف بهدوء.", score: 1 },{ text: "أدعها تسيطر علي وأتصرف باندفاع.", score: 0 }]},{question: "صديق مقرب يشاركك همومه. ما هو رد فعلك الأول؟",answers: [{ text: "أقدم له نصائح وحلول مباشرة لمشكلته.", score: 0 },{ text: "أستمع إليه باهتمام، دون حكم، وأحاول أن أضع نفسي مكانه.", score: 1 },{ text: "أغير الموضوع لأن المشاعر القوية تزعجني.", score: 0 }]},{question: "تواجه نكسة غير متوقعة في العمل أو في حياتك الشخصية. كيف تتكيف؟",answers: [{ text: "أشعر بالإرهاق وأركز على الفشل.", score: 0 },{ text: "آخذ خطوة للوراء، أقيم الوضع، وأبحث عن نهج جديد.", score: 1 },{ text: "أقلل من شأن المشكلة وأتصرف كأنها غير موجودة.", score: 0 }]},{question: "كيف تتعامل مع التوتر اليومي؟",answers: [{ text: "بالشكوى أو الشعور بالعجز أمام الأحداث.", score: 0 },{ text: "بممارسة أنشطة مريحة (تأمل، رياضة، إلخ) وقبول أن التوتر جزء من الحياة.", score: 1 },{ text: "بالعمل بجد أكبر، حتى الإرهاق.", score: 0 }]},{question: "تعليق من شخص عزيز يجرحك. ماذا تفعل؟",answers: [{ text: "آخذ الأمر على محمل شخصي وأفكر فيه لأيام.", score: 0 },{ text: "أعبر عن مشاعري بهدوء وأحاول فهم وجهة نظر الآخر.", score: 1 },{ text: "أغضب وأرد بعدوانية.", score: 0 }]}],
+                    results: [{minScore: 0,maxScore: 1,title: "بوصلتك العاطفية تبحث عن إشارة.",text: "يُظهر اختبارك أن إدارة عواطفك قد تكون تحديًا. يشعر الكثير من الناس بهذه الطريقة. يبدأ الطريق نحو توازن أفضل بخطوة بسيطة: الوعي بمشاعرك. يمكن للمختص مساعدتك في تحديد تحدياتك ومنحك أدوات عملية للتعامل معها واستعادة رفاهيتك.",cta: "اكتشف كيف يمكنني مساعدتك"},{minScore: 2,maxScore: 3,title: "لديك أساس جيد، ولكن هناك مجال للنمو!",text: "يشير اختبارك إلى أن لديك بالفعل وعيًا جيدًا بمشاعرك، ولكنك قد تستفيد من استراتيجيات إضافية لإدارتها بفعالية أكبر. يمكن أن تحدث التعديلات الصغيرة فرقًا كبيرًا. يمكن للأخصائي النفسي إرشادك لتحسين هذه المهارات ومساعدتك على الشعور بثقة أكبر في حياتك اليومية.",cta: "تحسين رفاهيتك"},{minScore: 4,maxScore: 5,title: "أنت في وئام تام مع مشاعرك!",text: "تهانينا! تُظهر إجاباتك ذكاءً عاطفيًا كبيرًا. أنت قادر على التعرف على مشاعرك وإدارتها بطريقة صحية وبناءة. أنت مرن في مواجهة التحديات وتحافظ على توازن جيد في حياتك. استمر في هذا العمل الرائع!",cta: "استمر في التطور"}]
                 },
                 skills_title: "الممارسة",
                 skill_program_design_title: "تصميم البرامج",
@@ -1120,37 +603,28 @@
         function switchLanguage(lang) {
             currentLanguage = lang;
             document.documentElement.lang = lang;
+            // Ne pas ajouter dir="rtl" pour l'arabe
+            document.documentElement.dir = '';
+            
             document.title = translations[lang].meta_title;
             document.querySelector('meta[name="description"]').setAttribute('content', translations[lang].meta_description);
 
             document.querySelectorAll('[data-lang-key]').forEach(element => {
                 const key = element.getAttribute('data-lang-key');
-                if (translations[lang][key]) {
-                    element.innerHTML = translations[lang][key];
-                }
+                if (translations[lang][key]) { element.innerHTML = translations[lang][key]; }
             });
 
-            // Reset quiz view to start when language changes
             document.getElementById('quiz-start').classList.remove('hidden');
             document.getElementById('quiz-questions').classList.add('hidden');
             document.getElementById('quiz-result').classList.add('hidden');
             
             const currentFlag = document.getElementById('current-flag');
-            const flagMap = {
-                fr: 'https://flagcdn.com/w160/fr.png',
-                en: 'https://flagcdn.com/w160/gb.png',
-                ar: 'https://flagcdn.com/w160/ma.png'
-            };
+            const flagMap = { fr: 'https://flagcdn.com/w160/fr.png', en: 'https://flagcdn.com/w160/gb.png', ar: 'https://flagcdn.com/w160/ma.png' };
             currentFlag.src = flagMap[lang];
+            
+            // Recréer les icônes après le changement de langue pour s'assurer qu'elles s'affichent correctement
+            lucide.createIcons();
         }
-        
-        // --- Init ---
-        const userLang = navigator.language.substring(0, 2);
-        const initialLang = translations[userLang] ? userLang : 'fr';
-        switchLanguage(initialLang);
-
     </script>
 </body>
 </html>
-
-
