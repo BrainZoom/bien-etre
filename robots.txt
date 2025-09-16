@@ -1,11 +1,8 @@
+Instructions pour tous les robots d'exploration (Google, Bing, etc.)
 User-agent: *
-Allow: /
-Crawl-delay: 10
 
-Sitemap: https://www.google.com/url?sa=E&source=gmail&q=https://brainzoom.github.io/bien-etre/sitemap.xml
+Autoriser l'accès à l'ensemble du site.
+Disallow:
 
-User-agent: Googlebot
-Crawl-delay: 5
-
-User-agent: bingbot
-Crawl-delay: 5
+Emplacement du plan du site (Sitemap).
+Sitemap: https://www.google.com/search?q=https://www.brainzoom.ma/sitemap.xml
