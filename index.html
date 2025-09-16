@@ -77,19 +77,6 @@
         body { font-family: 'Inter', sans-serif; background-color: var(--background); color: var(--text-primary); }
         .section-title { color: var(--brand-primary); }
         
-        /* Styles du carrousel */
-        .carousel-container { position: relative; overflow: hidden; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05); max-width: 600px; margin-left: auto; margin-right: auto; }
-        .carousel-slide { display: flex; transition: transform 0.5s ease-in-out; }
-        .carousel-slide img { width: 100%; flex-shrink: 0; object-fit: cover; aspect-ratio: 16 / 9; display: block; }
-        .carousel-button { position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(30, 41, 59, 0.5); color: white; border: none; padding: 0.5rem; cursor: pointer; z-index: 10; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background-color 0.3s; }
-        .carousel-button:hover { background-color: rgba(30, 41, 59, 0.7); }
-        .carousel-button-prev { left: 0.75rem; }
-        .carousel-button-next { right: 0.75rem; }
-        .carousel-dots { position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%); display: flex; gap: 0.5rem; }
-        .carousel-dot { width: 10px; height: 10px; background-color: rgba(255, 255, 255, 0.5); border-radius: 50%; cursor: pointer; transition: all 0.3s ease; }
-        .carousel-dot.active { background-color: white; transform: scale(1.2); }
-        @media (max-width: 640px) { .carousel-slide img { aspect-ratio: 4 / 3; } }
-
         /* Protection de contenu */
         #screenshot-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(240, 244, 250, 0.95); backdrop-filter: blur(8px); color: var(--text-secondary); display: none; justify-content: center; align-items: center; text-align: center; font-size: 1.5rem; font-weight: bold; z-index: 1000; }
         #screenshot-overlay.visible { display: flex; }
@@ -270,13 +257,45 @@
             </div>
         </section>
 
-        <section id="photos" class="mb-20 fade-in-up">
-            <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 text-center section-title" data-lang-key="photos_title">Images</h2>
-            <div class="carousel-container">
-                <div class="carousel-slide" id="carousel-slide"></div>
-                <button class="carousel-button carousel-button-prev" aria-label="Image précédente"><i data-lucide="chevron-left" class="w-6 h-6"></i></button>
-                <button class="carousel-button carousel-button-next" aria-label="Image suivante"><i data-lucide="chevron-right" class="w-6 h-6"></i></button>
-                <div class="carousel-dots" id="carousel-dots"></div>
+        <section id="gallery" class="mb-20 fade-in-up">
+            <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 text-center section-title" data-lang-key="gallery_title">Galerie</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Image 1 -->
+                <div class="bg-white p-4 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="group relative block w-full h-64 rounded-xl overflow-hidden">
+                        <img src="1.jpg" alt="Activité 1" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out">
+                    </div>
+                </div>
+                 <!-- Image 2 -->
+                <div class="bg-white p-4 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="group relative block w-full h-64 rounded-xl overflow-hidden">
+                        <img src="2.jpg" alt="Activité 2" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out">
+                    </div>
+                </div>
+                 <!-- Image 3 -->
+                <div class="bg-white p-4 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="group relative block w-full h-64 rounded-xl overflow-hidden">
+                        <img src="3.jpg" alt="Activité 3" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out">
+                    </div>
+                </div>
+                 <!-- Image 4 -->
+                <div class="bg-white p-4 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="group relative block w-full h-64 rounded-xl overflow-hidden">
+                        <img src="4.jpg" alt="Activité 4" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out">
+                    </div>
+                </div>
+                 <!-- Image 5 -->
+                <div class="bg-white p-4 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="group relative block w-full h-64 rounded-xl overflow-hidden">
+                        <img src="5.jpg" alt="Activité 5" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out">
+                    </div>
+                </div>
+                 <!-- Image 6 -->
+                <div class="bg-white p-4 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="group relative block w-full h-64 rounded-xl overflow-hidden">
+                        <img src="6.jpg" alt="Activité 6" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out">
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -311,10 +330,6 @@
             const mobileMenu = document.getElementById('mobile-menu');
             const languageButton = document.getElementById('language-button');
             const languageDropdown = document.getElementById('language-dropdown');
-            const carouselSlide = document.getElementById('carousel-slide');
-            const prevButton = document.querySelector('.carousel-button-prev');
-            const nextButton = document.querySelector('.carousel-button-next');
-            const dotsContainer = document.getElementById('carousel-dots');
             const quizStartSection = document.getElementById('quiz-start');
             const quizQuestionsSection = document.getElementById('quiz-questions');
             const quizResultSection = document.getElementById('quiz-result');
@@ -412,37 +427,6 @@
             document.querySelectorAll('.language-item').forEach(item => { item.addEventListener('click', (e) => { const lang = e.currentTarget.getAttribute('data-lang'); switchLanguage(lang); toggleLanguageDropdown(); }); });
             document.addEventListener('click', (e) => { if (!languageButton.contains(e.target) && !languageDropdown.classList.contains('hidden')) { toggleLanguageDropdown(); } });
 
-            // --- Logique du Carrousel ---
-            const images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg'];
-            let currentIndex = 0;
-
-            function createCarousel() {
-                carouselSlide.innerHTML = '';
-                dotsContainer.innerHTML = '';
-                images.forEach((src, index) => {
-                    const img = document.createElement('img');
-                    img.src = src;
-                    img.alt = `Photo de l'activité de Yasmine Ahajoui ${index + 1}`;
-                    img.loading = 'lazy';
-                    img.decoding = 'async';
-                    carouselSlide.appendChild(img);
-                    const dot = document.createElement('div');
-                    dot.classList.add('carousel-dot');
-                    dot.setAttribute('aria-label', `Aller à l'image ${index + 1}`);
-                    dot.addEventListener('click', () => moveToSlide(index));
-                    dotsContainer.appendChild(dot);
-                });
-                updateCarousel();
-            }
-
-            function updateCarousel() { if(carouselSlide.clientWidth > 0){ carouselSlide.style.transform = `translateX(${-currentIndex * carouselSlide.clientWidth}px)`; } document.querySelectorAll('.carousel-dot').forEach((dot, index) => { dot.classList.toggle('active', index === currentIndex); }); }
-            function moveToSlide(index) { currentIndex = index; updateCarousel(); }
-            prevButton.addEventListener('click', () => { currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1; updateCarousel(); });
-            nextButton.addEventListener('click', () => { currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0; updateCarousel(); });
-            let resizeTimer;
-            window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(updateCarousel, 250); });
-            createCarousel();
-
             // --- Animation au défilement ---
             const animatedElements = document.querySelectorAll('.fade-in-up');
             const observer = new IntersectionObserver((entries) => {
@@ -516,7 +500,13 @@
                 approach_centered_text: "Notre collaboration est au cœur du processus. Je vous offre un espace d'écoute sécuritaire, empathique et sans jugement, où vous êtes l'expert(e) de votre propre vie.",
                 approach_solutions_title: "Orientée vers les Solutions",
                 approach_solutions_text: "Tout en explorant les racines des difficultés, nous nous concentrons sur le développement de stratégies concrètes pour favoriser votre autonomie et votre bien-être au quotidien.",
-                photos_title: "Images",
+                gallery_title: "Galerie",
+                gallery_caption_1: "Atelier sur la gestion du stress",
+                gallery_caption_2: "Conférence sur la santé mentale",
+                gallery_caption_3: "Session de thérapie de groupe",
+                gallery_caption_4: "Intervention en milieu scolaire",
+                gallery_caption_5: "Formation pour professionnels",
+                gallery_caption_6: "Consultation en ligne",
                 contact_disclaimer: "La confidentialité et le respect de la vie privée constituent des principes fondamentaux de notre pratique. Toutes les informations partagées sont traitées avec la plus grande discrétion et protégées conformément aux standards éthiques et professionnels.",
                 contact_invitation: "N'hésitez pas à me contacter pour toute opportunité de collaboration ou de consultation en ligne.",
                 footer_copyright: "© 2024 Yasmine AHAJOUI. Tous droits réservés."
@@ -579,7 +569,13 @@
                 approach_centered_text: "Our collaboration is at the heart of the process. I offer you a safe, empathetic, and non-judgmental listening space, where you are the expert of your own life.",
                 approach_solutions_title: "Solution-Oriented",
                 approach_solutions_text: "While exploring the roots of difficulties, we focus on developing concrete strategies and practical tools to promote your autonomy and daily well-being.",
-                photos_title: "Images",
+                gallery_title: "Gallery",
+                gallery_caption_1: "Stress Management Workshop",
+                gallery_caption_2: "Mental Health Conference",
+                gallery_caption_3: "Group Therapy Session",
+                gallery_caption_4: "Intervention in a School Setting",
+                gallery_caption_5: "Training for Professionals",
+                gallery_caption_6: "Online Consultation",
                 contact_disclaimer: "Confidentiality and respect for privacy are fundamental principles of our practice. All information shared is treated with the utmost discretion and protected in accordance with ethical and professional standards.",
                 contact_invitation: "Feel free to contact me for any collaboration or online consultation opportunity.",
                 footer_copyright: "© 2024 Yasmine AHAJOUI. All rights reserved."
@@ -642,7 +638,13 @@
                 approach_centered_text: "تعاوننا هو جوهر العملية. أقدم لك مساحة استماع آمنة ومتعاطفة وغير قضائية، حيث تكون أنت الخبير في حياتك الخاصة.",
                 approach_solutions_title: "موجه نحو الحلول",
                 approach_solutions_text: "أثناء استكشاف جذور الصعوبات، نركز على تطوير استراتيجيات ملموسة وأدوات عملية لتعزيز استقلاليتك ورفاهيتك اليومية.",
-                photos_title: "صور",
+                gallery_title: "معرض الصور",
+                gallery_caption_1: "ورشة عمل حول إدارة التوتر",
+                gallery_caption_2: "مؤتمر حول الصحة النفسية",
+                gallery_caption_3: "جلسة علاج جماعي",
+                gallery_caption_4: "تدخل في البيئة المدرسية",
+                gallery_caption_5: "تدريب للمهنيين",
+                gallery_caption_6: "استشارة عبر الإنترنت",
                 contact_disclaimer: "السرية واحترام الخصوصية هي مبادئ أساسية لممارستنا. يتم التعامل مع جميع المعلومات المشتركة بأقصى درجات السرية ويتم حمايتها وفقًا للمعايير الأخلاقية والمهنية.",
                 contact_invitation: "لا تترددوا في الاتصال بي لأي فرصة للتعاون أو الاستشارة عبر الإنترنت.",
                 footer_copyright: "© 2024 ياسمين أحجوي. جميع الحقوق محفوظة."
@@ -675,4 +677,6 @@
     </script>
 </body>
 </html>
+
+
 
