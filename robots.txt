@@ -1,5 +1,4 @@
 User-agent: *
+Allow: /
 
-Disallow:
-
-Sitemap: https://www.google.com/search?q=https://www.brainzoom.ma/sitemap.xml
+Sitemap: https://www.brainzoom.ma/sitemap.xml
