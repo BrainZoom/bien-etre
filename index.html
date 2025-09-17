@@ -177,12 +177,16 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
             <a href="#" class="text-xl font-bold text-emerald-700 dark:text-emerald-400" data-lang-key="nav_brand">Yasmine AHAJOUI</a>
             <div class="flex items-center space-x-2 sm:space-x-4">
-                <div class="space-x-4 hidden md:flex items-center" id="desktop-menu">
+                <div class="space-x-2 hidden md:flex items-center text-sm font-medium" id="desktop-menu">
                     <a href="#approach" class="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200" data-lang-key="nav_approach">Approche</a>
                     <a href="#competences" class="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200" data-lang-key="nav_skills">Compétences</a>
+                    <a href="#experience" class="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200" data-lang-key="nav_experience">Expérience</a>
                     <a href="#temoignages" class="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200" data-lang-key="nav_testimonials">Témoignages</a>
+                    <a href="#gallery" class="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200" data-lang-key="nav_gallery">Galerie</a>
+                    <a href="#quiz" class="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200" data-lang-key="nav_quiz">Quiz</a>
                     <a href="#faq" class="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200" data-lang-key="nav_faq">FAQ</a>
-                    <a href="#contact" class="px-5 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700 transition-colors duration-200 text-sm font-semibold" data-lang-key="nav_contact">Contact</a>
+                    <a href="#resources" class="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200" data-lang-key="nav_resources">Ressources</a>
+                    <a href="#contact" class="px-4 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700 transition-colors duration-200 font-semibold" data-lang-key="nav_contact">Contact</a>
                 </div>
                 <button id="theme-toggle" class="p-2 rounded-full transition-colors text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700" aria-label="Basculer le thème"></button>
                 <div class="language-selector relative">
@@ -204,8 +208,12 @@
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#approach" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-lang-key="nav_approach">Approche</a>
                 <a href="#competences" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-lang-key="nav_skills">Compétences</a>
+                <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-lang-key="nav_experience">Expérience</a>
                 <a href="#temoignages" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-lang-key="nav_testimonials">Témoignages</a>
-                 <a href="#faq" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-lang-key="nav_faq">FAQ</a>
+                <a href="#gallery" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-lang-key="nav_gallery">Galerie</a>
+                <a href="#quiz" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-lang-key="nav_quiz">Quiz</a>
+                <a href="#faq" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-lang-key="nav_faq">FAQ</a>
+                <a href="#resources" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-lang-key="nav_resources">Ressources</a>
                 <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium bg-emerald-600 text-white hover:bg-emerald-700 mt-2" data-lang-key="nav_contact">Contact</a>
             </div>
         </div>
@@ -631,9 +639,12 @@
                 nav_brand: "Yasmine AHAJOUI",
                 nav_approach: "Approche",
                 nav_skills: "Compétences",
-                nav_testimonials: "Témoignages",
                 nav_experience: "Expérience",
+                nav_testimonials: "Témoignages",
+                nav_gallery: "Galerie",
+                nav_quiz: "Quiz",
                 nav_faq: "FAQ",
+                nav_resources: "Ressources",
                 nav_contact: "Contact",
                 hero_title: "Psychologue",
                 hero_subtitle: "J'accompagne chaque personne à travers des solutions d’intervention personnalisées et multidisciplinaires, conçues pour répondre à vos besoins spécifiques.<br><br>Ensemble, avançons vers plus d'équilibre et d'épanouissement.",
@@ -721,9 +732,12 @@
                 nav_brand: "Yasmine AHAJOUI",
                 nav_approach: "Approach",
                 nav_skills: "Skills",
-                nav_testimonials: "Testimonials",
                 nav_experience: "Experience",
+                nav_testimonials: "Testimonials",
+                nav_gallery: "Gallery",
+                nav_quiz: "Quiz",
                 nav_faq: "FAQ",
+                nav_resources: "Resources",
                 nav_contact: "Contact",
                 hero_title: "Psychologist",
                 hero_subtitle: "I accompany each individual with a tailored, multidisciplinary approach designed to address your unique needs.<br><br>Together, we move toward greater balance, well-being, and personal growth.",
@@ -811,9 +825,12 @@
                 nav_brand: "ياسمين أحجوي",
                 nav_approach: "النهج",
                 nav_skills: "الكفاءات",
-                nav_testimonials: "الشهادات",
                 nav_experience: "الخبرة",
+                nav_testimonials: "الشهادات",
+                nav_gallery: "معرض الصور",
+                nav_quiz: "اختبار",
                 nav_faq: "أسئلة شائعة",
+                nav_resources: "الموارد",
                 nav_contact: "اتصل بنا",
                 hero_title: "أخصائية نفسانية",
                 hero_subtitle: "مرافقة شخصية لتلبية احتياجاتك عبر حلول شاملة ومتعددة التخصصات<br><br>معًا نحو تعزيز التوازن والرفاه النفسي في حياتك",
@@ -945,6 +962,7 @@
     </script>
 </body>
 </html>
+
 
 
 
