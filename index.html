@@ -309,15 +309,28 @@
 
         <!-- Section Quiz -->
         <section id="quiz" class="mb-20 fade-in-up">
-            <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 text-center section-title" data-lang-key="quiz_title">Testez votre intelligence émotionnelle</h2>
-            <div id="quiz-container" class="max-w-3xl mx-auto">
-                <div id="quiz-start" class="text-center py-12 px-6 bg-white dark:bg-slate-800 rounded-3xl shadow-lg border dark:border-slate-700">
-                    <h3 class="text-2xl sm:text-3xl font-bold text-emerald-700 dark:text-emerald-400 mb-4" data-lang-key="quiz_start_title">Êtes-vous en harmonie avec vos émotions ?</h3>
-                    <p class="text-slate-600 dark:text-slate-300 mb-8" data-lang-key="quiz_start_text">Faites ce mini-quiz pour mieux comprendre votre relation avec vos émotions et découvrir des pistes de réflexion pour votre bien-être.</p>
-                    <button id="start-quiz-button" class="px-8 py-4 bg-emerald-600 text-white rounded-full font-semibold hover:bg-emerald-700 transition-all duration-300" data-lang-key="quiz_start_button">Commencer le quiz</button>
+            <div class="max-w-3xl mx-auto space-y-12">
+                <!-- Quiz 1: Intelligence Émotionnelle -->
+                <div id="quiz1-container" class="quiz-container">
+                    <div class="quiz-start text-center py-12 px-6 bg-white dark:bg-slate-800 rounded-3xl shadow-lg border dark:border-slate-700">
+                        <h3 class="text-2xl sm:text-3xl font-bold text-emerald-700 dark:text-emerald-400 mb-4" data-lang-key="quiz_start_title">Êtes-vous en harmonie avec vos émotions ?</h3>
+                        <p class="text-slate-600 dark:text-slate-300 mb-8" data-lang-key="quiz_start_text">Faites ce mini-quiz pour mieux comprendre votre relation avec vos émotions et découvrir des pistes de réflexion pour votre bien-être.</p>
+                        <button class="start-quiz-button px-8 py-4 bg-emerald-600 text-white rounded-full font-semibold hover:bg-emerald-700 transition-all duration-300" data-lang-key="quiz_start_button">Commencer le quiz</button>
+                    </div>
+                    <div class="quiz-questions hidden"></div>
+                    <div class="quiz-result hidden"></div>
                 </div>
-                <div id="quiz-questions" class="hidden"></div>
-                <div id="quiz-result" class="hidden"></div>
+
+                <!-- Quiz 2: Style d'Attachement -->
+                <div id="quiz2-container" class="quiz-container">
+                    <div class="quiz-start text-center py-12 px-6 bg-white dark:bg-slate-800 rounded-3xl shadow-lg border dark:border-slate-700">
+                        <h3 class="text-2xl sm:text-3xl font-bold text-emerald-700 dark:text-emerald-400 mb-4" data-lang-key="quiz2_start_title">Testez votre style d’attachement</h3>
+                        <p class="text-slate-600 dark:text-slate-300 mb-8" data-lang-key="quiz2_start_text">Découvrez comment vous vous connectez aux autres dans vos relations intimes à travers ce court test.</p>
+                        <button class="start-quiz-button px-8 py-4 bg-emerald-600 text-white rounded-full font-semibold hover:bg-emerald-700 transition-all duration-300" data-lang-key="quiz2_start_button">Commencer le test</button>
+                    </div>
+                    <div class="quiz-questions hidden"></div>
+                    <div class="quiz-result hidden"></div>
+                </div>
             </div>
         </section>
 
@@ -510,7 +523,6 @@
                 hero_title: "Psychologue",
                 hero_subtitle: "J'accompagne chaque personne à travers des solutions d’intervention personnalisées et multidisciplinaires, conçues pour répondre à vos besoins spécifiques.<br><br>Ensemble, avançons vers plus d'équilibre et d'épanouissement.",
                 hero_contact_button: "Contacter",
-                quiz_title: "Testez votre intelligence émotionnelle",
                 quiz_start_title: "Êtes-vous en harmonie avec vos émotions ?",
                 quiz_start_text: "Faites ce mini-quiz pour mieux comprendre votre relation avec vos émotions et découvrir des pistes de réflexion pour votre bien-être.",
                 quiz_start_button: "Commencer le quiz",
@@ -518,6 +530,38 @@
                     next_button: "Suivant",
                     questions: [{question: "Lorsque vous ressentez une forte émotion (colère, tristesse), comment réagissez-vous la plupart du temps ?",answers: [{ text: "Je l'ignore en espérant qu'elle disparaisse.", score: 0 },{ text: "Je la reconnais, j'essaie de comprendre d'où elle vient, puis j'agis calmement.", score: 1 },{ text: "Je la laisse me submerger et j'agis de manière impulsive.", score: 0 }]},{question: "Un ami proche vous confie ses soucis. Quelle est votre première réaction ?",answers: [{ text: "Je lui donne des conseils et des solutions directes pour résoudre son problème.", score: 0 },{ text: "Je l'écoute attentivement, sans jugement, et j'essaie de me mettre à sa place.", score: 1 },{ text: "Je change de sujet car les émotions intenses me mettent mal à l'aise.", score: 0 }]},{question: "Vous faites face à un revers inattendu au travail ou dans votre vie personnelle. Comment vous adaptez-vous ?",answers: [{ text: "Je me sens dépassé et je me concentre sur l'échec.", score: 0 },{ text: "Je prends du recul, j'évalue la situation et cherche une nouvelle approche.", score: 1 },{ text: "Je minimise le problème et fais comme s'il n'existait pas.", score: 0 }]},{question: "Comment gérez-vous le stress au quotidien ?",answers: [{ text: "En me plaignant ou en me sentant impuissant face aux événements.", score: 0 },{ text: "En pratiquant des activités relaxantes (méditation, sport, etc.) et en acceptant que le stress fait partie de la vie.", score: 1 },{ text: "En travaillant encore plus dur, jusqu'à l'épuisement.", score: 0 }]},{question: "Un commentaire d'un proche vous blesse. Que faites-vous ?",answers: [{ text: "J'en fais une affaire personnelle et je rumine pendant des jours.", score: 0 },{ text: "J'exprime calmement mon ressenti et j'essaie de comprendre la perspective de l'autre.", score: 1 },{ text: "Je me fâche et je réponds de manière agressive.", score: 0 }]}],
                     results: [{minScore: 0, maxScore: 1, title: "Votre boussole émotionnelle est en recherche de signal.", text: "Votre quiz montre que la gestion de vos émotions peut être un défi. Beaucoup de personnes se sentent de cette façon. Le chemin vers un meilleur équilibre commence par un simple pas : prendre conscience de ses émotions. Un professionnel peut vous aider à identifier vos défis et vous donner des outils pratiques pour y faire face et retrouver votre bien-être.", cta: "Découvrir comment je peux vous aider"},{minScore: 2, maxScore: 3, title: "Vous avez une bonne base, mais il y a de la place pour la croissance !", text: "Votre quiz indique que vous avez déjà une bonne conscience de vos émotions, mais que vous pourriez bénéficier de stratégies supplémentaires pour les gérer plus efficacement. De petits ajustements peuvent faire une grande différence. Un psychologue peut vous accompagner pour perfectionner ces compétences et vous aider à vous sentir plus confiant dans votre vie quotidienne.", cta: "Améliorer votre bien-être"},{minScore: 4, maxScore: 5, title: "Vous êtes en parfaite harmonie avec vos émotions !", text: "Félicitations ! Vos réponses démontrent une grande intelligence émotionnelle. Vous êtes capable de reconnaître et de gérer vos émotions de manière saine et constructive. Vous êtes résilient face aux défis et vous maintenez un bon équilibre dans votre vie. Continuez sur cette belle lancée !", cta: "Continuez à vous épanouir"}]
+                },
+                quiz2_start_title: "Testez votre style d’attachement",
+                quiz2_start_text: "Découvrez comment vous vous connectez aux autres dans vos relations intimes à travers ce court test.",
+                quiz2_start_button: "Commencer le test",
+                quiz2: {
+                    next_button: "Suivant",
+                    questions: [
+                        { question: "Dans une relation, je me sens le plus à l'aise quand...", answers: [
+                            { text: "Il y a une confiance mutuelle et une interdépendance saine.", style: "secure" },
+                            { text: "Je suis très proche de mon partenaire, au point de m'inquiéter souvent de son amour.", style: "anxious" },
+                            { text: "Je garde mon indépendance et je préfère ne pas trop dépendre des autres.", style: "dismissive" },
+                            { text: "J'ai envie de proximité, mais j'ai peur d'être blessé si je m'ouvre trop.", style: "fearful" }
+                        ]},
+                        { question: "Face à un conflit avec un proche, ma réaction première est de...", answers: [
+                            { text: "Chercher une solution ensemble, en communiquant ouvertement mes sentiments.", style: "secure" },
+                            { text: "Craindre l'abandon et chercher à tout prix à rétablir la connexion.", style: "anxious" },
+                            { text: "Prendre de la distance pour gérer la situation seul(e).", style: "dismissive" },
+                            { text: "Me sentir confus(e) et vouloir à la fois fuir et résoudre le problème.", style: "fearful" }
+                        ]},
+                        { question: "Ma vision de l'intimité est que...", answers: [
+                            { text: "C'est une source de confort et de soutien, facile à établir avec la bonne personne.", style: "secure" },
+                            { text: "C'est quelque chose que je désire profondément, mais j'ai peur que l'autre ne le veuille pas autant.", style: "anxious" },
+                            { text: "Ce n'est pas essentiel à mon bonheur ; je valorise plus ma liberté.", style: "dismissive" },
+                            { text: "C'est compliqué. Je la veux, mais elle me rend aussi très vulnérable.", style: "fearful" }
+                        ]}
+                    ],
+                    results: {
+                        secure: { title: "Style d'Attachement : Sécure", text: "Vous êtes à l'aise avec l'intimité et l'indépendance. Vous établissez des relations saines et durables basées sur la confiance, l'honnêteté et l'égalité. Vous savez gérer les conflits de manière constructive." },
+                        anxious: { title: "Style d'Attachement : Anxieux", text: "Vous recherchez un haut niveau d'intimité, d'approbation et de réactivité de la part de votre partenaire. Vous pouvez devenir excessivement dépendant(e) et douter de votre propre valeur. La communication ouverte sur vos besoins est une piste d'amélioration." },
+                        dismissive: { title: "Style d'Attachement : Évitant-Détaché", text: "Vous tendez à être très indépendant(e), émotionnellement et physiquement. Vous préférez éviter l'intimité et la dépendance affective. Apprendre à s'ouvrir et à faire confiance peut enrichir vos relations." },
+                        fearful: { title: "Style d'Attachement : Craintif-Évitant", text: "Vous désirez l'intimité mais vous vous sentez mal à l'aise avec trop de proximité. Vous avez des sentiments mitigés sur les relations, craignant à la fois d'être seul(e) et d'être blessé(e). Un travail sur la confiance en soi et en l'autre est souvent bénéfique." }
+                    }
                 },
                 skills_title: "Pratique",
                 skill_program_design_title: "Conception de programmes",
@@ -603,14 +647,45 @@
                 hero_title: "Psychologist",
                 hero_subtitle: "I accompany each individual with a tailored, multidisciplinary approach designed to address your unique needs.<br><br>Together, we move toward greater balance, well-being, and personal growth.",
                 hero_contact_button: "Contact",
-                quiz_title: "Test Your Emotional Intelligence",
-                quiz_start_title: "Are you in harmony with your emotions?",
+                quiz_start_title: "Test Your Emotional Intelligence",
                 quiz_start_text: "Take this mini-quiz to better understand your relationship with your emotions and discover new avenues for your well-being.",
                 quiz_start_button: "Start the quiz",
                 quiz: {
                     next_button: "Next",
                     questions: [{question: "When you feel a strong emotion (anger, sadness), how do you usually react?",answers: [{ text: "I ignore it, hoping it will go away.", score: 0 },{ text: "I acknowledge it, try to understand where it comes from, and then act calmly.", score: 1 },{ text: "I let it overwhelm me and act impulsively.", score: 0 }]},{question: "A close friend confides in you about their problems. What is your first reaction?",answers: [{ text: "I give them direct advice and solutions to solve their problem.", score: 0 },{ text: "I listen to them attentively, without judgment, and try to put myself in their shoes.", score: 1 },{ text: "I change the subject because intense emotions make me uncomfortable.", score: 0 }]},{question: "You face an unexpected setback at work or in your personal life. How do you adapt?",answers: [{ text: "I feel overwhelmed and focus on the failure.", score: 0 },{ text: "I take a step back, assess the situation, and look for a new approach.", score: 1 },{ text: "I downplay the problem and pretend it doesn't exist.", score: 0 }]},{question: "How do you manage daily stress?",answers: [{ text: "By complaining or feeling powerless about events.", score: 0 },{ text: "By practicing relaxing activities (meditation, sports, etc.) and accepting that stress is part of life.", score: 1 },{ text: "By working even harder, to the point of exhaustion.", score: 0 }]},{question: "A comment from a loved one hurts you. What do you do?",answers: [{ text: "I take it personally and dwell on it for days.", score: 0 },{ text: "I calmly express my feelings and try to understand the other person's perspective.", score: 1 },{ text: "I get angry and respond aggressively.", score: 0 }]}],
                     results: [{minScore: 0,maxScore: 1,title: "Your emotional compass is searching for a signal.",text: "Your quiz shows that managing your emotions can be a challenge. Many people feel this way. The path to better balance begins with a simple step: becoming aware of your emotions. A professional can help you identify your challenges and give you practical tools to cope and regain your well-being.",cta: "Discover how I can help you"},{minScore: 2,maxScore: 3,title: "You have a good foundation, but there's room for growth!",text: "Your quiz indicates that you already have good emotional awareness, but you could benefit from additional strategies to manage them more effectively. Small adjustments can make a big difference. A psychologist can guide you in refining these skills and help you feel more confident in your daily life.",cta: "Improve your well-being"},{minScore: 4,maxScore: 5,title: "You are in perfect harmony with your emotions!",text: "Congratulations! Your answers show great emotional intelligence. You are able to recognize and manage your emotions in a healthy and constructive way. You are resilient in the face of challenges and maintain a good balance in your life. Keep up the great work!",cta: "Continue to thrive"}]
+                },
+                quiz2_start_title: "Test Your Attachment Style",
+                quiz2_start_text: "Discover how you connect with others in your intimate relationships through this short test.",
+                quiz2_start_button: "Start the test",
+                quiz2: {
+                    next_button: "Next",
+                    questions: [
+                         { question: "In a relationship, I feel most comfortable when...", answers: [
+                            { text: "There is mutual trust and healthy interdependence.", style: "secure" },
+                            { text: "I am very close to my partner, to the point of often worrying about their love.", style: "anxious" },
+                            { text: "I maintain my independence and prefer not to depend too much on others.", style: "dismissive" },
+                            { text: "I want closeness, but I'm afraid of being hurt if I open up too much.", style: "fearful" }
+                        ]},
+                        { question: "When facing a conflict with a loved one, my first reaction is to...", answers: [
+                            { text: "Seek a solution together, by openly communicating my feelings.", style: "secure" },
+                            { text: "Fear abandonment and try at all costs to restore the connection.", style: "anxious" },
+                            { text: "Take some distance to handle the situation alone.", style: "dismissive" },
+                            { text: "Feel confused and want to both flee and solve the problem.", style: "fearful" }
+                        ]},
+                        { question: "My view of intimacy is that...", answers: [
+                            { text: "It's a source of comfort and support, easy to establish with the right person.", style: "secure" },
+                            { text: "It's something I desire deeply, but I fear the other person doesn't want it as much.", style: "anxious" },
+                            { text: "It's not essential to my happiness; I value my freedom more.", style: "dismissive" },
+                            { text: "It's complicated. I want it, but it also makes me very vulnerable.", style: "fearful" }
+                        ]}
+                    ],
+                    results: {
+                        secure: { title: "Attachment Style: Secure", text: "You are comfortable with both intimacy and independence. You build healthy, lasting relationships based on trust, honesty, and equality. You know how to manage conflicts constructively." },
+                        anxious: { title: "Attachment Style: Anxious", text: "You seek a high level of intimacy, approval, and responsiveness from your partner. You can become overly dependent and doubt your own self-worth. Open communication about your needs is a key area for growth." },
+                        dismissive: { title: "Attachment Style: Dismissive-Avoidant", text: "You tend to be very independent, both emotionally and physically. You prefer to avoid intimacy and emotional dependency. Learning to open up and trust can enrich your relationships." },
+                        fearful: { title: "Attachment Style: Fearful-Avoidant", text: "You desire intimacy but feel uncomfortable with too much closeness. You have mixed feelings about relationships, fearing both being alone and being hurt. Working on self-confidence and trust in others is often beneficial." }
+                    }
                 },
                 skills_title: "Practice",
                 skill_program_design_title: "Program Design",
@@ -696,14 +771,45 @@
                 hero_title: "أخصائية نفسانية",
                 hero_subtitle: "مرافقة شخصية لتلبية احتياجاتك عبر حلول شاملة ومتعددة التخصصات<br><br>معًا نحو تعزيز التوازن والرفاه النفسي في حياتك",
                 hero_contact_button: "اتصل بي",
-                quiz_title: "اختبر ذكائك العاطفي",
-                quiz_start_title: "هل أنت في وئام مع مشاعرك؟",
+                quiz_start_title: "اختبر ذكائك العاطفي",
                 quiz_start_text: "قم بهذا الاختبار المصغر لفهم أفضل لعلاقتك بمشاعرك واكتشاف سبل للتفكير في رفاهيتك.",
                 quiz_start_button: "ابدأ الاختبار",
                 quiz: {
                     next_button: "التالي",
                     questions: [{question: "عندما تشعر بعاطفة قوية (غضب، حزن)، كيف تتصرف عادة؟",answers: [{ text: "أتجاهلها على أمل أن تختفي.", score: 0 },{ text: "أعترف بها، وأحاول أن أفهم مصدرها، ثم أتصرف بهدوء.", score: 1 },{ text: "أدعها تسيطر علي وأتصرف باندفاع.", score: 0 }]},{question: "صديق مقرب يشاركك همومه. ما هو رد فعلك الأول؟",answers: [{ text: "أقدم له نصائح وحلول مباشرة لمشكلته.", score: 0 },{ text: "أستمع إليه باهتمام، دون حكم، وأحاول أن أضع نفسي مكانه.", score: 1 },{ text: "أغير الموضوع لأن المشاعر القوية تزعجني.", score: 0 }]},{question: "تواجه نكسة غير متوقعة في العمل أو في حياتك الشخصية. كيف تتكيف؟",answers: [{ text: "أشعر بالإرهاق وأركز على الفشل.", score: 0 },{ text: "آخذ خطوة للوراء، أقيم الوضع، وأبحث عن نهج جديد.", score: 1 },{ text: "أقلل من شأن المشكلة وأتصرف كأنها غير موجودة.", score: 0 }]},{question: "كيف تتعامل مع التوتر اليومي؟",answers: [{ text: "بالشكوى أو الشعور بالعجز أمام الأحداث.", score: 0 },{ text: "بممارسة أنشطة مريحة (تأمل، رياضة، إلخ) وقبول أن التوتر جزء من الحياة.", score: 1 },{ text: "بالعمل بجد أكبر، حتى الإرهاق.", score: 0 }]},{question: "تعليق من شخص عزيز يجرحك. ماذا تفعل؟",answers: [{ text: "آخذ الأمر على محمل شخصي وأفكر فيه لأيام.", score: 0 },{ text: "أعبر عن مشاعري بهدوء وأحاول فهم وجهة نظر الآخر.", score: 1 },{ text: "أغضب وأرد بعدوانية.", score: 0 }]}],
                     results: [{minScore: 0,maxScore: 1,title: "بوصلتك العاطفية تبحث عن إشارة.",text: "يُظهر اختبارك أن إدارة عواطفك قد تكون تحديًا. يشعر الكثير من الناس بهذه الطريقة. يبدأ الطريق نحو توازن أفضل بخطوة بسيطة: الوعي بمشاعرك. يمكن للمختص مساعدتك في تحديد تحدياتك ومنحك أدوات عملية للتعامل معها واستعادة رفاهيتك.",cta: "اكتشف كيف يمكنني مساعدتك"},{minScore: 2,maxScore: 3,title: "لديك أساس جيد، ولكن هناك مجال للنمو!",text: "يشير اختبارك إلى أن لديك بالفعل وعيًا جيدًا بمشاعرك، ولكنك قد تستفيد من استراتيجيات إضافية لإدارتها بفعالية أكبر. يمكن أن تحدث التعديلات الصغيرة فرقًا كبيرًا. يمكن للأخصائي النفسي إرشادك لتحسين هذه المهارات ومساعدتك على الشعور بثقة أكبر في حياتك اليومية.",cta: "تحسين رفاهيتك"},{minScore: 4,maxScore: 5,title: "أنت في وئام تام مع مشاعرك!",text: "تهانينا! تُظهر إجاباتك ذكاءً عاطفيًا كبيرًا. أنت قادر على التعرف على مشاعرك وإدارتها بطريقة صحية وبناءة. أنت مرن في مواجهة التحديات وتحافظ على توازن جيد في حياتك. استمر في هذا العمل الرائع!",cta: "استمر في التطور"}]
+                },
+                quiz2_start_title: "اختبر نمط تعلقك",
+                quiz2_start_text: "اكتشف كيف تتواصل مع الآخرين في علاقاتك الحميمة من خلال هذا الاختبار القصير.",
+                quiz2_start_button: "ابدأ الاختبار",
+                quiz2: {
+                    next_button: "التالي",
+                     questions: [
+                         { question: "في العلاقة، أشعر براحة أكبر عندما...", answers: [
+                            { text: "تكون هناك ثقة متبادلة واعتماد صحي على بعضنا البعض.", style: "secure" },
+                            { text: "أكون قريبًا جدًا من شريكي، لدرجة أنني أقلق كثيرًا بشأن حبه لي.", style: "anxious" },
+                            { text: "أحافظ على استقلاليتي وأفضل عدم الاعتماد كثيرًا على الآخرين.", style: "dismissive" },
+                            { text: "أرغب في القرب، لكني أخشى أن أتأذى إذا انفتحت كثيرًا.", style: "fearful" }
+                        ]},
+                        { question: "عند مواجهة صراع مع شخص عزيز، رد فعلي الأول هو...", answers: [
+                            { text: "البحث عن حل معًا، من خلال التواصل المفتوح لمشاعري.", style: "secure" },
+                            { text: "الخوف من الهجر ومحاولة استعادة الاتصال بأي ثمن.", style: "anxious" },
+                            { text: "أخذ مسافة للتعامل مع الموقف بمفردي.", style: "dismissive" },
+                            { text: "الشعور بالارتباك والرغبة في الهروب وحل المشكلة في نفس الوقت.", style: "fearful" }
+                        ]},
+                        { question: "نظرتي للحميمية هي أنها...", answers: [
+                            { text: "مصدر للراحة والدعم، من السهل تحقيقها مع الشخص المناسب.", style: "secure" },
+                            { text: "شيء أرغب فيه بشدة، لكني أخشى ألا يرغب فيه الطرف الآخر بنفس القدر.", style: "anxious" },
+                            { text: "ليست ضرورية لسعادتي؛ أقدر حريتي أكثر.", style: "dismissive" },
+                            { text: "معقدة. أريدها، لكنها تجعلني أيضًا ضعيفًا جدًا.", style: "fearful" }
+                        ]}
+                    ],
+                    results: {
+                        secure: { title: "نمط الارتباط: الآمن", text: "أنت مرتاح مع الحميمية والاستقلالية. تبني علاقات صحية ودائمة مبنية على الثقة والصدق والمساواة. أنت تعرف كيفية إدارة النزاعات بطريقة بناءة." },
+                        anxious: { title: "نمط الارتباط: القلق", text: "أنت تبحث عن مستوى عالٍ من الحميمية والموافقة والاستجابة من شريكك. قد تصبح معتمدًا بشكل مفرط وتشك في قيمتك الذاتية. التواصل المفتوح حول احتياجاتك هو مجال رئيسي للنمو." },
+                        dismissive: { title: "نمط الارتباط: المتجنب-المنفصل", text: "تميل إلى أن تكون مستقلاً للغاية، عاطفياً وجسدياً. تفضل تجنب الحميمية والاعتماد العاطفي. تعلم الانفتاح والثقة يمكن أن يثري علاقاتك." },
+                        fearful: { title: "نمط الارتباط: الخائف-المتجنب", text: "أنت ترغب في الحميمية ولكنك تشعر بعدم الارتياح مع الكثير من القرب. لديك مشاعر مختلطة حول العلاقات، تخشى أن تكون وحيدًا وأن تتأذى. العمل على الثقة بالنفس وبالآخرين غالبًا ما يكون مفيدًا." }
+                    }
                 },
                 skills_title: "الممارسة",
                 skill_program_design_title: "تصميم البرامج",
@@ -799,13 +905,15 @@
                 }
             });
             
-            // Réinitialise l'interface du Quiz
-            const quizStartSection = document.getElementById('quiz-start');
-            if (quizStartSection) {
-                quizStartSection.classList.remove('hidden');
-                document.getElementById('quiz-questions').classList.add('hidden');
-                document.getElementById('quiz-result').classList.add('hidden');
-            }
+            // Réinitialise l'interface des deux Quiz
+            document.querySelectorAll('.quiz-container').forEach(container => {
+                const startSection = container.querySelector('.quiz-start');
+                const questionsSection = container.querySelector('.quiz-questions');
+                const resultSection = container.querySelector('.quiz-result');
+                if(startSection) startSection.classList.remove('hidden');
+                if(questionsSection) questionsSection.classList.add('hidden');
+                if(resultSection) resultSection.classList.add('hidden');
+            });
             
             // Met à jour le drapeau du sélecteur de langue
             const currentFlag = document.getElementById('current-flag');
@@ -892,52 +1000,63 @@
             }
         }
         
-        function initQuiz() {
-            const quizContainer = document.getElementById('quiz-container');
-            if (!quizContainer) return;
+        function initSpecificQuiz(quizKey, containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
 
-            const startButton = document.getElementById('start-quiz-button');
-            const quizStartSection = document.getElementById('quiz-start');
-            const questionsSection = document.getElementById('quiz-questions');
-            const resultSection = document.getElementById('quiz-result');
+            const startButton = container.querySelector('.start-quiz-button');
+            const startSection = container.querySelector('.quiz-start');
+            const questionsSection = container.querySelector('.quiz-questions');
+            const resultSection = container.querySelector('.quiz-result');
 
-            if (!startButton || !quizStartSection || !questionsSection || !resultSection) return;
+            if (!startButton || !startSection || !questionsSection || !resultSection) return;
 
             let currentQuestionIndex = 0;
-            let score = 0;
+            let score;
 
             const start = () => {
-                quizStartSection.classList.add('hidden');
+                startSection.classList.add('hidden');
                 questionsSection.classList.remove('hidden');
                 currentQuestionIndex = 0;
-                score = 0;
+                
+                if (quizKey === 'quiz') {
+                    score = 0;
+                } else if (quizKey === 'quiz2') {
+                    score = { secure: 0, anxious: 0, dismissive: 0, fearful: 0 };
+                }
                 displayQuestion();
             };
 
             const displayQuestion = () => {
-                const quizData = translations[currentLanguage].quiz;
-                if (currentQuestionIndex >= quizData.questions.length) {
+                const quizData = translations[currentLanguage][quizKey];
+                if (!quizData || currentQuestionIndex >= quizData.questions.length) {
                     showResult();
                     return;
                 }
 
                 const q = quizData.questions[currentQuestionIndex];
+                let answersHtml = '';
+
+                if (quizKey === 'quiz') {
+                    answersHtml = q.answers.map(answer => `<button class="quiz-option" data-score="${answer.score}">${answer.text}</button>`).join('');
+                } else if (quizKey === 'quiz2') {
+                    answersHtml = q.answers.map(answer => `<button class="quiz-option" data-style="${answer.style}">${answer.text}</button>`).join('');
+                }
+
                 questionsSection.innerHTML = `
                     <div class="question-card flex flex-col items-center">
                         <p class="text-lg sm:text-xl font-medium text-slate-700 dark:text-slate-300 mb-6 text-center">${currentQuestionIndex + 1} / ${quizData.questions.length}</p>
                         <h4 class="text-xl sm:text-2xl font-semibold text-emerald-700 dark:text-emerald-400 mb-8 text-center">${q.question}</h4>
-                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 w-full max-w-lg">
-                            ${q.answers.map((answer, index) => `<button class="quiz-option" data-score="${answer.score}">${answer.text}</button>`).join('')}
-                        </div>
-                        <button id="next-button" class="quiz-button mt-8 w-full max-w-xs" disabled>${quizData.next_button}</button>
+                        <div class="grid grid-cols-1 gap-4 w-full max-w-lg">${answersHtml}</div>
+                        <button class="next-button quiz-button mt-8 w-full max-w-xs" disabled>${quizData.next_button}</button>
                     </div>`;
 
                 let selectedAnswer = null;
-                const nextButton = document.getElementById('next-button');
+                const nextButton = questionsSection.querySelector('.next-button');
                 const options = questionsSection.querySelectorAll('.quiz-option');
 
                 options.forEach(option => {
-                    option.addEventListener('click', (e) => {
+                    option.addEventListener('click', e => {
                         options.forEach(o => o.classList.remove('selected'));
                         e.currentTarget.classList.add('selected');
                         selectedAnswer = e.currentTarget;
@@ -948,7 +1067,12 @@
                 if(nextButton) {
                     nextButton.addEventListener('click', () => {
                         if (selectedAnswer) {
-                            score += parseInt(selectedAnswer.getAttribute('data-score'));
+                            if (quizKey === 'quiz') {
+                                score += parseInt(selectedAnswer.getAttribute('data-score'));
+                            } else if (quizKey === 'quiz2') {
+                                const style = selectedAnswer.getAttribute('data-style');
+                                if (style) score[style]++;
+                            }
                             currentQuestionIndex++;
                             displayQuestion();
                         }
@@ -957,8 +1081,15 @@
             };
 
             const showResult = () => {
-                const quizData = translations[currentLanguage].quiz;
-                const result = quizData.results.find(r => score >= r.minScore && score <= r.maxScore);
+                const quizData = translations[currentLanguage][quizKey];
+                let result = null;
+
+                if (quizKey === 'quiz') {
+                    result = quizData.results.find(r => score >= r.minScore && score <= r.maxScore);
+                } else if (quizKey === 'quiz2') {
+                    const finalStyle = Object.keys(score).reduce((a, b) => score[a] > score[b] ? a : b);
+                    result = quizData.results[finalStyle];
+                }
                 
                 if (result) {
                     questionsSection.classList.add('hidden');
@@ -967,14 +1098,14 @@
                         <div class="result-card">
                             <h3 class="text-2xl font-bold mb-4">${result.title}</h3>
                             <p class="mb-6">${result.text}</p>
-                            <a href="#contact" class="px-6 py-3 bg-emerald-600 text-white rounded-full font-medium hover:bg-emerald-700 transition-colors duration-300">${result.cta}</a>
+                            <a href="#contact" class="px-6 py-3 bg-emerald-600 text-white rounded-full font-medium hover:bg-emerald-700 transition-colors duration-300">${translations[currentLanguage].hero_contact_button}</a>
                         </div>`;
                 }
             };
 
             startButton.addEventListener('click', start);
         }
-        
+
         function initFAQ() {
             const faqItems = document.querySelectorAll('.faq-item');
             if (faqItems.length > 0) {
@@ -1034,7 +1165,8 @@
             initMobileMenu();
             initLanguageSwitcher();
             initThemeToggle();
-            initQuiz();
+            initSpecificQuiz('quiz', 'quiz1-container');
+            initSpecificQuiz('quiz2', 'quiz2-container');
             initFAQ();
             initScrollAnimations();
             initContentProtection();
