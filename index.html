@@ -170,8 +170,9 @@
             <a href="https://www.brainzoom.ma/" class="text-xl font-bold text-emerald-700 dark:text-emerald-400" data-lang-key="nav_brand">Yasmine AHAJOUI</a>
             <div class="flex items-center space-x-2 sm:space-x-4">
                 <div class="space-x-4 hidden md:flex items-center" id="desktop-menu">
+                    <a href="#approach" class="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200" data-lang-key="nav_approach">Approche</a>
                     <a href="#competences" class="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200" data-lang-key="nav_skills">Compétences</a>
-                    <a href="#experience" class="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200" data-lang-key="nav_experience">Expérience</a>
+                    <a href="#temoignages" class="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200" data-lang-key="nav_testimonials">Témoignages</a>
                     <a href="#contact" class="px-5 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700 transition-colors duration-200 text-sm font-semibold" data-lang-key="nav_contact">Contact</a>
                 </div>
                 <button id="theme-toggle" class="p-2 rounded-full transition-colors text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700" aria-label="Basculer le thème"></button>
@@ -185,15 +186,16 @@
                         <div class="language-item" data-lang="ar"><img src="https://flagcdn.com/w160/ma.png" alt="Drapeau Marocain" class="flag-icon"><span>العربية</span></div>
                     </div>
                 </div>
-                <button id="menu-button" class="md:hidden text-slate-600 hover:text-emerald-700 focus:outline-none p-2" aria-label="Ouvrir le menu">
+                <button id="menu-button" class="md:hidden text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 focus:outline-none p-2" aria-label="Ouvrir le menu">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
             </div>
         </div>
         <div id="mobile-menu" class="md:hidden hidden border-t border-slate-200 dark:border-slate-700 dark:bg-slate-900/95">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#approach" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-lang-key="nav_approach">Approche</a>
                 <a href="#competences" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-lang-key="nav_skills">Compétences</a>
-                <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-lang-key="nav_experience">Expérience</a>
+                <a href="#temoignages" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-lang-key="nav_testimonials">Témoignages</a>
                 <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium bg-emerald-600 text-white hover:bg-emerald-700 mt-2" data-lang-key="nav_contact">Contact</a>
             </div>
         </div>
@@ -208,17 +210,13 @@
             </div>
         </section>
 
-        <!-- Section Quiz -->
-        <section id="quiz" class="mb-20 fade-in-up">
-            <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 text-center section-title" data-lang-key="quiz_title">Testez votre intelligence émotionnelle</h2>
-            <div id="quiz-container" class="max-w-3xl mx-auto">
-                <div id="quiz-start" class="text-center py-12 px-6 bg-white dark:bg-slate-800 rounded-3xl shadow-lg border dark:border-slate-700">
-                    <h3 class="text-2xl sm:text-3xl font-bold text-emerald-700 dark:text-emerald-400 mb-4" data-lang-key="quiz_start_title">Êtes-vous en harmonie avec vos émotions ?</h3>
-                    <p class="text-slate-600 dark:text-slate-300 mb-8" data-lang-key="quiz_start_text">Faites ce mini-quiz pour mieux comprendre votre relation avec vos émotions et découvrir des pistes de réflexion pour votre bien-être.</p>
-                    <button id="start-quiz-button" class="px-8 py-4 bg-emerald-600 text-white rounded-full font-semibold hover:bg-emerald-700 transition-all duration-300" data-lang-key="quiz_start_button">Commencer le quiz</button>
-                </div>
-                <div id="quiz-questions" class="hidden"></div>
-                <div id="quiz-result" class="hidden"></div>
+        <!-- Section Approche -->
+        <section id="approach" class="mb-20 fade-in-up">
+            <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 text-center section-title" data-lang-key="approach_title">Approche Thérapeutique</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border dark:border-slate-700 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><i data-lucide="puzzle" class="w-12 h-12 text-emerald-600 dark:text-emerald-400 mx-auto mb-4"></i><h3 class="text-xl font-bold mb-2" data-lang-key="approach_integrative_title">Approche Intégrative</h3><p class="text-slate-600 dark:text-slate-300" data-lang-key="approach_integrative_text"></p></div>
+                <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border dark:border-slate-700 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><i data-lucide="hand-heart" class="w-12 h-12 text-emerald-600 dark:text-emerald-400 mx-auto mb-4"></i><h3 class="text-xl font-bold mb-2" data-lang-key="approach_centered_title">Centrée sur la Personne</h3><p class="text-slate-600 dark:text-slate-300" data-lang-key="approach_centered_text"></p></div>
+                <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border dark:border-slate-700 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><i data-lucide="target" class="w-12 h-12 text-emerald-600 dark:text-emerald-400 mx-auto mb-4"></i><h3 class="text-xl font-bold mb-2" data-lang-key="approach_solutions_title">Orientée vers les Solutions</h3><p class="text-slate-600 dark:text-slate-300" data-lang-key="approach_solutions_text"></p></div>
             </div>
         </section>
 
@@ -266,16 +264,45 @@
             </div>
         </section>
         
-        <!-- Section Approche -->
-        <section id="approach" class="mb-20 fade-in-up">
-            <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 text-center section-title" data-lang-key="approach_title">Approche Thérapeutique</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border dark:border-slate-700 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><i data-lucide="puzzle" class="w-12 h-12 text-emerald-600 dark:text-emerald-400 mx-auto mb-4"></i><h3 class="text-xl font-bold mb-2" data-lang-key="approach_integrative_title">Approche Intégrative</h3><p class="text-slate-600 dark:text-slate-300" data-lang-key="approach_integrative_text"></p></div>
-                <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border dark:border-slate-700 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><i data-lucide="hand-heart" class="w-12 h-12 text-emerald-600 dark:text-emerald-400 mx-auto mb-4"></i><h3 class="text-xl font-bold mb-2" data-lang-key="approach_centered_title">Centrée sur la Personne</h3><p class="text-slate-600 dark:text-slate-300" data-lang-key="approach_centered_text"></p></div>
-                <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border dark:border-slate-700 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><i data-lucide="target" class="w-12 h-12 text-emerald-600 dark:text-emerald-400 mx-auto mb-4"></i><h3 class="text-xl font-bold mb-2" data-lang-key="approach_solutions_title">Orientée vers les Solutions</h3><p class="text-slate-600 dark:text-slate-300" data-lang-key="approach_solutions_text"></p></div>
+        <!-- Section Témoignages -->
+        <section id="temoignages" class="mb-20 fade-in-up">
+            <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 text-center section-title" data-lang-key="testimonials_title">Ce qu'ils en disent</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Témoignage 1 -->
+                <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border dark:border-slate-700 flex flex-col">
+                    <i data-lucide="quote" class="w-10 h-10 text-emerald-300 dark:text-emerald-700 mb-4"></i>
+                    <p class="text-slate-600 dark:text-slate-300 italic mb-6 flex-grow" data-lang-key="testimonial_1_text">"L'approche de Yasmine est à la fois douce et incroyablement efficace. J'ai ressenti un réel progrès en quelques séances seulement. Une écoute sans jugement qui fait toute la différence."</p>
+                    <p class="font-semibold text-slate-800 dark:text-slate-100 text-right" data-lang-key="testimonial_1_author">- Femme, 34 ans, Casablanca</p>
+                </div>
+                <!-- Témoignage 2 -->
+                <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border dark:border-slate-700 flex flex-col">
+                    <i data-lucide="quote" class="w-10 h-10 text-emerald-300 dark:text-emerald-700 mb-4"></i>
+                    <p class="text-slate-600 dark:text-slate-300 italic mb-6 flex-grow" data-lang-key="testimonial_2_text">"Les consultations en ligne étaient une première pour moi et j'étais sceptique. Yasmine a su créer un espace de confiance malgré la distance. Je la recommande vivement."</p>
+                    <p class="font-semibold text-slate-800 dark:text-slate-100 text-right" data-lang-key="testimonial_2_author">- Homme, 28 ans, Rabat</p>
+                </div>
+                <!-- Témoignage 3 -->
+                <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border dark:border-slate-700 flex flex-col">
+                    <i data-lucide="quote" class="w-10 h-10 text-emerald-300 dark:text-emerald-700 mb-4"></i>
+                    <p class="text-slate-600 dark:text-slate-300 italic mb-6 flex-grow" data-lang-key="testimonial_3_text">"Je ne savais plus comment communiquer avec mon fils adolescent. Les séances avec Yasmine nous ont offert un espace neutre pour nous reconnecter. Notre relation est aujourd'hui bien plus sereine."</p>
+                    <p class="font-semibold text-slate-800 dark:text-slate-100 text-right" data-lang-key="testimonial_3_author">- Maman d'un adolescent de 14 ans</p>
+                </div>
             </div>
         </section>
-        
+
+        <!-- Section Quiz -->
+        <section id="quiz" class="mb-20 fade-in-up">
+            <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 text-center section-title" data-lang-key="quiz_title">Testez votre intelligence émotionnelle</h2>
+            <div id="quiz-container" class="max-w-3xl mx-auto">
+                <div id="quiz-start" class="text-center py-12 px-6 bg-white dark:bg-slate-800 rounded-3xl shadow-lg border dark:border-slate-700">
+                    <h3 class="text-2xl sm:text-3xl font-bold text-emerald-700 dark:text-emerald-400 mb-4" data-lang-key="quiz_start_title">Êtes-vous en harmonie avec vos émotions ?</h3>
+                    <p class="text-slate-600 dark:text-slate-300 mb-8" data-lang-key="quiz_start_text">Faites ce mini-quiz pour mieux comprendre votre relation avec vos émotions et découvrir des pistes de réflexion pour votre bien-être.</p>
+                    <button id="start-quiz-button" class="px-8 py-4 bg-emerald-600 text-white rounded-full font-semibold hover:bg-emerald-700 transition-all duration-300" data-lang-key="quiz_start_button">Commencer le quiz</button>
+                </div>
+                <div id="quiz-questions" class="hidden"></div>
+                <div id="quiz-result" class="hidden"></div>
+            </div>
+        </section>
+
         <!-- Section Galerie -->
         <section id="gallery" class="mb-20 fade-in-up">
             <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 text-center section-title" data-lang-key="gallery_title">Galerie</h2>
@@ -429,8 +456,8 @@
                 const questionData = quizData.questions[currentQuestionIndex];
                 quizQuestionsSection.innerHTML = `
                     <div class="question-card flex flex-col items-center">
-                        <p class="text-lg sm:text-xl font-medium text-slate-700 mb-6 text-center">${currentQuestionIndex + 1} / ${quizData.questions.length}</p>
-                        <h4 class="text-xl sm:text-2xl font-semibold text-emerald-700 mb-8 text-center">${questionData.question}</h4>
+                        <p class="text-lg sm:text-xl font-medium text-slate-700 dark:text-slate-300 mb-6 text-center">${currentQuestionIndex + 1} / ${quizData.questions.length}</p>
+                        <h4 class="text-xl sm:text-2xl font-semibold text-emerald-700 dark:text-emerald-400 mb-8 text-center">${questionData.question}</h4>
                         <div class="grid grid-cols-1 md:grid-cols-1 gap-4 w-full max-w-lg">
                             ${questionData.answers.map((answer, index) => `
                                 <button class="quiz-option text-left" data-score="${answer.score}" data-index="${index}">${answer.text}</button>
@@ -520,7 +547,9 @@
                 meta_title: "Yasmine Ahajoui - Psychologue Casablanca & Rabat, Maroc | Thérapie en Ligne",
                 meta_description: "Psychologue clinicienne au Maroc (Casablanca, Rabat), Yasmine Ahajoui propose des thérapies en ligne pour adultes, enfants et couples. Spécialiste TCC pour anxiété, dépression, TOCs. Prenez rendez-vous pour un soutien adapté.",
                 nav_brand: "Yasmine AHAJOUI",
+                nav_approach: "Approche",
                 nav_skills: "Compétences",
+                nav_testimonials: "Témoignages",
                 nav_experience: "Expérience",
                 nav_contact: "Contact",
                 hero_title: "Psychologue",
@@ -575,6 +604,13 @@
                 approach_solutions_title: "Orientée vers les Solutions",
                 approach_solutions_text: "Tout en explorant les racines des difficultés, nous nous concentrons sur le développement de stratégies concrètes pour favoriser votre autonomie et votre bien-être au quotidien.",
                 gallery_title: "Galerie",
+                testimonials_title: "Ce qu'ils en disent",
+                testimonial_1_text: "L'approche de Yasmine est à la fois douce et incroyablement efficace. J'ai ressenti un réel progrès en quelques séances seulement. Une écoute sans jugement qui fait toute la différence.",
+                testimonial_1_author: "- Femme, 34 ans, Casablanca",
+                testimonial_2_text: "Les consultations en ligne étaient une première pour moi et j'étais sceptique. Yasmine a su créer un espace de confiance malgré la distance. Je la recommande vivement.",
+                testimonial_2_author: "- Homme, 28 ans, Rabat",
+                testimonial_3_text: "Je ne savais plus comment communiquer avec mon fils adolescent. Les séances avec Yasmine nous ont offert un espace neutre pour nous reconnecter. Notre relation est aujourd'hui bien plus sereine.",
+                testimonial_3_author: "- Maman d'un adolescent de 14 ans",
                 resources_title: "Affiliations et Ressources",
                 resources_uh2c_title: "Université Hassan II",
                 resources_sante_title: "Ministère de la Santé",
@@ -591,7 +627,9 @@
                 meta_title: "Yasmine Ahajoui - Psychologist in Morocco (Casablanca, Rabat) | Online Therapy",
                 meta_description: "Clinical psychologist in Morocco (Casablanca, Rabat). Yasmine Ahajoui offers online therapy for adults, children, and couples. CBT specialist for anxiety, depression, OCD. Book your appointment for professional support.",
                 nav_brand: "Yasmine AHAJOUI",
+                nav_approach: "Approach",
                 nav_skills: "Skills",
+                nav_testimonials: "Testimonials",
                 nav_experience: "Experience",
                 nav_contact: "Contact",
                 hero_title: "Psychologist",
@@ -646,6 +684,13 @@
                 approach_solutions_title: "Solution-Oriented",
                 approach_solutions_text: "While exploring the roots of difficulties, we focus on developing concrete strategies and practical tools to promote your autonomy and daily well-being.",
                 gallery_title: "Gallery",
+                testimonials_title: "What They Say",
+                testimonial_1_text: "Yasmine's approach is both gentle and incredibly effective. I felt real progress in just a few sessions. Her non-judgmental listening makes all the difference.",
+                testimonial_1_author: "- Woman, 34, Casablanca",
+                testimonial_2_text: "Online consultations were a first for me, and I was skeptical. Yasmine managed to create a space of trust despite the distance. I highly recommend her.",
+                testimonial_2_author: "- Man, 28, Rabat",
+                testimonial_3_text: "I no longer knew how to communicate with my teenage son. The sessions with Yasmine gave us a neutral space to reconnect. Our relationship is much more serene today.",
+                testimonial_3_author: "- Mother of a 14-year-old",
                 resources_title: "Affiliations & Resources",
                 resources_uh2c_title: "Hassan II University",
                 resources_sante_title: "Ministry of Health",
@@ -662,7 +707,9 @@
                 meta_title: "ياسمين أحجوي - أخصائية نفسية في المغرب (الدار البيضاء والرباط) | علاج نفسي عبر الإنترنت",
                 meta_description: "أخصائية نفسية إكلينيكية في المغرب (الدار البيضاء، الرباط). ياسمين أحجوي تقدم استشارات وعلاج نفسي عبر الإنترنت للبالغين، الأطفال والأزواج. متخصصة في العلاج السلوكي المعرفي للقلق، الاكتئاب والوسواس القهري. احجز موعدك للدعم النفسي.",
                 nav_brand: "ياسمين أحجوي",
+                nav_approach: "النهج",
                 nav_skills: "الكفاءات",
+                nav_testimonials: "الشهادات",
                 nav_experience: "الخبرة",
                 nav_contact: "اتصل بنا",
                 hero_title: "أخصائية نفسانية",
@@ -717,6 +764,13 @@
                 approach_solutions_title: "موجه نحو الحلول",
                 approach_solutions_text: "أثناء استكشاف جذور الصعوبات، نركز على تطوير استراتيجيات ملموسة وأدوات عملية لتعزيز استقلاليتك ورفاهيتك اليومية.",
                 gallery_title: "معرض الصور",
+                testimonials_title: "ماذا يقولون",
+                testimonial_1_text: "نهج ياسمين لطيف وفعال بشكل لا يصدق. شعرت بتقدم حقيقي في بضع جلسات فقط. استماعها بدون حكم يصنع كل الفرق.",
+                testimonial_1_author: "- سيدة، 34 عامًا، الدار البيضاء",
+                testimonial_2_text: "كانت الاستشارات عبر الإنترنت تجربة جديدة بالنسبة لي وكنت متشككًا. تمكنت ياسمين من خلق مساحة من الثقة على الرغم من المسافة. أوصي بها بشدة.",
+                testimonial_2_author: "- رجل، 28 عامًا، الرباط",
+                testimonial_3_text: "لم أعد أعرف كيف أتواصل مع ابني المراهق. الجلسات مع ياسمين وفرت لنا مساحة محايدة لإعادة التواصل. علاقتنا اليوم أكثر هدوءًا.",
+                testimonial_3_author: "- والدة مراهق يبلغ من العمر 14 عامًا",
                 resources_title: "الانتماءات والموارد",
                 resources_uh2c_title: "جامعة الحسن الثاني",
                 resources_sante_title: "وزارة الصحة",
@@ -734,7 +788,7 @@
         function switchLanguage(lang) {
             currentLanguage = lang;
             document.documentElement.lang = lang;
-            document.documentElement.dir = ''; // Assurer LTR pour toutes les langues
+            document.documentElement.dir = 'ltr'; 
             
             document.title = translations[lang].meta_title;
             document.querySelector('meta[name="description"]').setAttribute('content', translations[lang].meta_description);
@@ -756,6 +810,7 @@
             currentFlag.src = flagMap[lang];
             
             lucide.createIcons();
+            updateThemeIcon(); // Assure que l'icône du thème est correcte après la recréation
         }
 
         function toggleTheme() {
@@ -778,4 +833,5 @@
     </script>
 </body>
 </html>
+
 
