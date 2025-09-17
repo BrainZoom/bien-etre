@@ -178,9 +178,9 @@
             <a href="#" class="text-xl font-bold text-emerald-700 dark:text-emerald-400" data-lang-key="nav_brand">Yasmine AHAJOUI</a>
             <div class="flex items-center space-x-2 sm:space-x-4">
                 <div class="space-x-2 hidden md:flex items-center text-sm font-medium" id="desktop-menu">
-                    <a href="#approach" class="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200" data-lang-key="nav_approach">Approche</a>
                     <a href="#competences" class="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200" data-lang-key="nav_skills">Compétences</a>
                     <a href="#experience" class="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200" data-lang-key="nav_experience">Expérience</a>
+                    <a href="#approach" class="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200" data-lang-key="nav_approach">Approche</a>
                     <a href="#temoignages" class="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200" data-lang-key="nav_testimonials">Témoignages</a>
                     <a href="#gallery" class="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200" data-lang-key="nav_gallery">Galerie</a>
                     <a href="#quiz" class="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200" data-lang-key="nav_quiz">Quiz</a>
@@ -206,9 +206,9 @@
         </div>
         <div id="mobile-menu" class="md:hidden hidden border-t border-slate-200 dark:border-slate-700 dark:bg-slate-900/95">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#approach" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-lang-key="nav_approach">Approche</a>
                 <a href="#competences" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-lang-key="nav_skills">Compétences</a>
                 <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-lang-key="nav_experience">Expérience</a>
+                <a href="#approach" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-lang-key="nav_approach">Approche</a>
                 <a href="#temoignages" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-lang-key="nav_testimonials">Témoignages</a>
                 <a href="#gallery" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-lang-key="nav_gallery">Galerie</a>
                 <a href="#quiz" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-lang-key="nav_quiz">Quiz</a>
@@ -491,147 +491,8 @@
     </footer>
 
     <script>
+        // --- Global State ---
         let currentLanguage = 'fr';
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const screenshotOverlay = document.getElementById('screenshot-overlay');
-            const menuButton = document.getElementById('menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const languageButton = document.getElementById('language-button');
-            const languageDropdown = document.getElementById('language-dropdown');
-            const themeToggleButton = document.getElementById('theme-toggle');
-            const quizStartSection = document.getElementById('quiz-start');
-            const quizQuestionsSection = document.getElementById('quiz-questions');
-            const quizResultSection = document.getElementById('quiz-result');
-            const startQuizButton = document.getElementById('start-quiz-button');
-            
-            let currentQuestionIndex = 0;
-            let score = 0;
-            let selectedAnswer = null;
-            
-            if (startQuizButton) {
-                startQuizButton.addEventListener('click', () => {
-                    quizStartSection.classList.add('hidden');
-                    quizQuestionsSection.classList.remove('hidden');
-                    startQuiz();
-                });
-            }
-
-            function startQuiz() {
-                currentQuestionIndex = 0;
-                score = 0;
-                displayQuestion();
-            }
-
-            function displayQuestion() {
-                const quizData = translations[currentLanguage].quiz;
-                if (currentQuestionIndex >= quizData.questions.length) {
-                    showResult();
-                    return;
-                }
-
-                const questionData = quizData.questions[currentQuestionIndex];
-                quizQuestionsSection.innerHTML = `
-                    <div class="question-card flex flex-col items-center">
-                        <p class="text-lg sm:text-xl font-medium text-slate-700 dark:text-slate-300 mb-6 text-center">${currentQuestionIndex + 1} / ${quizData.questions.length}</p>
-                        <h4 class="text-xl sm:text-2xl font-semibold text-emerald-700 dark:text-emerald-400 mb-8 text-center">${questionData.question}</h4>
-                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 w-full max-w-lg">
-                            ${questionData.answers.map((answer, index) => `
-                                <button class="quiz-option text-left" data-score="${answer.score}" data-index="${index}">${answer.text}</button>
-                            `).join('')}
-                        </div>
-                        <button id="next-button" class="quiz-button mt-8 w-full max-w-xs" disabled>${quizData.next_button}</button>
-                    </div>
-                `;
-                
-                selectedAnswer = null;
-                const options = document.querySelectorAll('.quiz-option');
-                options.forEach(option => {
-                    option.addEventListener('click', (e) => {
-                        options.forEach(o => o.classList.remove('selected'));
-                        e.currentTarget.classList.add('selected');
-                        selectedAnswer = e.currentTarget;
-                        document.getElementById('next-button').disabled = false;
-                    });
-                });
-
-                document.getElementById('next-button').addEventListener('click', () => {
-                    if (selectedAnswer) {
-                        score += parseInt(selectedAnswer.getAttribute('data-score'));
-                        currentQuestionIndex++;
-                        displayQuestion();
-                    }
-                });
-            }
-
-            function showResult() {
-                const quizData = translations[currentLanguage].quiz;
-                const result = quizData.results.find(r => score >= r.minScore && score <= r.maxScore);
-
-                quizQuestionsSection.classList.add('hidden');
-                quizResultSection.classList.remove('hidden');
-
-                quizResultSection.innerHTML = `
-                    <div class="result-card">
-                        <h3 class="text-2xl font-bold mb-4">${result.title}</h3>
-                        <p class="mb-6">${result.text}</p>
-                        <a href="#contact" class="px-6 py-3 bg-emerald-600 text-white rounded-full font-medium hover:bg-emerald-700 transition-colors duration-300">${result.cta}</a>
-                    </div>
-                `;
-            }
-
-            // --- Sécurité Anti-Copie ---
-            document.body.style.userSelect = 'none';
-            document.addEventListener('contextmenu', event => event.preventDefault());
-            document.addEventListener('keydown', event => { if ((event.ctrlKey || event.metaKey) && ['c', 'x', 'a', 's', 'p'].includes(event.key.toLowerCase())) { event.preventDefault(); } });
-            window.addEventListener('blur', () => screenshotOverlay.classList.add('visible'));
-            window.addEventListener('focus', () => screenshotOverlay.classList.remove('visible'));
-            document.addEventListener('keyup', (e) => { if (e.key === 'PrintScreen') { screenshotOverlay.classList.add('visible'); setTimeout(() => screenshotOverlay.classList.remove('visible'), 1000); } });
-
-            // --- Menu Mobile ---
-            const toggleMobileMenu = () => mobileMenu.classList.toggle('hidden');
-            menuButton.addEventListener('click', toggleMobileMenu);
-            mobileMenu.addEventListener('click', (e) => { if (e.target.tagName === 'A') { toggleMobileMenu(); } });
-
-            // --- Sélecteur de langue ---
-            const toggleLanguageDropdown = () => languageDropdown.classList.toggle('hidden');
-            languageButton.addEventListener('click', (e) => { e.stopPropagation(); toggleLanguageDropdown(); });
-            document.querySelectorAll('.language-item').forEach(item => { item.addEventListener('click', (e) => { const lang = e.currentTarget.getAttribute('data-lang'); switchLanguage(lang); toggleLanguageDropdown(); }); });
-            document.addEventListener('click', (e) => { if (!languageButton.contains(e.target) && !languageDropdown.classList.contains('hidden')) { toggleLanguageDropdown(); } });
-
-            // --- Theme Toggle ---
-            if(themeToggleButton) {
-                themeToggleButton.addEventListener('click', toggleTheme);
-                updateThemeIcon();
-            }
-
-            // --- Animation au défilement ---
-            const animatedElements = document.querySelectorAll('.fade-in-up');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); } });
-            }, { threshold: 0.1 });
-            animatedElements.forEach(el => observer.observe(el));
-            
-            // --- FAQ Accordion ---
-            const faqItems = document.querySelectorAll('.faq-item');
-            faqItems.forEach(item => {
-                const question = item.querySelector('.faq-question');
-                question.addEventListener('click', () => {
-                    const isOpen = item.classList.contains('open');
-                    faqItems.forEach(i => i.classList.remove('open'));
-                    if (!isOpen) {
-                        item.classList.add('open');
-                    }
-                });
-            });
-
-            // --- Initialisation des icônes et de la langue ---
-            lucide.createIcons();
-            const userLang = navigator.language.substring(0, 2);
-            const initialLang = translations[userLang] ? userLang : 'fr';
-            switchLanguage(initialLang);
-        });
-
         const translations = {
             fr: {
                 meta_title: "Yasmine Ahajoui - Psychologue Casablanca & Rabat, Maroc | Thérapie en Ligne",
@@ -914,32 +775,63 @@
             }
         };
 
+        // --- Gestion de la langue ---
         function switchLanguage(lang) {
+            if (!translations[lang]) return;
+
             currentLanguage = lang;
             document.documentElement.lang = lang;
+            // Assure la direction LTR pour toutes les langues comme demandé
             document.documentElement.dir = 'ltr'; 
             
+            // Met à jour les balises méta
             document.title = translations[lang].meta_title;
-            document.querySelector('meta[name="description"]').setAttribute('content', translations[lang].meta_description);
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if(metaDesc) {
+                metaDesc.setAttribute('content', translations[lang].meta_description);
+            }
 
+            // Met à jour le contenu textuel
             document.querySelectorAll('[data-lang-key]').forEach(element => {
                 const key = element.getAttribute('data-lang-key');
-                if (translations[lang][key]) { element.innerHTML = translations[lang][key]; }
+                if (translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
             });
-
+            
+            // Réinitialise l'interface du Quiz
             const quizStartSection = document.getElementById('quiz-start');
-            if(quizStartSection) {
+            if (quizStartSection) {
                 quizStartSection.classList.remove('hidden');
                 document.getElementById('quiz-questions').classList.add('hidden');
                 document.getElementById('quiz-result').classList.add('hidden');
             }
             
+            // Met à jour le drapeau du sélecteur de langue
             const currentFlag = document.getElementById('current-flag');
-            const flagMap = { fr: 'https://flagcdn.com/w160/fr.png', en: 'https://flagcdn.com/w160/gb.png', ar: 'https://flagcdn.com/w160/ma.png' };
-            currentFlag.src = flagMap[lang];
+            if(currentFlag) {
+                const flagMap = { fr: 'https://flagcdn.com/w160/fr.png', en: 'https://flagcdn.com/w160/gb.png', ar: 'https://flagcdn.com/w160/ma.png' };
+                currentFlag.src = flagMap[lang];
+            }
             
-            lucide.createIcons();
-            updateThemeIcon(); // Assure que l'icône du thème est correcte après la recréation
+            // Recrée les icônes car innerHTML a été modifié
+            if(window.lucide) {
+                lucide.createIcons();
+            }
+            // S'assure que l'icône du thème est également correcte après la recréation
+            updateThemeIcon();
+        }
+
+        // --- Gestion du thème ---
+        function updateThemeIcon() {
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                const isDark = document.documentElement.classList.contains('dark');
+                themeToggle.innerHTML = isDark ? '<i data-lucide="sun" class="w-5 h-5"></i>' : '<i data-lucide="moon" class="w-5 h-5"></i>';
+                if(window.lucide) {
+                    lucide.createIcons();
+                }
+            }
         }
 
         function toggleTheme() {
@@ -947,26 +839,212 @@
             localStorage.theme = isDark ? 'dark' : 'light';
             updateThemeIcon();
         }
+        
+        // --- Initialiseurs de composants ---
+        
+        function initMobileMenu() {
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
 
-        function updateThemeIcon() {
-            const themeToggle = document.getElementById('theme-toggle');
-            if (themeToggle) {
-                if (document.documentElement.classList.contains('dark')) {
-                    themeToggle.innerHTML = '<i data-lucide="sun" class="w-5 h-5"></i>';
-                } else {
-                    themeToggle.innerHTML = '<i data-lucide="moon" class="w-5 h-5"></i>';
-                }
-                lucide.createIcons();
+            if (menuButton && mobileMenu) {
+                const toggle = () => mobileMenu.classList.toggle('hidden');
+                menuButton.addEventListener('click', toggle);
+                mobileMenu.addEventListener('click', (e) => {
+                    if (e.target.tagName === 'A') {
+                        toggle();
+                    }
+                });
             }
         }
+
+        function initLanguageSwitcher() {
+            const languageButton = document.getElementById('language-button');
+            const languageDropdown = document.getElementById('language-dropdown');
+            
+            if (languageButton && languageDropdown) {
+                const toggleDropdown = () => languageDropdown.classList.toggle('hidden');
+                languageButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    toggleDropdown();
+                });
+
+                document.querySelectorAll('.language-item').forEach(item => {
+                    item.addEventListener('click', (e) => {
+                        const lang = e.currentTarget.getAttribute('data-lang');
+                        switchLanguage(lang);
+                        toggleDropdown();
+                    });
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (!languageButton.contains(e.target) && !languageDropdown.classList.contains('hidden')) {
+                        toggleDropdown();
+                    }
+                });
+            }
+        }
+        
+        function initThemeToggle() {
+            const themeToggleButton = document.getElementById('theme-toggle');
+            if (themeToggleButton) {
+                themeToggleButton.addEventListener('click', toggleTheme);
+                updateThemeIcon();
+            }
+        }
+        
+        function initQuiz() {
+            const quizContainer = document.getElementById('quiz-container');
+            if (!quizContainer) return;
+
+            const startButton = document.getElementById('start-quiz-button');
+            const quizStartSection = document.getElementById('quiz-start');
+            const questionsSection = document.getElementById('quiz-questions');
+            const resultSection = document.getElementById('quiz-result');
+
+            if (!startButton || !quizStartSection || !questionsSection || !resultSection) return;
+
+            let currentQuestionIndex = 0;
+            let score = 0;
+
+            const start = () => {
+                quizStartSection.classList.add('hidden');
+                questionsSection.classList.remove('hidden');
+                currentQuestionIndex = 0;
+                score = 0;
+                displayQuestion();
+            };
+
+            const displayQuestion = () => {
+                const quizData = translations[currentLanguage].quiz;
+                if (currentQuestionIndex >= quizData.questions.length) {
+                    showResult();
+                    return;
+                }
+
+                const q = quizData.questions[currentQuestionIndex];
+                questionsSection.innerHTML = `
+                    <div class="question-card flex flex-col items-center">
+                        <p class="text-lg sm:text-xl font-medium text-slate-700 dark:text-slate-300 mb-6 text-center">${currentQuestionIndex + 1} / ${quizData.questions.length}</p>
+                        <h4 class="text-xl sm:text-2xl font-semibold text-emerald-700 dark:text-emerald-400 mb-8 text-center">${q.question}</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 w-full max-w-lg">
+                            ${q.answers.map((answer, index) => `<button class="quiz-option" data-score="${answer.score}">${answer.text}</button>`).join('')}
+                        </div>
+                        <button id="next-button" class="quiz-button mt-8 w-full max-w-xs" disabled>${quizData.next_button}</button>
+                    </div>`;
+
+                let selectedAnswer = null;
+                const nextButton = document.getElementById('next-button');
+                const options = questionsSection.querySelectorAll('.quiz-option');
+
+                options.forEach(option => {
+                    option.addEventListener('click', (e) => {
+                        options.forEach(o => o.classList.remove('selected'));
+                        e.currentTarget.classList.add('selected');
+                        selectedAnswer = e.currentTarget;
+                        if(nextButton) nextButton.disabled = false;
+                    });
+                });
+
+                if(nextButton) {
+                    nextButton.addEventListener('click', () => {
+                        if (selectedAnswer) {
+                            score += parseInt(selectedAnswer.getAttribute('data-score'));
+                            currentQuestionIndex++;
+                            displayQuestion();
+                        }
+                    });
+                }
+            };
+
+            const showResult = () => {
+                const quizData = translations[currentLanguage].quiz;
+                const result = quizData.results.find(r => score >= r.minScore && score <= r.maxScore);
+                
+                if (result) {
+                    questionsSection.classList.add('hidden');
+                    resultSection.classList.remove('hidden');
+                    resultSection.innerHTML = `
+                        <div class="result-card">
+                            <h3 class="text-2xl font-bold mb-4">${result.title}</h3>
+                            <p class="mb-6">${result.text}</p>
+                            <a href="#contact" class="px-6 py-3 bg-emerald-600 text-white rounded-full font-medium hover:bg-emerald-700 transition-colors duration-300">${result.cta}</a>
+                        </div>`;
+                }
+            };
+
+            startButton.addEventListener('click', start);
+        }
+        
+        function initFAQ() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            if (faqItems.length > 0) {
+                faqItems.forEach(item => {
+                    const question = item.querySelector('.faq-question');
+                    if (question) {
+                        question.addEventListener('click', () => {
+                            const isOpen = item.classList.contains('open');
+                            faqItems.forEach(i => i.classList.remove('open'));
+                            if (!isOpen) {
+                                item.classList.add('open');
+                            }
+                        });
+                    }
+                });
+            }
+        }
+
+        function initScrollAnimations() {
+            const animatedElements = document.querySelectorAll('.fade-in-up');
+            if (animatedElements.length > 0) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                        }
+                    });
+                }, { threshold: 0.1 });
+                animatedElements.forEach(el => observer.observe(el));
+            }
+        }
+
+        function initContentProtection() {
+            const overlay = document.getElementById('screenshot-overlay');
+            if (overlay) {
+                document.body.style.userSelect = 'none';
+                document.addEventListener('contextmenu', e => e.preventDefault());
+                document.addEventListener('keydown', e => {
+                    if ((e.ctrlKey || e.metaKey) && ['c', 'x', 'a', 's', 'p'].includes(e.key.toLowerCase())) {
+                        e.preventDefault();
+                    }
+                });
+                window.addEventListener('blur', () => overlay.classList.add('visible'));
+                window.addEventListener('focus', () => overlay.classList.remove('visible'));
+                document.addEventListener('keyup', (e) => {
+                    if (e.key === 'PrintScreen') {
+                        overlay.classList.add('visible');
+                        setTimeout(() => overlay.classList.remove('visible'), 2000);
+                    }
+                });
+            }
+        }
+
+        // --- Exécution principale ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialise tous les composants interactifs
+            initMobileMenu();
+            initLanguageSwitcher();
+            initThemeToggle();
+            initQuiz();
+            initFAQ();
+            initScrollAnimations();
+            initContentProtection();
+
+            // Définit la langue initiale
+            const userLang = navigator.language.substring(0, 2);
+            const initialLang = translations[userLang] ? userLang : 'fr';
+            switchLanguage(initialLang);
+        });
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
 
