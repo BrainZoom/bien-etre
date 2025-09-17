@@ -1,8 +1,5 @@
-Instructions pour tous les robots d'exploration (Google, Bing, etc.)
 User-agent: *
 
-Autoriser l'accès à l'ensemble du site.
 Disallow:
 
-Emplacement du plan du site (Sitemap).
 Sitemap: https://www.google.com/search?q=https://www.brainzoom.ma/sitemap.xml
