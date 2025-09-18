@@ -95,7 +95,7 @@
         /* Sélecteur de langue */
         .language-dropdown { position: absolute; top: 100%; right: 0; background-color: white; border-radius: 0.5rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); z-index: 20; padding: 0.5rem; margin-top: 0.5rem; min-width: 10rem; border: 1px solid #e5e7eb; }
         .dark .language-dropdown { background-color: #1e293b; border-color: #334155; }
-        .language-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem; border-radius: 0.375rem; cursor: pointer; transition: background-color 0.2s; }
+        .language-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem; border-radius: 0.375rem; cursor: pointer; transition: background-color: 0.2s; }
         .language-item:hover { background-color: #f3f4f6; }
         .dark .language-item:hover { background-color: #334155; }
         .flag-icon { width: 1.5rem; height: 1.5rem; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1); }
@@ -136,6 +136,17 @@
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         .fade-in-up.is-visible { opacity: 1; transform: translateY(0); }
+
+        /* NOUVELLES ANIMATIONS POUR LES CARTES */
+        .animated-card {
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .animated-card.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
     </style>
 </head>
 <body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-300">
@@ -201,30 +212,30 @@
 
         <!-- Section Compétences -->
         <section id="competences" class="py-16 sm:py-24">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 fade-in-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 text-center text-emerald-700 dark:text-emerald-400" data-lang-key="skills_title">Pratique</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 p-8 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 p-8 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animated-card">
                         <div class="flex items-center space-x-4 mb-4"><i data-lucide="clipboard-list" class="w-10 h-10 text-emerald-600 dark:text-emerald-400"></i><h3 class="text-xl font-semibold" data-lang-key="skill_program_design_title">Conception de programmes</h3></div>
                         <p class="text-slate-600 dark:text-slate-300 text-justify" data-lang-key="skill_program_design_text">Conception et animation de programmes et ateliers visant le développement des compétences psychosociales.</p>
                     </div>
-                    <div class="bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 p-8 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 p-8 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animated-card">
                         <div class="flex items-center space-x-4 mb-4"><i data-lucide="microscope" class="w-10 h-10 text-emerald-600 dark:text-emerald-400"></i><h3 class="text-xl font-semibold" data-lang-key="skill_clinical_method_title">Méthodologie clinique</h3></div>
                         <p class="text-slate-600 dark:text-slate-300 text-justify" data-lang-key="skill_clinical_method_text">Maîtrise d'outils d'évaluation et de prise en charge psychologique, incluant l'entretien motivationnel, TCC, etc...</p>
                     </div>
-                    <div class="bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 p-8 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 p-8 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animated-card">
                         <div class="flex items-center space-x-4 mb-4"><i data-lucide="folder-kanban" class="w-10 h-10 text-emerald-600 dark:text-emerald-400"></i><h3 class="text-xl font-semibold" data-lang-key="skill_project_management_title">Gestion de projets</h3></div>
                         <p class="text-slate-600 dark:text-slate-300 text-justify" data-lang-key="skill_project_management_text">Élaboration de projets individualisés et coordination avec des équipes pluridisciplinaires.</p>
                     </div>
-                    <div class="bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 p-8 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 p-8 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animated-card">
                         <div class="flex items-center space-x-4 mb-4"><i data-lucide="search" class="w-10 h-10 text-emerald-600 dark:text-emerald-400"></i><h3 class="text-xl font-semibold" data-lang-key="skill_research_title">Recherche et analyse</h3></div>
                         <p class="text-slate-600 dark:text-slate-300 text-justify" data-lang-key="skill_research_text">Bonne maîtrise de la méthodologie de recherche et aisance avec les outils bureautiques.</p>
                     </div>
-                    <div class="bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 p-8 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 p-8 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animated-card">
                         <div class="flex items-center space-x-4 mb-4"><i data-lucide="lightbulb" class="w-10 h-10 text-emerald-600 dark:text-emerald-400"></i><h3 class="text-xl font-semibold" data-lang-key="skill_proactive_title">Approche proactive</h3></div>
                         <p class="text-slate-600 dark:text-slate-300 text-justify" data-lang-key="skill_proactive_text">Empathie, sens de l'initiative et approche proactive pour un accompagnement optimal.</p>
                     </div>
-                    <div class="bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 p-8 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 p-8 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animated-card">
                         <div class="flex items-center space-x-4 mb-4"><i data-lucide="users" class="w-10 h-10 text-emerald-600 dark:text-emerald-400"></i><h3 class="text-xl font-semibold" data-lang-key="skill_collaboration_title">Travail collaboratif</h3></div>
                         <p class="text-slate-600 dark:text-slate-300 text-justify" data-lang-key="skill_collaboration_text">Expérience en travail collaboratif et coordination avec des équipes pluridisciplinaires.</p>
                     </div>
@@ -234,50 +245,50 @@
 
         <!-- Section Expérience -->
         <section id="experience" class="py-16 sm:py-24 bg-emerald-50/40 dark:bg-slate-800/20">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 fade-in-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 text-center text-emerald-700 dark:text-emerald-400" data-lang-key="experience_title">Réalisations clés</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 rounded-xl flex items-center justify-center mr-4"><i data-lucide="briefcase" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-slate-800 dark:text-slate-100" data-lang-key="exp_coordinator_title">Coordinatrice de projets</h3><p class="text-sm text-slate-500 dark:text-slate-400" data-lang-key="exp_coordinator_org">Association Y-PEER Morocco</p></div></div><ul class="list-disc list-inside space-y-2 text-slate-600 dark:text-slate-300 text-justify" data-lang-key="exp_coordinator_list"></ul></div>
-                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 rounded-xl flex items-center justify-center mr-4"><i data-lucide="accessibility" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-slate-800 dark:text-slate-100" data-lang-key="exp_disability_expert_title">Experte en Handicap</h3><p class="text-sm text-slate-500 dark:text-slate-400" data-lang-key="exp_disability_expert_org">Ministère de la Solidarité...</p></div></div><p class="text-slate-600 dark:text-slate-300 text-justify" data-lang-key="exp_disability_expert_text"></p></div>
-                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 rounded-xl flex items-center justify-center mr-4"><i data-lucide="video" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-slate-800 dark:text-slate-100" data-lang-key="exp_content_writer_title">Rédactrice de contenu</h3><p class="text-sm text-slate-500 dark:text-slate-400" data-lang-key="exp_content_writer_org">ZA'THINK TANK, IPTC MENA, ALCS</p></div></div><p class="text-slate-600 dark:text-slate-300 text-justify" data-lang-key="exp_content_writer_text"></p></div>
-                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 rounded-xl flex items-center justify-center mr-4"><i data-lucide="presentation" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-slate-800 dark:text-slate-100" data-lang-key="exp_workshop_title">Facilitation d’ateliers</h3><p class="text-sm text-slate-500 dark:text-slate-400" data-lang-key="exp_workshop_org">UNICEF - U-Report Morocco</p></div></div><ul class="list-disc list-inside space-y-2 text-slate-600 dark:text-slate-300 text-justify" data-lang-key="exp_workshop_list"></ul></div>
-                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 rounded-xl flex items-center justify-center mr-4"><i data-lucide="hospital" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-slate-800 dark:text-slate-100" data-lang-key="exp_adult_psychiatry_title">Stage en psychiatrie</h3><p class="text-sm text-slate-500 dark:text-slate-400" data-lang-key="exp_adult_psychiatry_org">Hôpital militaire Mohamed V</p></div></div><ul class="list-disc list-inside space-y-2 text-slate-600 dark:text-slate-300 text-justify" data-lang-key="exp_adult_psychiatry_list"></ul></div>
-                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 rounded-xl flex items-center justify-center mr-4"><i data-lucide="baby" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-slate-800 dark:text-slate-100" data-lang-key="exp_pediatric_psychiatry_title">Stage en pédopsychiatrie</h3><p class="text-sm text-slate-500 dark:text-slate-400" data-lang-key="exp_pediatric_psychiatry_org">Hôpital ARRAZI - Salé</p></div></div><ul class="list-disc list-inside space-y-2 text-slate-600 dark:text-slate-300 text-justify" data-lang-key="exp_pediatric_psychiatry_list"></ul></div>
+                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animated-card"><div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 rounded-xl flex items-center justify-center mr-4"><i data-lucide="briefcase" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-slate-800 dark:text-slate-100" data-lang-key="exp_coordinator_title">Coordinatrice de projets</h3><p class="text-sm text-slate-500 dark:text-slate-400" data-lang-key="exp_coordinator_org">Association Y-PEER Morocco</p></div></div><ul class="list-disc list-inside space-y-2 text-slate-600 dark:text-slate-300 text-justify" data-lang-key="exp_coordinator_list"></ul></div>
+                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animated-card"><div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 rounded-xl flex items-center justify-center mr-4"><i data-lucide="accessibility" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-slate-800 dark:text-slate-100" data-lang-key="exp_disability_expert_title">Experte en Handicap</h3><p class="text-sm text-slate-500 dark:text-slate-400" data-lang-key="exp_disability_expert_org">Ministère de la Solidarité...</p></div></div><p class="text-slate-600 dark:text-slate-300 text-justify" data-lang-key="exp_disability_expert_text"></p></div>
+                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animated-card"><div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 rounded-xl flex items-center justify-center mr-4"><i data-lucide="video" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-slate-800 dark:text-slate-100" data-lang-key="exp_content_writer_title">Rédactrice de contenu</h3><p class="text-sm text-slate-500 dark:text-slate-400" data-lang-key="exp_content_writer_org">ZA'THINK TANK, IPTC MENA, ALCS</p></div></div><p class="text-slate-600 dark:text-slate-300 text-justify" data-lang-key="exp_content_writer_text"></p></div>
+                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animated-card"><div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 rounded-xl flex items-center justify-center mr-4"><i data-lucide="presentation" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-slate-800 dark:text-slate-100" data-lang-key="exp_workshop_title">Facilitation d’ateliers</h3><p class="text-sm text-slate-500 dark:text-slate-400" data-lang-key="exp_workshop_org">UNICEF - U-Report Morocco</p></div></div><ul class="list-disc list-inside space-y-2 text-slate-600 dark:text-slate-300 text-justify" data-lang-key="exp_workshop_list"></ul></div>
+                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animated-card"><div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 rounded-xl flex items-center justify-center mr-4"><i data-lucide="hospital" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-slate-800 dark:text-slate-100" data-lang-key="exp_adult_psychiatry_title">Stage en psychiatrie</h3><p class="text-sm text-slate-500 dark:text-slate-400" data-lang-key="exp_adult_psychiatry_org">Hôpital militaire Mohamed V</p></div></div><ul class="list-disc list-inside space-y-2 text-slate-600 dark:text-slate-300 text-justify" data-lang-key="exp_adult_psychiatry_list"></ul></div>
+                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animated-card"><div class="flex items-start mb-4"><div class="flex-shrink-0 w-12 h-12 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 rounded-xl flex items-center justify-center mr-4"><i data-lucide="baby" class="w-6 h-6"></i></div><div><h3 class="text-xl font-bold text-slate-800 dark:text-slate-100" data-lang-key="exp_pediatric_psychiatry_title">Stage en pédopsychiatrie</h3><p class="text-sm text-slate-500 dark:text-slate-400" data-lang-key="exp_pediatric_psychiatry_org">Hôpital ARRAZI - Salé</p></div></div><ul class="list-disc list-inside space-y-2 text-slate-600 dark:text-slate-300 text-justify" data-lang-key="exp_pediatric_psychiatry_list"></ul></div>
                 </div>
             </div>
         </section>
         
         <!-- Section Approche -->
         <section id="approach" class="py-16 sm:py-24">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 fade-in-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 text-center text-emerald-700 dark:text-emerald-400" data-lang-key="approach_title">Approche Thérapeutique</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 p-8 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><i data-lucide="puzzle" class="w-12 h-12 text-emerald-600 dark:text-emerald-400 mx-auto mb-4"></i><h3 class="text-xl font-bold mb-2" data-lang-key="approach_integrative_title">Approche Intégrative</h3><p class="text-slate-600 dark:text-slate-300" data-lang-key="approach_integrative_text"></p></div>
-                    <div class="bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 p-8 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><i data-lucide="hand-heart" class="w-12 h-12 text-emerald-600 dark:text-emerald-400 mx-auto mb-4"></i><h3 class="text-xl font-bold mb-2" data-lang-key="approach_centered_title">Centrée sur la Personne</h3><p class="text-slate-600 dark:text-slate-300" data-lang-key="approach_centered_text"></p></div>
-                    <div class="bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 p-8 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><i data-lucide="target" class="w-12 h-12 text-emerald-600 dark:text-emerald-400 mx-auto mb-4"></i><h3 class="text-xl font-bold mb-2" data-lang-key="approach_solutions_title">Orientée vers les Solutions</h3><p class="text-slate-600 dark:text-slate-300" data-lang-key="approach_solutions_text"></p></div>
+                    <div class="bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 p-8 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animated-card"><i data-lucide="puzzle" class="w-12 h-12 text-emerald-600 dark:text-emerald-400 mx-auto mb-4"></i><h3 class="text-xl font-bold mb-2" data-lang-key="approach_integrative_title">Approche Intégrative</h3><p class="text-slate-600 dark:text-slate-300" data-lang-key="approach_integrative_text"></p></div>
+                    <div class="bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 p-8 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animated-card"><i data-lucide="hand-heart" class="w-12 h-12 text-emerald-600 dark:text-emerald-400 mx-auto mb-4"></i><h3 class="text-xl font-bold mb-2" data-lang-key="approach_centered_title">Centrée sur la Personne</h3><p class="text-slate-600 dark:text-slate-300" data-lang-key="approach_centered_text"></p></div>
+                    <div class="bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 p-8 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animated-card"><i data-lucide="target" class="w-12 h-12 text-emerald-600 dark:text-emerald-400 mx-auto mb-4"></i><h3 class="text-xl font-bold mb-2" data-lang-key="approach_solutions_title">Orientée vers les Solutions</h3><p class="text-slate-600 dark:text-slate-300" data-lang-key="approach_solutions_text"></p></div>
                 </div>
             </div>
         </section>
 
         <!-- Section Témoignages -->
         <section id="temoignages" class="py-16 sm:py-24 bg-emerald-50/40 dark:bg-slate-800/20">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 fade-in-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 text-center text-emerald-700 dark:text-emerald-400" data-lang-key="testimonials_title">Ce qu'ils en disent</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Témoignage 1 -->
-                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 flex flex-col">
+                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 flex flex-col animated-card">
                         <i data-lucide="quote" class="w-10 h-10 text-emerald-300 dark:text-emerald-700 mb-4"></i>
                         <p class="text-slate-600 dark:text-slate-300 italic mb-6 flex-grow" data-lang-key="testimonial_1_text">"L'approche de Yasmine est à la fois douce et incroyablement efficace. J'ai ressenti un réel progrès en quelques séances seulement. Une écoute sans jugement qui fait toute la différence."</p>
                         <p class="font-semibold text-slate-800 dark:text-slate-100 text-right" data-lang-key="testimonial_1_author">- Femme, 34 ans, Casablanca</p>
                     </div>
                     <!-- Témoignage 2 -->
-                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 flex flex-col">
+                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 flex flex-col animated-card">
                         <i data-lucide="quote" class="w-10 h-10 text-emerald-300 dark:text-emerald-700 mb-4"></i>
                         <p class="text-slate-600 dark:text-slate-300 italic mb-6 flex-grow" data-lang-key="testimonial_2_text">"Les consultations en ligne étaient une première pour moi et j'étais sceptique. Yasmine a su créer un espace de confiance malgré la distance. Je la recommande vivement."</p>
                         <p class="font-semibold text-slate-800 dark:text-slate-100 text-right" data-lang-key="testimonial_2_author">- Homme, 28 ans, Rabat</p>
                     </div>
                     <!-- Témoignage 3 -->
-                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 flex flex-col">
+                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 flex flex-col animated-card">
                         <i data-lucide="quote" class="w-10 h-10 text-emerald-300 dark:text-emerald-700 mb-4"></i>
                         <p class="text-slate-600 dark:text-slate-300 italic mb-6 flex-grow" data-lang-key="testimonial_3_text">"Je ne savais plus comment communiquer avec mon fils adolescent. Les séances avec Yasmine nous ont offert un espace neutre pour nous reconnecter. Notre relation est aujourd'hui bien plus sereine."</p>
                         <p class="font-semibold text-slate-800 dark:text-slate-100 text-right" data-lang-key="testimonial_3_author">- Maman d'un adolescent de 14 ans</p>
@@ -288,10 +299,10 @@
 
         <!-- Section Quiz -->
         <section id="quiz" class="py-16 sm:py-24">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 fade-in-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-3xl mx-auto space-y-12">
                     <!-- Quiz 1: Intelligence Émotionnelle -->
-                    <div id="quiz1-container" class="quiz-container">
+                    <div id="quiz1-container" class="quiz-container animated-card">
                         <div class="quiz-start text-center py-12 px-6 bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 rounded-3xl shadow-lg border border-emerald-100 dark:border-slate-700">
                             <h3 class="text-2xl sm:text-3xl font-bold text-emerald-700 dark:text-emerald-400 mb-4" data-lang-key="quiz_start_title">Êtes-vous en harmonie avec vos émotions ?</h3>
                             <p class="text-slate-600 dark:text-slate-300 mb-8" data-lang-key="quiz_start_text">Faites ce mini-quiz pour mieux comprendre votre relation avec vos émotions et découvrir des pistes de réflexion pour votre bien-être.</p>
@@ -302,7 +313,7 @@
                     </div>
 
                     <!-- Quiz 2: Style d'Attachement -->
-                    <div id="quiz2-container" class="quiz-container">
+                    <div id="quiz2-container" class="quiz-container animated-card">
                         <div class="quiz-start text-center py-12 px-6 bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 rounded-3xl shadow-lg border border-emerald-100 dark:border-slate-700">
                             <h3 class="text-2xl sm:text-3xl font-bold text-emerald-700 dark:text-emerald-400 mb-4" data-lang-key="quiz2_start_title">Testez votre style d’attachement</h3>
                             <p class="text-slate-600 dark:text-slate-300 mb-8" data-lang-key="quiz2_start_text">Découvrez comment vous vous connectez aux autres dans vos relations intimes à travers ce court test.</p>
@@ -317,26 +328,26 @@
 
         <!-- Section Galerie -->
         <section id="gallery" class="py-16 sm:py-24 bg-emerald-50/40 dark:bg-slate-800/20">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 fade-in-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 text-center text-emerald-700 dark:text-emerald-400" data-lang-key="gallery_title">Galerie</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><div class="group relative block w-full h-64 rounded-xl overflow-hidden"><video src="https://www.brainzoom.ma/V.mp4" autoplay loop muted playsinline class="w-full h-full object-cover" title="Yasmine Ahajoui en atelier de psychologie au Maroc"></video></div></div>
-                    <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><div class="group relative block w-full h-64 rounded-xl overflow-hidden"><img src="https://www.brainzoom.ma/2.jpg" alt="Animation d'un atelier psychoéducatif par Yasmine Ahajoui au Maroc" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out"></div></div>
-                    <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><div class="group relative block w-full h-64 rounded-xl overflow-hidden"><img src="https://www.brainzoom.ma/3.jpg" alt="Consultation et soutien psychologique au Maroc" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out"></div></div>
-                    <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><div class="group relative block w-full h-64 rounded-xl overflow-hidden"><img src="https://www.brainzoom.ma/4.jpg" alt="Yasmine Ahajoui, psychologue à Casablanca, en conférence" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out"></div></div>
-                    <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><div class="group relative block w-full h-64 rounded-xl overflow-hidden"><img src="https://www.brainzoom.ma/5.jpg" alt="Intervention de Yasmine Ahajoui sur la santé mentale au Maroc" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out"></div></div>
-                    <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><div class="group relative block w-full h-64 rounded-xl overflow-hidden"><img src="https://www.brainzoom.ma/6.jpg" alt="Thérapie et écoute active par une psychologue à Rabat" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out"></div></div>
+                    <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animated-card"><div class="group relative block w-full h-64 rounded-xl overflow-hidden"><video src="https://www.brainzoom.ma/V.mp4" autoplay loop muted playsinline class="w-full h-full object-cover" title="Yasmine Ahajoui en atelier de psychologie au Maroc"></video></div></div>
+                    <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animated-card"><div class="group relative block w-full h-64 rounded-xl overflow-hidden"><img src="https://www.brainzoom.ma/2.jpg" alt="Animation d'un atelier psychoéducatif par Yasmine Ahajoui au Maroc" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out"></div></div>
+                    <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animated-card"><div class="group relative block w-full h-64 rounded-xl overflow-hidden"><img src="https://www.brainzoom.ma/3.jpg" alt="Consultation et soutien psychologique au Maroc" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out"></div></div>
+                    <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animated-card"><div class="group relative block w-full h-64 rounded-xl overflow-hidden"><img src="https://www.brainzoom.ma/4.jpg" alt="Yasmine Ahajoui, psychologue à Casablanca, en conférence" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out"></div></div>
+                    <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animated-card"><div class="group relative block w-full h-64 rounded-xl overflow-hidden"><img src="https://www.brainzoom.ma/5.jpg" alt="Intervention de Yasmine Ahajoui sur la santé mentale au Maroc" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out"></div></div>
+                    <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-lg border border-slate-200/80 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animated-card"><div class="group relative block w-full h-64 rounded-xl overflow-hidden"><img src="https://www.brainzoom.ma/6.jpg" alt="Thérapie et écoute active par une psychologue à Rabat" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out"></div></div>
                 </div>
             </div>
         </section>
 
         <!-- Section FAQ -->
         <section id="faq" class="py-16 sm:py-24">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 fade-in-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 text-center text-emerald-700 dark:text-emerald-400" data-lang-key="faq_title">Questions Fréquentes</h2>
                 <div class="max-w-4xl mx-auto space-y-4">
                     <!-- FAQ Item 1 -->
-                    <div class="faq-item bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700">
+                    <div class="faq-item bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 animated-card">
                         <button class="faq-question w-full flex justify-between items-center text-left p-6">
                             <span class="text-lg font-semibold text-slate-800 dark:text-slate-100" data-lang-key="faq_q1"></span>
                             <span class="flex-shrink-0 ml-4">
@@ -349,7 +360,7 @@
                         </div>
                     </div>
                     <!-- FAQ Item 2 -->
-                    <div class="faq-item bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700">
+                    <div class="faq-item bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 animated-card">
                         <button class="faq-question w-full flex justify-between items-center text-left p-6">
                             <span class="text-lg font-semibold text-slate-800 dark:text-slate-100" data-lang-key="faq_q2"></span>
                             <span class="flex-shrink-0 ml-4">
@@ -362,7 +373,7 @@
                         </div>
                     </div>
                     <!-- FAQ Item 3 -->
-                    <div class="faq-item bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700">
+                    <div class="faq-item bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 animated-card">
                         <button class="faq-question w-full flex justify-between items-center text-left p-6">
                             <span class="text-lg font-semibold text-slate-800 dark:text-slate-100" data-lang-key="faq_q3"></span>
                             <span class="flex-shrink-0 ml-4">
@@ -375,7 +386,7 @@
                         </div>
                     </div>
                     <!-- FAQ Item 4 -->
-                     <div class="faq-item bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700">
+                     <div class="faq-item bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 animated-card">
                         <button class="faq-question w-full flex justify-between items-center text-left p-6">
                             <span class="text-lg font-semibold text-slate-800 dark:text-slate-100" data-lang-key="faq_q4"></span>
                             <span class="flex-shrink-0 ml-4">
@@ -392,8 +403,8 @@
         </section>
 
         <section id="contact" class="py-16 sm:py-24 bg-emerald-50/40 dark:bg-slate-800/20">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 fade-in-up">
-                <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-lg border border-slate-200/80 dark:border-slate-700 p-8 md:p-12 lg:p-16">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-lg border border-slate-200/80 dark:border-slate-700 p-8 md:p-12 lg:p-16 animated-card">
                     <div class="grid md:grid-cols-2 gap-12 items-center">
                         <!-- Colonne de texte -->
                         <div>
@@ -434,11 +445,11 @@
 
         <!-- Section Affiliations et Ressources -->
         <section id="resources" class="py-16 sm:py-24">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 fade-in-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 text-center text-emerald-700 dark:text-emerald-400" data-lang-key="resources_title">Affiliations et Ressources</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     <!-- Université Hassan II -->
-                    <a href="http://www.univh2c.ma/" target="_blank" rel="noopener noreferrer" class="group bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 p-6 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 flex items-center gap-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <a href="http://www.univh2c.ma/" target="_blank" rel="noopener noreferrer" class="group bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 p-6 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 flex items-center gap-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animated-card">
                         <div class="flex-shrink-0 w-12 h-12 bg-emerald-100 dark:bg-emerald-900/50 rounded-lg flex items-center justify-center">
                             <i data-lucide="landmark" class="w-6 h-6 text-emerald-600 dark:text-emerald-400"></i>
                         </div>
@@ -447,7 +458,7 @@
                         </div>
                     </a>
                     <!-- Ministère de la Santé -->
-                    <a href="https://www.sante.gov.ma/" target="_blank" rel="noopener noreferrer" class="group bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 p-6 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 flex items-center gap-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <a href="https://www.sante.gov.ma/" target="_blank" rel="noopener noreferrer" class="group bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 p-6 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 flex items-center gap-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animated-card">
                         <div class="flex-shrink-0 w-12 h-12 bg-emerald-100 dark:bg-emerald-900/50 rounded-lg flex items-center justify-center">
                             <i data-lucide="heart-pulse" class="w-6 h-6 text-emerald-600 dark:text-emerald-400"></i>
                         </div>
@@ -456,7 +467,7 @@
                         </div>
                     </a>
                     <!-- Ministère de la Solidarité -->
-                    <a href="https://social.gov.ma/" target="_blank" rel="noopener noreferrer" class="group bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 p-6 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 flex items-center gap-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <a href="https://social.gov.ma/" target="_blank" rel="noopener noreferrer" class="group bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 p-6 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 flex items-center gap-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animated-card">
                         <div class="flex-shrink-0 w-12 h-12 bg-emerald-100 dark:bg-emerald-900/50 rounded-lg flex items-center justify-center">
                             <i data-lucide="heart-handshake" class="w-6 h-6 text-emerald-600 dark:text-emerald-400"></i>
                         </div>
@@ -465,7 +476,7 @@
                         </div>
                     </a>
                     <!-- Haut-Commissariat au Plan -->
-                    <a href="https://www.hcp.ma/" target="_blank" rel="noopener noreferrer" class="group bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 p-6 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 flex items-center gap-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <a href="https://www.hcp.ma/" target="_blank" rel="noopener noreferrer" class="group bg-gradient-to-br from-white to-emerald-50 dark:from-slate-800/50 dark:to-emerald-900/50 p-6 rounded-2xl shadow-lg border border-emerald-100 dark:border-slate-700 flex items-center gap-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animated-card">
                         <div class="flex-shrink-0 w-12 h-12 bg-emerald-100 dark:bg-emerald-900/50 rounded-lg flex items-center justify-center">
                             <i data-lucide="bar-chart-3" class="w-6 h-6 text-emerald-600 dark:text-emerald-400"></i>
                         </div>
@@ -874,66 +885,62 @@
     };
 
     let currentLanguage = 'fr';
+    
+    // Gère les balises <link rel="alternate" hreflang="..."> pour le SEO
+    function updateHreflangTags() {
+        const head = document.head;
+        const baseUrl = "https://www.brainzoom.ma/";
+        head.querySelectorAll('link[rel="alternate"]').forEach(el => el.remove());
+        const createTag = (lang, href) => {
+            const link = document.createElement('link');
+            link.rel = 'alternate';
+            link.hreflang = lang;
+            link.href = href;
+            head.appendChild(link);
+        };
+        createTag('fr', baseUrl);
+        createTag('en', baseUrl);
+        createTag('ar', baseUrl);
+        createTag('x-default', baseUrl);
+    }
 
     // --- Gestion de la Langue ---
     function switchLanguage(lang) {
         if (!translations[lang]) return;
-
         currentLanguage = lang;
-        localStorage.setItem('preferredLanguage', lang); // Sauvegarde le choix de l'utilisateur
-
-        // Met à jour les attributs de la page
+        localStorage.setItem('preferredLanguage', lang);
         document.documentElement.lang = lang;
-        document.documentElement.dir = 'ltr'; // Maintient LTR pour toutes les langues
-
-        // Met à jour les balises méta pour le SEO
+        document.documentElement.dir = 'ltr';
         document.title = translations[lang].meta_title;
         const metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc) {
-            metaDesc.setAttribute('content', translations[lang].meta_description);
-        }
-
-        // Met à jour tout le contenu textuel via l'attribut data-lang-key
+        if (metaDesc) metaDesc.setAttribute('content', translations[lang].meta_description);
+        
         document.querySelectorAll('[data-lang-key]').forEach(element => {
             const key = element.getAttribute('data-lang-key');
             const translation = getTranslation(key);
-            if (translation) {
-                element.innerHTML = translation;
-            }
+            if (translation) element.innerHTML = translation;
         });
         
-        // Réinitialise l'état des quiz pour éviter les incohérences
         document.querySelectorAll('.quiz-container').forEach(container => {
             container.querySelector('.quiz-start')?.classList.remove('hidden');
             container.querySelector('.quiz-questions')?.classList.add('hidden');
             container.querySelector('.quiz-result')?.classList.add('hidden');
         });
 
-        // Met à jour le drapeau dans le sélecteur
         const currentFlag = document.getElementById('current-flag');
         if (currentFlag) {
             const flagMap = { fr: 'https://flagcdn.com/w160/fr.png', en: 'https://flagcdn.com/w160/gb.png', ar: 'https://flagcdn.com/w160/ma.png' };
             currentFlag.src = flagMap[lang];
         }
         
-        // --- POINT CRUCIAL ---
-        // Recrée toutes les icônes après que le contenu (innerHTML) ait été modifié.
-        // C'est ce qui empêche le "hoquet" et la disparition des icônes.
-        if (window.lucide) {
-            lucide.createIcons();
-        }
-        
-        // S'assure que l'icône du thème est également correcte après la recréation
+        if (window.lucide) lucide.createIcons();
         updateThemeIcon();
     }
     
-    // Fonction utilitaire pour obtenir une traduction imbriquée (ex: "quiz.next_button")
     function getTranslation(key) {
         const keys = key.split('.');
         let result = translations[currentLanguage];
-        for (const k of keys) {
-            result = result?.[k];
-        }
+        for (const k of keys) result = result?.[k];
         return result;
     }
 
@@ -945,10 +952,7 @@
             themeToggle.innerHTML = isDark 
                 ? '<i data-lucide="sun" class="w-5 h-5"></i>' 
                 : '<i data-lucide="moon" class="w-5 h-5"></i>';
-            // L'icône du thème est aussi un élément `i`, il faut la recréer.
-            if (window.lucide) {
-                lucide.createIcons();
-            }
+            if (window.lucide) lucide.createIcons();
         }
     }
 
@@ -959,61 +963,42 @@
     }
     
     // --- Initialisation des Composants de la Page ---
-    
     function initMobileMenu() {
         const menuButton = document.getElementById('menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         if (!menuButton || !mobileMenu) return;
-
         const toggle = () => mobileMenu.classList.toggle('hidden');
         menuButton.addEventListener('click', toggle);
-        mobileMenu.addEventListener('click', (e) => {
-            if (e.target.tagName === 'A') {
-                toggle();
-            }
-        });
+        mobileMenu.addEventListener('click', e => { if (e.target.tagName === 'A') toggle(); });
     }
 
     function initLanguageSwitcher() {
         const languageButton = document.getElementById('language-button');
         const languageDropdown = document.getElementById('language-dropdown');
         if (!languageButton || !languageDropdown) return;
-        
         const toggleDropdown = () => languageDropdown.classList.toggle('hidden');
-        languageButton.addEventListener('click', (e) => {
-            e.stopPropagation();
-            toggleDropdown();
-        });
-
+        languageButton.addEventListener('click', e => { e.stopPropagation(); toggleDropdown(); });
         document.querySelectorAll('.language-item').forEach(item => {
-            item.addEventListener('click', (e) => {
+            item.addEventListener('click', e => {
                 const lang = e.currentTarget.getAttribute('data-lang');
                 switchLanguage(lang);
                 toggleDropdown();
             });
         });
-
-        document.addEventListener('click', (e) => {
-            if (!languageButton.contains(e.target) && !languageDropdown.classList.contains('hidden')) {
-                toggleDropdown();
-            }
-        });
+        document.addEventListener('click', e => { if (!languageButton.contains(e.target) && !languageDropdown.classList.contains('hidden')) toggleDropdown(); });
     }
     
     function initThemeToggle() {
-        const themeToggleButton = document.getElementById('theme-toggle');
-        themeToggleButton?.addEventListener('click', toggleTheme);
+        document.getElementById('theme-toggle')?.addEventListener('click', toggleTheme);
     }
     
     function initSpecificQuiz(containerId) {
         const container = document.getElementById(containerId);
         if (!container) return;
-
         const startButton = container.querySelector('.start-quiz-button');
         const startSection = container.querySelector('.quiz-start');
         const questionsSection = container.querySelector('.quiz-questions');
         const resultSection = container.querySelector('.quiz-result');
-
         if (!startButton || !startSection || !questionsSection || !resultSection) return;
 
         let currentQuestionIndex = 0;
@@ -1025,12 +1010,7 @@
             questionsSection.classList.remove('hidden');
             resultSection.classList.add('hidden');
             currentQuestionIndex = 0;
-            
-            if (quizKey === 'quiz') {
-                score = 0;
-            } else { // quiz2
-                score = { secure: 0, anxious: 0, dismissive: 0, fearful: 0 };
-            }
+            score = (quizKey === 'quiz') ? 0 : { secure: 0, anxious: 0, dismissive: 0, fearful: 0 };
             displayQuestion();
         };
 
@@ -1040,13 +1020,11 @@
                 showResult();
                 return;
             }
-
             const q = quizData.questions[currentQuestionIndex];
             const answersHtml = q.answers.map(answer => {
                 const dataAttribute = quizKey === 'quiz' ? `data-score="${answer.score}"` : `data-style="${answer.style}"`;
                 return `<button class="quiz-option" ${dataAttribute}>${answer.text}</button>`;
             }).join('');
-
             questionsSection.innerHTML = `
                 <div class="question-card flex flex-col items-center">
                     <p class="text-lg sm:text-xl font-medium text-slate-700 dark:text-slate-300 mb-6 text-center">${currentQuestionIndex + 1} / ${quizData.questions.length}</p>
@@ -1065,34 +1043,20 @@
                     if(nextButton) nextButton.disabled = false;
                 });
             });
-
-            if(nextButton) {
-                nextButton.addEventListener('click', () => {
-                    if (!selectedAnswer) return;
-                    
-                    if (quizKey === 'quiz') {
-                        score += parseInt(selectedAnswer.getAttribute('data-score'));
-                    } else {
-                        const style = selectedAnswer.getAttribute('data-style');
-                        if (style) score[style]++;
-                    }
-                    currentQuestionIndex++;
-                    displayQuestion();
-                });
-            }
+            if(nextButton) nextButton.addEventListener('click', () => {
+                if (!selectedAnswer) return;
+                if (quizKey === 'quiz') score += parseInt(selectedAnswer.getAttribute('data-score'));
+                else { const style = selectedAnswer.getAttribute('data-style'); if (style) score[style]++; }
+                currentQuestionIndex++;
+                displayQuestion();
+            });
         };
 
         const showResult = () => {
             const quizData = getTranslation(quizKey);
             let result = null;
-
-            if (quizKey === 'quiz') {
-                result = quizData.results.find(r => score >= r.minScore && score <= r.maxScore);
-            } else {
-                const finalStyle = Object.keys(score).reduce((a, b) => score[a] > score[b] ? a : b);
-                result = quizData.results[finalStyle];
-            }
-            
+            if (quizKey === 'quiz') result = quizData.results.find(r => score >= r.minScore && score <= r.maxScore);
+            else { const finalStyle = Object.keys(score).reduce((a, b) => score[a] > score[b] ? a : b); result = quizData.results[finalStyle]; }
             if (result) {
                 questionsSection.classList.add('hidden');
                 resultSection.classList.remove('hidden');
@@ -1104,7 +1068,6 @@
                     </div>`;
             }
         };
-
         startButton.addEventListener('click', start);
     }
 
@@ -1114,52 +1077,50 @@
                 const item = button.parentElement;
                 const isOpen = item.classList.contains('open');
                 document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-                if (!isOpen) {
-                    item.classList.add('open');
-                }
+                if (!isOpen) item.classList.add('open');
             });
         });
     }
 
     function initScrollAnimations() {
-        const animatedElements = document.querySelectorAll('.fade-in-up');
-        if ('IntersectionObserver' in window) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-            animatedElements.forEach(el => observer.observe(el));
-        } else {
-            // Fallback for older browsers
-            animatedElements.forEach(el => el.classList.add('is-visible'));
+        const elementsToAnimate = document.querySelectorAll('.fade-in-up, .animated-card');
+        if (!('IntersectionObserver' in window)) {
+            elementsToAnimate.forEach(el => el.classList.add('is-visible'));
+            return;
         }
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        elementsToAnimate.forEach(el => observer.observe(el));
+        document.querySelectorAll('section[id]').forEach(section => {
+            section.querySelectorAll('.animated-card').forEach((card, index) => {
+                card.style.transitionDelay = `${index * 100}ms`;
+            });
+        });
     }
 
     function initScrollToTopButton() {
         const button = document.getElementById('scroll-to-top-button');
         if (!button) return;
-
         window.addEventListener('scroll', () => {
             button.classList.toggle('opacity-0', window.scrollY <= 300);
             button.classList.toggle('pointer-events-none', window.scrollY <= 300);
         });
-
         button.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     }
 
     function initContentProtection() {
         const overlay = document.getElementById('screenshot-overlay');
         if (!overlay) return;
-
         document.body.style.userSelect = 'none';
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.addEventListener('keydown', e => {
-            if ((e.ctrlKey || e.metaKey) && ['c', 'x', 'a', 's', 'p'].includes(e.key.toLowerCase())) {
-                e.preventDefault();
-            }
+            if ((e.ctrlKey || e.metaKey) && ['c', 'x', 'a', 's', 'p'].includes(e.key.toLowerCase())) e.preventDefault();
         });
         window.addEventListener('blur', () => overlay.classList.add('visible'));
         window.addEventListener('focus', () => overlay.classList.remove('visible'));
@@ -1167,7 +1128,7 @@
 
     // --- Exécution Principale au Chargement de la Page ---
     document.addEventListener('DOMContentLoaded', () => {
-        // Initialise tous les composants interactifs
+        updateHreflangTags();
         initMobileMenu();
         initLanguageSwitcher();
         initThemeToggle();
@@ -1177,14 +1138,13 @@
         initScrollAnimations();
         initScrollToTopButton();
         initContentProtection();
-
-        // Applique le thème et la langue sauvegardés ou par défaut
         updateThemeIcon();
+        
         const savedLang = localStorage.getItem('preferredLanguage');
-        const browserLang = navigator.language.substring(0, 2);
-        const initialLang = savedLang || (translations[browserLang] ? browserLang : 'fr');
+        const initialLang = savedLang || 'fr'; 
         switchLanguage(initialLang);
     });
     </script>
 </body>
 </html>
+
