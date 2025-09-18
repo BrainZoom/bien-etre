@@ -161,7 +161,10 @@
 
     <nav class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm shadow-sm sticky top-0 z-50 transition-colors duration-300">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
-            <a href="#" class="text-xl font-bold text-emerald-700 dark:text-emerald-400" data-lang-key="nav_brand">Yasmine AHAJOUI</a>
+            <a href="#" class="flex items-center space-x-3 text-xl font-bold text-emerald-700 dark:text-emerald-400">
+                <img src="Brain-zoom-removebg-preview.png" alt="Brain Zoom Logo" class="h-10 w-auto">
+                <span data-lang-key="nav_brand">Yasmine AHAJOUI</span>
+            </a>
             <div class="flex items-center space-x-2 sm:space-x-4">
                 <div class="space-x-2 hidden md:flex items-center text-sm font-medium" id="desktop-menu">
                     <a href="#competences" class="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200" data-lang-key="nav_skills">Compétences</a>
@@ -495,16 +498,28 @@
         </section>
     </main>
     
-    <footer class="bg-white dark:bg-slate-800 py-6 text-slate-500 text-sm border-t dark:border-slate-700">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p data-lang-key="footer_copyright">© 2024 Yasmine AHAJOUI. Tous droits réservés.</p>
-            <div class="flex items-center space-x-4">
-                <a href="https://www.instagram.com/brain_zoom/" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-300" aria-label="Instagram">
-                    <i data-lucide="instagram" class="w-5 h-5"></i>
+    <footer class="bg-white dark:bg-slate-800 py-8 text-slate-500 border-t dark:border-slate-700">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-6">
+                <!-- Logo and Brand Name -->
+                <a href="#" class="flex items-center gap-3">
+                    <img src="Brain-zoom-removebg-preview.png" alt="Brain Zoom Logo" class="h-12 w-auto">
+                    <span class="text-2xl font-bold text-emerald-700 dark:text-emerald-400">Brain Zoom</span>
                 </a>
-                <a href="https://www.linkedin.com/in/yasmine-a-brain-zoom-93588731a" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-300" aria-label="LinkedIn">
-                    <i data-lucide="linkedin" class="w-5 h-5"></i>
-                </a>
+                
+                <!-- Social Links -->
+                <div class="flex items-center space-x-6">
+                    <a href="https://www.instagram.com/brain_zoom/" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-300" aria-label="Instagram">
+                        <i data-lucide="instagram" class="w-6 h-6"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/yasmine-a-brain-zoom-93588731a" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-300" aria-label="LinkedIn">
+                        <i data-lucide="linkedin" class="w-6 h-6"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Copyright -->
+            <div class="mt-8 text-center text-xs text-slate-400 border-t border-slate-200 dark:border-slate-700 pt-8">
+                 <p data-lang-key="footer_copyright">© 2024 Yasmine AHAJOUI. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
