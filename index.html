@@ -158,8 +158,8 @@
                     <a href="#experience" class="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200" data-lang-key="nav_experience">Expérience</a>
                     <a href="#approach" class="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200" data-lang-key="nav_approach">Approche</a>
                     <a href="#temoignages" class="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200" data-lang-key="nav_testimonials">Témoignages</a>
-                    <a href="#gallery" class="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200" data-lang-key="nav_gallery">Galerie</a>
                     <a href="#quiz" class="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200" data-lang-key="nav_quiz">Quiz</a>
+                    <a href="#gallery" class="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200" data-lang-key="nav_gallery">Galerie</a>
                     <a href="#faq" class="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200" data-lang-key="nav_faq">FAQ</a>
                     <a href="#resources" class="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors duration-200" data-lang-key="nav_resources">Ressources</a>
                     <a href="#contact" class="px-4 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700 transition-colors duration-200 font-semibold" data-lang-key="nav_contact">Contact</a>
@@ -186,8 +186,8 @@
                 <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-lang-key="nav_experience">Expérience</a>
                 <a href="#approach" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-lang-key="nav_approach">Approche</a>
                 <a href="#temoignages" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-lang-key="nav_testimonials">Témoignages</a>
-                <a href="#gallery" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-lang-key="nav_gallery">Galerie</a>
                 <a href="#quiz" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-lang-key="nav_quiz">Quiz</a>
+                <a href="#gallery" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-lang-key="nav_gallery">Galerie</a>
                 <a href="#faq" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-lang-key="nav_faq">FAQ</a>
                 <a href="#resources" class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-lang-key="nav_resources">Ressources</a>
                 <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium bg-emerald-600 text-white hover:bg-emerald-700 mt-2" data-lang-key="nav_contact">Contact</a>
@@ -498,6 +498,10 @@
             </div>
         </div>
     </footer>
+
+    <button id="scroll-to-top-button" class="fixed bottom-8 right-8 bg-emerald-600 text-white p-3 rounded-full shadow-lg hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-opacity duration-300 opacity-0 pointer-events-none z-50" aria-label="Retour en haut">
+        <i data-lucide="arrow-up" class="w-6 h-6"></i>
+    </button>
 
     <script>
         // --- Global State ---
@@ -1154,6 +1158,26 @@
                 });
             }
         }
+        
+        function initScrollToTopButton() {
+            const button = document.getElementById('scroll-to-top-button');
+            if (!button) return;
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    button.classList.remove('opacity-0', 'pointer-events-none');
+                } else {
+                    button.classList.add('opacity-0', 'pointer-events-none');
+                }
+            });
+
+            button.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
 
         // --- Exécution principale ---
         document.addEventListener('DOMContentLoaded', () => {
@@ -1166,6 +1190,7 @@
             initFAQ();
             initScrollAnimations();
             initContentProtection();
+            initScrollToTopButton();
 
             // Définit la langue initiale
             const userLang = navigator.language.substring(0, 2);
@@ -1175,3 +1200,4 @@
     </script>
 </body>
 </html>
+
